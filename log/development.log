@@ -1,9 +1,0 @@
-# Logfile created on Wed Apr 29 20:47:17 -0700 2009  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
-
-
-Processing UserSessionsController#new (for 127.0.0.1 at 2009-04-29 20:47:22) [GET]
-  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
-  [4;35;1mUser Columns (0.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
-Rendering template within layouts/application
-Rendering user_sessions/new
-Completed in 93ms (View: 15, DB: 15) | 200 OK [http://localhost/user_session/new]
