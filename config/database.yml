@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  database: openathon
+  username: openathon
+  password: openathon
+
+production:
+  adapter: postgresql
+  database: openathon
+  username: openathon
+  password: openathon
+
+test:
+  adapter: postgresql
+  database: openathon
+  username: openathon
+  password: openathon
+
