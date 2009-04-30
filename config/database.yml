@@ -1,18 +1,18 @@
 development:
-  adapter: postgresql
+  adapter: mysql
   database: openathon
-  username: openathon
-  password: openathon
+  username: root
+  password: Carrie0ak
 
 production:
-  adapter: postgresql
+  adapter: mysql
   database: openathon
-  username: openathon
-  password: openathon
+  username: root
+  password: Carrie0ak
 
 test:
-  adapter: postgresql
+  adapter: mysql
   database: openathon
-  username: openathon
-  password: openathon
+  username: root
+  password: Carrie0ak
 
