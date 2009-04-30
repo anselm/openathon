@@ -88,7 +88,8 @@ class NotesController < ApplicationController
   # Search
   def search
      @term = params[:id]
-     @notes = Note.find_by_solr(@term)
+@notes = nil
+#     @notes = Note.find_by_solr(@term)
      @notes = @notes.docs if @notes
      @notes = [] if !@notes
   end
