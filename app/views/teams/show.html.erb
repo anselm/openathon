@@ -1,17 +1,37 @@
-<p>
-  <b>Title:</b>
-  <%=h @team.title %>
-</p>
+<div style="float:right;width:200px;height:200px;border:1px solid red;">
+  <%= @team.depiction %>
+</div>
 
-<p>
-  <b>Description:</b>
-  <%=h @team.description %>
-</p>
+<h1><%=  @team.title %></h1>
+<h2><%= @team.description %></h2>
 
-<p>
-  <b>Depiction:</b>
-  <%=h @team.depiction %>
-</p>
+<!-- TODO: Hide this if it's not your team -->
+<!-- TODO: Add option to import contacts from gmail -->
+
+<% form_for @invite_list, :url => {:action => "invite"} do |f| %>
+  Enter email addresses of your friends to invite:<br/>
+  <%= f.text_area :invite_text %>
+  <%= submit_tag 'Invite!' %>
+<% end %>
+
+<h3>Team members</h3>
+<table>
+  <tr>
+    <th>Rank</th><th>Name</th><th>Amount Raised</th><th>Details</th>
+  </tr>
+  <% count = 0
+  1.upto(6) do |i| %>
+    <tr>
+      <td><%= i %></td><td>Member <%= i %></td><td>$<%= count = count + (i*100) %></td><% link_to "Edit", users_path, :id => "#{i}"  %>
+    </tr>
+  <% end %>
+  <tr>
+    <td></td><th>Total</th>><td>$<%= count %></td>
+  </tr>
+
+</table>
+
+Link to invite people to team -- iff this is your team<br/>
 
 
 <%= link_to 'Edit', edit_team_path(@team) %> |

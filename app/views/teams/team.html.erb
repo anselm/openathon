@@ -1,0 +1,28 @@
+<div style="float:right;width:200px;height:200px;border:1px solid red;">
+  [Team Photo!]
+</div>
+
+<h1>Team Name Here</h1>
+<h2>Team Description Here</h2>
+
+<h3>Team members</h3>
+<table>
+  <tr>
+    <th>Rank</th><th>Name</th><th>Amount Raised</th><th>Details</th>
+  </tr>
+  <% count = 0
+  1.upto(6) do |i| %>
+    <tr>
+      <td><%= i %></td><td>Member <%= i %></td><td>$<%= count = count + (i*100) %></td><% link_to "user", users_path, :id => "#{i}"  %>
+    </tr>
+  <% end %>
+  <tr>
+    <td></td><th>Total</th>><td>$<%= count %></td>
+  </tr>
+
+</table>
+
+
+
+
+
