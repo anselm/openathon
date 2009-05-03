@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @team.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @team.description %>
+</p>
+
+<p>
+  <b>Depiction:</b>
+  <%=h @team.depiction %>
+</p>
+
+
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>

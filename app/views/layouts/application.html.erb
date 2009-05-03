@@ -13,14 +13,14 @@
 <div style="float:right">
 <%= link_to "Home", "/" %> |
 <% if !current_user %>
-  <%= link_to "Register", new_account_path %> |
-  <%= link_to "Log In", new_user_session_path %> 
+  <%= link_to "Signup", new_account_path %> |
+  <%= link_to "Signin", new_user_session_path %> 
 <% else %>
   <%= link_to "My Account", account_path %> |
-  <%= link_to "Logout", user_session_path, :method => :delete %>
+  <%= link_to "Signout", user_session_path, :method => :delete %>
 <% end %>
 </div>
-<div style="clear:both"></div>
+<div style="clear:both"/>
 <p style="color: green"><%= flash[:notice] %></p>
 
 <div style="float:left;width:100px;height:100px;border:1px solid red;">
@@ -30,23 +30,18 @@
 <div style="float:right;width:100px;height:100px;border:1px solid red;">
 [Ethos!]
 </div>
+<div style="clear:both"/>
+<hr>
 
-Welcome to the VoiceBox Karaokeathon.
-
-<h1>
-<a href="/start">Start a Team!</></br>
-<a href="/join">Join a Team!</a></br>
-<a href="/donate">Donate!</a></br>
-<a href="/calendar">Calendar</a></br>
-<a href="/news">News</a></br>
-</h1>
-
+<div id="rightside" style="float:right;width:100px">
 Sponsored by:
-
 <a href="http://siliconflorist.com">Silicon Florist</a>
 <a href="http://disney.com">Disney</a>
+</div>
 
+<div id="leftside">
 <%= yield  %>
+</div>
 
 </body>
 </html>
