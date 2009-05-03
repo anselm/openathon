@@ -5,6 +5,9 @@ class CreateTeams < ActiveRecord::Migration
       t.string :description
       t.string :depiction
 
+      t.string :roomname
+      t.datetime :roomtime
+
       t.timestamps
     end
   end

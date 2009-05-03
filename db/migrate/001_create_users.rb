@@ -3,6 +3,8 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.timestamps
       t.string :login, :null => false
+      t.string :firstname, :null => false
+      t.string :lastname, :null => false
       t.string :email, :null => false
       t.string :crypted_password, :null => false
       t.string :password_salt, :null => false
@@ -13,6 +15,10 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :current_login_at
       t.string :last_login_ip
       t.string :current_login_ip
+
+      t.integer :team_id
+      t.string :role    # participant, sponsor, captain other... in english
+
     end
     
     add_index :users, :login

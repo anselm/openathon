@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "title"
     t.string   "description"
     t.string   "depiction"
+    t.string   "roomname"
+    t.datetime "roomtime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,6 +66,8 @@ ActiveRecord::Schema.define(:version => 5) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "login",                            :null => false
+    t.string   "firstname",                        :null => false
+    t.string   "lastname",                         :null => false
     t.string   "email",                            :null => false
     t.string   "crypted_password",                 :null => false
     t.string   "password_salt",                    :null => false
@@ -74,6 +78,8 @@ ActiveRecord::Schema.define(:version => 5) do
     t.datetime "current_login_at"
     t.string   "last_login_ip"
     t.string   "current_login_ip"
+    t.integer  "team_id"
+    t.string   "role"
   end
 
   add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
