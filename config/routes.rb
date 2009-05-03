@@ -7,13 +7,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   
   map.resources :teams
-  map.start    'start',    :controller => 'team',    :action => 'start'
-  map.join     'join',     :controller => 'team',    :action => 'join'
-  map.calendar 'calendar', :controller => 'team',    :action => 'calendar'
-  map.search   'search',   :controller => 'team',    :action => 'search'
-  map.browse   'browse',   :controller => 'team',    :action => 'browse'
-  map.teams    'teams',    :controller => 'team',    :action => 'teams'
-  map.team     'team',     :controller => 'team',    :action => 'team'
+  map.start    'start',    :controller => 'teams',    :action => 'start'
+  map.join     'join',     :controller => 'teams',    :action => 'join'
+  map.calendar 'calendar', :controller => 'teams',    :action => 'calendar'
+  map.search   'search',   :controller => 'teams',    :action => 'search'
+  map.browse   'browse',   :controller => 'teams',    :action => 'browse'
+  map.teams    'teams',    :controller => 'teams',    :action => 'teams'
+  map.team     'team',     :controller => 'teams',    :action => 'team'
 
   # map.resources :notes
   # map.connect 'notes/:number', :controller => 'notes', :action => 'search' 
