@@ -1,0 +1,18 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+[remote "origin"]
+	url = git@github.com:anselm/openathon.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+
+[remote "github"]
+	url = git@github.com:anselm/openathon.git
+	fetch = +refs/heads/*:refs/remotes/github/*
+	push = refs/heads/master:refs/heads/master
+[branch "master"]
+	remote = github
+	merge = refs/heads/master
+
