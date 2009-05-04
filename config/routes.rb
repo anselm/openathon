@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   
   map.resources :teams
-  map.inveite  'invite',   :controller => 'teams',    :action => 'invite'
+  map.invite   'invite',   :controller => 'teams',    :action => 'invite'
   map.start    'start',    :controller => 'teams',    :action => 'start'
   map.join     'join',     :controller => 'teams',    :action => 'join'
   map.calendar 'calendar', :controller => 'teams',    :action => 'calendar'

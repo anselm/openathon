@@ -5,14 +5,7 @@
 <h1><%=  @team.title %></h1>
 <h2><%= @team.description %></h2>
 
-<!-- TODO: Hide this if it's not your team -->
-<!-- TODO: Add option to import contacts from gmail -->
-
-<% form_for @invite_list, :url => {:action => "invite"} do |f| %>
-  Enter email addresses of your friends to invite:<br/>
-  <%= f.text_area :invite_text %>
-  <%= submit_tag 'Invite!' %>
-<% end %>
+<%= link_to 'Invite team members!', invite_path, :id => @team.id %>
 
 <h3>Team members</h3>
 <table>

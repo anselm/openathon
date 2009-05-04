@@ -5,3 +5,4 @@ doc.app
 config/database.yml
 nbproject
 nbproject/*
+.git/config

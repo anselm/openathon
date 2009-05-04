@@ -1,0 +1,19 @@
+<%#
+Invite others to your team
+%>
+
+<h1>Recruit new members for <%= @team.name %>!</h1>
+
+Hello <%= current_user.firstname %>!<br/>
+
+<!-- TODO:  gmail and other contact import -->
+
+<h2>Enter email addresses of your friends in the box below.</h2>
+Use commas to separate email addresses.
+
+<% form_for @invites, :url => {:action => 'invite_do'} do |f| %>
+  <% text_area :invite_blog %>
+<%end%>
+  
+
+

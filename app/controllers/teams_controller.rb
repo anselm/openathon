@@ -14,8 +14,7 @@ class TeamsController < ApplicationController
   # GET /teams/1.xml
   def show
     @team = Team.find(params[:id])
-    @invite_list = ""
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @team }
@@ -117,6 +116,7 @@ class TeamsController
 
   # team : invite -- sends off an invitation email
   def invite
+    @team = Team.find(params[:id])
   end
 
 
