@@ -14,7 +14,7 @@ class TeamsController < ApplicationController
   # GET /teams/1.xml
   def show
     @team = Team.find(params[:id])
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @team }
@@ -44,6 +44,18 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
+        # associate user with team
+
+        if (current_user)
+          dbuser = User.find(current_user.id)
+          dbuser.team_id = @team.id
+          dbuser.role = 'captain'
+          dbuser.save
+        else
+          raise "No user logged in"
+        end
+        
+
         flash[:notice] = 'Team was successfully created.'
         format.html { redirect_to(@team) }
         format.xml  { render :xml => @team, :status => :created, :location => @team }
@@ -116,22 +128,22 @@ class TeamsController
 
   # team : invite -- sends off an invitation email
   def invite
-    @invite_header = "Hey Friend,<p>I'm doing this awsome thing!<p>"
-    @invite_footer = "Go to <THIS LINK> and support me!\n\n Thanks!"
+    @invite_header = "Hey Friend, I'm doing this awesome thing!"
+    @invite_footer = "Go to <THIS LINK> and support me!\n\nThanks!"
     @team = Team.find(params[:id])
   end
 
   def invite_confirm
     @team = Team.find(params[:id])
-    @message = params[:user_message]
+
     email_blob = params[:email_blob]
-    @email_array = email_blob.split
+    @recipients = email_blob.split
 
     # create an array to catch any invalid email addresses
     @error_array = Array.new
 
     # validate the email addresses
-    @email_array.each do |email|
+    @recipients.each do |email|
       begin
         TMail::Address.parse(email)
       rescue
@@ -144,6 +156,26 @@ class TeamsController
     if @error_array.length > 0
       render :invite_error
     end
+
+    @body = params[:user_message]
+
+    flash[:body] = @body
+    flash[:recipients] = @recipients
+
+  end
+
+  def invite_do
+    recipients = flash[:recipients]
+    body = flash[:body]
+
+
+    recipients.each do |email|
+      InviteMailer.deliver_invite(email, body)
+    end
+
+    
+
+    redirect_to(:start)
 
   end
 

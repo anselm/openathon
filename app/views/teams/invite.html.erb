@@ -7,19 +7,15 @@ Invite others to your team
 <!-- TODO:  gmail and other contact import -->
 <% form_tag :action => 'invite_confirm', :method => 'post' do -%>
 
-    <h2>We'll send out this message to your invitees:</h2>
-  <div style="width:400px;height:200px;border:1px solid red;">
-    <%= @invite_header  %>
-    <%=  text_area_tag :user_message, "Enter your personal message here" %><br />
-    !! This text box ^^^ should clear on on-click and we should detect if they don't enter a message !!
-    <%= @invite_footer  %>
-  </div>
+  <h2>We'll send out this message to your invitees. Feel free to edit it first.</h2>
+
+  <%=  text_area_tag :user_message, "#{@invite_header}\n\n#{@invite_footer}", :cols => 80, :rows => 15 %><br />
 
   <h2>Enter email addresses of your friends in the box below.</h2>
   Put each address on its own line.<br/>
 
 
-  <%= text_area_tag :email_blob %>
+  <%= text_area_tag :email_blob, "", :cols => 40, :rows => 10 %>
   <%= hidden_field_tag :id, @team.id%>
   <%= submit_tag "Invite!" %>
 <%end%>
