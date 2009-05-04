@@ -5,9 +5,9 @@ Invite others to your team
 <h1>Recruit new members for <%= @team.title %>!</h1>
 
 <!-- TODO:  gmail and other contact import -->
-<% form_tag :action => 'invite_do', :method => 'post' do -%>
+<% form_tag :action => 'invite_confirm', :method => 'post' do -%>
 
-  <h2>We'll send out this message to your invitees:</h2>
+    <h2>We'll send out this message to your invitees:</h2>
   <div style="width:400px;height:200px;border:1px solid red;">
     <%= @invite_header  %>
     <%=  text_area_tag :user_message, "Enter your personal message here" %><br />
@@ -20,7 +20,7 @@ Invite others to your team
 
 
   <%= text_area_tag :email_blob %>
-  <%= hidden_field_tag :id, :value => @team.id%>
+  <%= hidden_field_tag :id, @team.id%>
   <%= submit_tag "Invite!" %>
 <%end%>
 

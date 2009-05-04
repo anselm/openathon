@@ -67,4 +67,15 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
+
+  # configure Active Mailer
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "mail.speakeasy.net",
+    :port => "25",
+    :domain => "makerlab.com",
+    :authentication => :plain,
+  }
+  config.action_mailer.raise_deliver_errors = false
+  config.action_mailer.default_charset = "utf-8"
 end

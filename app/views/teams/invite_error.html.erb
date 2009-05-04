@@ -1,0 +1,13 @@
+<%#
+Displayed when there's an error in the invitation.
+For now, this means that one of the email addresses is wrong
+%>
+
+<% if @error_array %>
+  <h2> Please try again, the following email addresses are invalid:</h2>
+  <% @error_array.each do |addy|  %>
+    <%= addy %>
+  <% end %>
+<% end %>
+
+<%=  button_to "Back", "javascript:history.back()" %>

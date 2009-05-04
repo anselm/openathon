@@ -1,0 +1,29 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<h3>Message:</h3>
+<div style="width:400px;height:200px;border:1px solid blue;">
+  <%=@message%>
+</div>
+<h3>Email list</h3>
+<div style="width:400px;height:200px;border:1px solid blue;">
+  <% @email_array.each do |email|  %>
+    <%= email %><br/>
+  <% end %>
+</div>
+
+<% if !@confirmed %>
+  <div>Press confirm to send this email to the above recipients.
+  Press cancel to go back.</div>
+  <% form_tag :action => 'invite_do', :method => "post" do-%>
+    <%= submit_tag "Confirm!" %>
+    <%= hidden_field_tag :message, @message %>
+    <%= hidden_field_tag :email_array, @email_array %>
+  <% end %>
+  <%= button_to "Cancel", "javascript:history.back()" %>
+<% end %>
+
+
+

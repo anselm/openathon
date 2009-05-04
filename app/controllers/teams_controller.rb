@@ -121,13 +121,30 @@ class TeamsController
     @team = Team.find(params[:id])
   end
 
-  def invite_do
+  def invite_confirm
     @team = Team.find(params[:id])
     @message = params[:user_message]
-    @email_blob = params[:email_blob]
+    email_blob = params[:email_blob]
+    @email_array = email_blob.split
+
+    # create an array to catch any invalid email addresses
+    @error_array = Array.new
+
+    # validate the email addresses
+    @email_array.each do |email|
+      begin
+        TMail::Address.parse(email)
+      rescue
+        @error_array << email
+      end
+    end
+
+    # if there's any errored email addresses, try again
+
+    if @error_array.length > 0
+      render :invite_error
+    end
+
   end
 
-
-
 end
-
