@@ -4,15 +4,23 @@ Invite others to your team
 
 <h1>Recruit new members for <%= @team.title %>!</h1>
 
-Hello <%= current_user.firstname %>!<br/>
-
 <!-- TODO:  gmail and other contact import -->
+<% form_tag :action => 'invite_do', :method => 'post' do -%>
 
-<h2>Enter email addresses of your friends in the box below.</h2>
-Use commas to separate email addresses.
+  <h2>We'll send out this message to your invitees:</h2>
+  <div style="width:400px;height:200px;border:1px solid red;">
+    <%= @invite_header  %>
+    <%=  text_area_tag :user_message, "Enter your personal message here" %><br />
+    !! This text box ^^^ should clear on on-click and we should detect if they don't enter a message !!
+    <%= @invite_footer  %>
+  </div>
 
-<% form_tag '/invite_do', :method => 'post' do -%>
-  <%= text_area_tag :invite_blog %>
+  <h2>Enter email addresses of your friends in the box below.</h2>
+  Put each address on its own line.<br/>
+
+
+  <%= text_area_tag :email_blob %>
+  <%= hidden_field_tag :id, :value => @team.id%>
   <%= submit_tag "Invite!" %>
 <%end%>
 

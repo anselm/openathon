@@ -116,8 +116,15 @@ class TeamsController
 
   # team : invite -- sends off an invitation email
   def invite
+    @invite_header = "Hey Friend,<p>I'm doing this awsome thing!<p>"
+    @invite_footer = "Go to <THIS LINK> and support me!\n\n Thanks!"
     @team = Team.find(params[:id])
-    @invites = Array.new
+  end
+
+  def invite_do
+    @team = Team.find(params[:id])
+    @message = params[:user_message]
+    @email_blob = params[:email_blob]
   end
 
 
