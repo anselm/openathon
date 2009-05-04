@@ -2,7 +2,7 @@
 Invite others to your team
 %>
 
-<h1>Recruit new members for <%= @team.name %>!</h1>
+<h1>Recruit new members for <%= @team.title %>!</h1>
 
 Hello <%= current_user.firstname %>!<br/>
 
@@ -11,9 +11,11 @@ Hello <%= current_user.firstname %>!<br/>
 <h2>Enter email addresses of your friends in the box below.</h2>
 Use commas to separate email addresses.
 
-<% form_for @invites, :url => {:action => 'invite_do'} do |f| %>
-  <% text_area :invite_blog %>
+<% form_tag '/invite_do', :method => 'post' do -%>
+  <%= text_area_tag :invite_blog %>
+  <%= submit_tag "Invite!" %>
 <%end%>
-  
+
+
 
 

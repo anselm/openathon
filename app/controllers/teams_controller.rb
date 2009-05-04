@@ -117,6 +117,7 @@ class TeamsController
   # team : invite -- sends off an invitation email
   def invite
     @team = Team.find(params[:id])
+    @invites = Array.new
   end
 
 

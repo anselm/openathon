@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   
   map.resources :teams
-  map.invite   'invite',   :controller => 'teams',    :action => 'invite'
+  map.invite   'invite/:id',   :controller => 'teams',    :action => 'invite'
   map.start    'start',    :controller => 'teams',    :action => 'start'
   map.join     'join',     :controller => 'teams',    :action => 'join'
   map.calendar 'calendar', :controller => 'teams',    :action => 'calendar'
@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # map.resources :notes
   # map.connect 'notes/:number', :controller => 'notes', :action => 'search' 
-  # map.resources :notes, :collection => { :search => [:get, :post] } 
+  # map.resources :notes, :collection => { :search => [:get, :post] }
 
   # general activities
   map.donate   'donate', :controller => 'index',    :action => 'donate'

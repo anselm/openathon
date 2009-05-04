@@ -5,7 +5,7 @@
 <h1><%=  @team.title %></h1>
 <h2><%= @team.description %></h2>
 
-<%= link_to 'Invite team members!', invite_path, :id => @team.id %>
+<%= link_to 'Invite team members!', :action => "invite", :id => @team.id %>
 
 <h3>Team members</h3>
 <table>
