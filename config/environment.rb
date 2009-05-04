@@ -76,6 +76,6 @@ Rails::Initializer.run do |config|
     :domain => "makerlab.com",
     :authentication => :plain,
   }
-  config.action_mailer.raise_deliver_errors = false
+  config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_charset = "utf-8"
 end
