@@ -14,16 +14,15 @@ ActionController::Routing::Routes.draw do |map|
   map.search   'search',   :controller => 'teams',    :action => 'search'
   map.browse   'browse',   :controller => 'teams',    :action => 'browse'
   map.teams    'teams',    :controller => 'teams',    :action => 'teams'
-#  map.team     'team',     :controller => 'teams',    :action => 'team'
 
   # map.resources :notes
   # map.connect 'notes/:number', :controller => 'notes', :action => 'search' 
   # map.resources :notes, :collection => { :search => [:get, :post] } 
 
   # general activities
-  # map.donate   'donate', :controller => 'index',    :action => 'donate'
-  # map.news     'news',   :controller => 'index',    :action => 'news'
-  map.root     :controller => 'index',    :action => 'index'
+  map.donate   'donate', :controller => 'index',    :action => 'donate'
+  map.news     'news',   :controller => 'index',    :action => 'news'
+  map.root               :controller => 'index',    :action => 'index'
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
