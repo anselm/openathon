@@ -14,6 +14,7 @@ class TeamsController < ApplicationController
   # GET /teams/1.xml
   def show
     @team = Team.find(params[:id])
+    @member_list = User.find(:all, :conditions => ["team_id = ?", @team.id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -128,13 +129,21 @@ class TeamsController
 
   # team : invite -- sends off an invitation email
   def invite
-    @invite_header = "Hey Friend, I'm doing this awesome thing!"
-    @invite_footer = "Go to <THIS LINK> and support me!\n\nThanks!"
-    @team = Team.find(params[:id])
+    if flash[:body]
+      @body = flash[:body]
+    else
+      @body = "Hey Friend, I'm doing this awesome thing!\n\nGo to http://openathon.makerlab.com and support me!\n\nThanks!"
+    end
+    if flash[:recipients]
+      @recipients = flash[:recipients]
+    else
+      @recipients = Array.new
+    end
+    @team = Team.find(current_user.team_id)
   end
 
   def invite_confirm
-    @team = Team.find(params[:id])
+    @team = Team.find(current_user.team_id)
 
     email_blob = params[:email_blob]
     @recipients = email_blob.split
@@ -151,16 +160,17 @@ class TeamsController
       end
     end
 
+    flash[:body] = params[:user_message]
+    flash[:recipients] = @recipients
+
     # if there's any errored email addresses, try again
 
     if @error_array.length > 0
-      render :invite_error
+      flash[:email_errors] = @error_array
+      redirect_to :action => :invite
     end
 
     @body = params[:user_message]
-
-    flash[:body] = @body
-    flash[:recipients] = @recipients
 
   end
 
@@ -170,12 +180,12 @@ class TeamsController
 
 
     recipients.each do |email|
-      InviteMailer.deliver_invite(email, body)
+      InviteMailer.deliver_invite(current_user, email, body)
     end
 
-    
+    flash[:notice] = 'Invitations sent!'
 
-    redirect_to(:start)
+    redirect_to(Team.find(current_user.team_id))
 
   end
 

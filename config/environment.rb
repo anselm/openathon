@@ -71,11 +71,13 @@ Rails::Initializer.run do |config|
   # configure Active Mailer
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "mail.speakeasy.net",
-    :port => "25",
+    :address => "mail.voiceboxpdx.com",
+    :port => "26",
     :domain => "makerlab.com",
-    :authentication => :plain,
+    :authentication => :login,
+    :user_name => "karaokathon+voiceboxpdx.com",
+    :password => "8675309jenny"
   }
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_charset = "utf-8"
 end

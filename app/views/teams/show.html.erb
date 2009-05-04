@@ -5,21 +5,20 @@
 <h1><%=  @team.title %></h1>
 <h2><%= @team.description %></h2>
 
-<%= link_to 'Invite team members!', :action => "invite", :id => @team.id %>
+<%= link_to 'Invite team members!', :action => "invite" %>
 
 <h3>Team members</h3>
 <table>
   <tr>
     <th>Rank</th><th>Name</th><th>Amount Raised</th><th>Details</th>
   </tr>
-  <% count = 0
-  1.upto(6) do |i| %>
+  <% @member_list.each do |user| %>
     <tr>
-      <td><%= i %></td><td>Member <%= i %></td><td>$<%= count = count + (i*100) %></td><% link_to "Edit", users_path, :id => "#{i}"  %>
+      <td><%=user.id%></td><td><%= user.firstname %> <%= user.lastname %></td><td>$1,000</td><td><%= link_to "Show", user %></td>
     </tr>
   <% end %>
   <tr>
-    <td></td><th>Total</th>><td>$<%= count %></td>
+    <td></td><th>Total</th><th>$1,000,000</th>
   </tr>
 
 </table>
