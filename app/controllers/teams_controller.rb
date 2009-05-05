@@ -4,7 +4,6 @@ class TeamsController < ApplicationController
   before_filter :get_team, :only => [:show,
                                      :edit,
                                      :update,
-                                     :create,
                                      :destroy
                                     ]
 
