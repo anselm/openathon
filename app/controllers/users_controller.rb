@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
   
@@ -33,4 +34,11 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+
+  def index
+    # TODO PAGINATION
+    # TODO KEEP AS AN ADMINISTRATIVE ROLE
+    @users = User.all
+  end
+
 end

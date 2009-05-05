@@ -1,0 +1,22 @@
+<% @users.each do |user| %>
+<% team = Team.find(user.team_id) if user.team_id != nil %>
+
+<table border=1>
+ <tr>
+  <th>Login Name</th>
+  <th>First Name</th>
+  <th>Team</th>
+ </tr>
+ <tr>
+  <td><%= user.login %></td>
+  <td><%= user.firstname %></td>
+  <td>
+    <% if team %>
+    <%= link_to team.title, team_path(team) %>
+    <% end %>
+  </td>
+ </tr>
+</table> 
+
+<% end %>
+
