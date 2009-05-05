@@ -103,13 +103,6 @@ end
 #
 
 class TeamsController
-  # team : start a team page - here for now.
-  def start
-  end
-
-  # team : join an existing team page
-  def join
-  end
 
   # team : team calendar of upcoming sessions
   def calendar
@@ -117,14 +110,6 @@ class TeamsController
 
   # team : search
   def search
-  end
-
-  # team : browse
-  def browse
-  end
-
-  # team : see all teams
-  def teams
   end
 
   # team : invite -- sends off an invitation email

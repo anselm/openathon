@@ -9,10 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :teams
   map.invite   'invite/:id',   :controller => 'teams',    :action => 'invite'
   map.start    'start',    :controller => 'teams',    :action => 'start'
-  map.join     'join',     :controller => 'teams',    :action => 'join'
   map.calendar 'calendar', :controller => 'teams',    :action => 'calendar'
   map.search   'search',   :controller => 'teams',    :action => 'search'
-  map.browse   'browse',   :controller => 'teams',    :action => 'browse'
   map.teams    'teams',    :controller => 'teams',    :action => 'teams'
 
   # map.resources :notes
