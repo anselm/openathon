@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
 
   def is_owner?(person)
-    return person !=nil &&  person.team_id == self.id && person.role == "owner"
+    return person !=nil &&  person.team_id == self.id && person.role == "captain"
   end
 
   def is_member?(person)
