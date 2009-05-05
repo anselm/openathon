@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+before_filter :get_team
+before_filter :verify_user, :only => [:new, :edit, :create, :update, :destroy]
+
   # GET /teams
   # GET /teams.xml
   def index
@@ -47,12 +50,7 @@ class TeamsController < ApplicationController
       if @team.save
         # associate user with team
 
-        if (current_user)
-          dbuser = User.find(current_user.id)
-          dbuser.team_id = @team.id
-          dbuser.role = 'captain'
-          dbuser.save
-        else
+        if !@team.set_captain(current_user)
           raise "No user logged in"
         end
         
@@ -70,7 +68,6 @@ class TeamsController < ApplicationController
   # PUT /teams/1
   # PUT /teams/1.xml
   def update
-    @team = Team.find(params[:id])
 
     respond_to do |format|
       if @team.update_attributes(params[:team])
@@ -172,6 +169,36 @@ class TeamsController
 
     redirect_to(Team.find(current_user.team_id))
 
+  end
+
+
+# TODO: so ugly it makes meep cry meepy tears
+  def join
+    if !current_user
+      redirect_to :controller => :users, :action => :signup
+    elsif @team.is_member(current_user)
+      flash[:notice] = "You're already a member of this team."
+    elsif current_user.team_id == nil
+      flash[:notice] = "You're now a member of this team."
+      current_user.team_id = @team.id
+      current_user.save
+    else # If you are switching teams, since a user can only be on one team. (ugly)
+      flash[:notice] = "You're now a member of this team."
+      current_user.team_id = @team.id
+      current_user.save
+      
+  end
+
+  private
+  def get_team
+    @team = Team.find(params[:id])
+  end
+
+  def verify_user
+    if !current_user redirect_to(:signup)
+    elsif @team.is_owner?(current_user) return true
+    else flash[:notice] => "hey bro that's my car!" return false
+    end
   end
 
 end
