@@ -111,6 +111,11 @@ public
   end
 
   def destroy
+    @member_list = User.find(:all, :conditions => ["team_id = ?", @team.id])
+    @member_list.each do |user|
+      user.team_id = nil
+      user.save
+    end
     @team.destroy
     respond_to do |format|
       format.html { redirect_to(teams_url) }
