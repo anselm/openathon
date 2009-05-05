@@ -11,8 +11,8 @@ class Team < ActiveRecord::Base
   def set_captain(person)
     if person
       person.team_id = self.id
-      dbuser.role = 'captain'
-      dbuser.save
+      person.role = 'captain'
+      person.save
       return true
     else return false
     end
