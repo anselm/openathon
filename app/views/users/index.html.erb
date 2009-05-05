@@ -5,11 +5,13 @@
  <tr>
   <th>Login Name</th>
   <th>First Name</th>
+  <th>Role</th>
   <th>Team</th>
  </tr>
  <tr>
   <td><%= user.login %></td>
   <td><%= user.firstname %></td>
+  <td><%= user.role %></td>
   <td>
     <% if team %>
     <%= link_to team.title, team_path(team) %>
