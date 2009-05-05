@@ -1,36 +1,40 @@
 <div style="float:right;width:200px;height:200px;border:1px solid red;">
-  <%= @team.depiction %>
+ <%= @team.depiction %>
 </div>
 
-<h1><%=  @team.title %></h1>
+<h1><%= @team.title %></h1>
 <h2><%= @team.description %></h2>
 
 <% if !current_user %>
-  <%= link_to "Signup", new_account_path %> |
-  <%= link_to "Signin", new_user_session_path %>
-
+ <%= link_to "Signup to join this team!", new_account_path %> 
 <% elsif @team.is_owner?(current_user) %>
-<%= link_to 'Edit', edit_team_path(@team) %> | <%= link_to 'Invite team members!', :action => "invite" %> | <% link_to "Destroy team :(", :action => "destroy" %>
-
+ <%= link_to 'Edit', edit_team_path(@team) %> | 
+ <%= link_to 'Invite team members!', :action => "invite" %> | 
+ <% link_to "Destroy team :(", :action => "destroy" %>
 <% elsif @team.is_member?(current_user) %>
-<%= link_to 'Leave team' %>
-  
+ <%= link_to 'Leave team', :action => "leave" , :id => @team.id %>
 <% else %> 
-<%= link_to 'Join team', :action => "join" %>
+ <%= link_to 'Join team', :action => "join" %>
 <% end %>
 
 <h3>Team members</h3>
 <table>
+ <tr>
+  <% # TODO ALLOW REORDERING %>
+  <th>Rank</th>
+  <th>Name</th>
+  <th>Amount Raised</th>
+  <th>Details</th>
+ </tr>
+ <% @member_list.each do |user| %>
   <tr>
-    <th>Rank</th><th>Name</th><th>Amount Raised</th><th>Details</th>
+   <td><%=user.id%></td><td><%= user.firstname %> <%= user.lastname %></td>
+   <td>$1,000</td>
+   <td><%= link_to "Show", user %></td>
   </tr>
-  <% @member_list.each do |user| %>
-    <tr>
-      <td><%=user.id%></td><td><%= user.firstname %> <%= user.lastname %></td><td>$1,000</td><td><%= link_to "Show", user %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <td></td><th>Total</th><th>$1,000,000</th>
-  </tr>
-
+ <% end %>
+ <tr>
+   <td></td><th>Total</th><th>$1,000,000</th>
+ </tr>
 </table>
+

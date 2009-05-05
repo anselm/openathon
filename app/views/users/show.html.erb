@@ -1,3 +1,11 @@
+<% @team = Team.first(@user.team_id) %>
+<% if @team %>
+Your team is here <%= link_to @team.title, "/teams/#{@team.id}" #TODO inelegant %> 
+<% else %>
+Start a team! <%= new_team_path(@team) %>
+<% end %>
+<hr>
+
 <p>
   <b>Login:</b>
   <%=h @user.login %>

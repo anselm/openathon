@@ -80,4 +80,15 @@ Rails::Initializer.run do |config|
   }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_charset = "utf-8"
+
+  config.after_initialize do
+    # actually we'll use the production mode
+    # http://www.codyfauser.com/2008/1/17/paypal-express-payments-with-activemerchant
+    # ActiveMerchant::Billing::Base.mode = :test
+    # ActiveMerchant::Billing::Base.gateway_mode = :test
+    # ActiveMerchant::Billing::Base.integration_mode = :test
+    # ActiveMerchant::Billing::PaypalGateway.pem_file =
+    #         File.read(File.dirname(__FILE__) + '/../paypal/paypal_cert.pem')
+  end
+
 end
