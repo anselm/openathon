@@ -7,3 +7,4 @@ nbproject
 nbproject/*
 .git/config
 *.swp
+db/*
