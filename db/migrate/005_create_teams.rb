@@ -4,6 +4,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.string :depiction
+      t.string :teamstatus
 
       t.string :roomname
       t.datetime :roomtime
