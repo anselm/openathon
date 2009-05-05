@@ -6,3 +6,4 @@ config/database.yml
 nbproject
 nbproject/*
 .git/config
+*.swp
