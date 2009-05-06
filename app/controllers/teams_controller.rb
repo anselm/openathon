@@ -54,7 +54,7 @@ public
 
 
   def index
-    @teams = Team.all
+    @teams = Team.find(:all, :conditions => ["teamstatus != ?", 'retired'])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @teams }
@@ -116,7 +116,8 @@ public
       user.team_id = nil
       user.save
     end
-    @team.destroy
+    @team.teamstatus = "retired"
+    @team.save
     respond_to do |format|
       format.html { redirect_to(teams_url) }
       format.xml  { head :ok }

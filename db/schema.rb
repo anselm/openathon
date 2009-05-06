@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string   "title"
     t.string   "description"
     t.string   "depiction"
+    t.string   "teamstatus"
     t.string   "roomname"
     t.datetime "roomtime"
     t.datetime "created_at"
