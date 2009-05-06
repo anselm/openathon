@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
   # map.resources :notes, :collection => { :search => [:get, :post] }
 
   # general activities
+  map.admin    'admin',  :controller => 'index',    :action => 'admin'
   map.donate   'donate', :controller => 'index',    :action => 'donate'
   map.news     'news',   :controller => 'index',    :action => 'news'
   map.root               :controller => 'index',    :action => 'index'
