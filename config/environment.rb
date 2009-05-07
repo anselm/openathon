@@ -1,16 +1,14 @@
-# Be sure to restart your server when you modify this file
+require 'yaml'
 
-IMAGE_MAGICK_PATH = "/usr/local/bin/"
-
-# Uncomment below to force Rails into production mode when
-# you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
-
-# Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.1.2' unless defined? RAILS_GEM_VERSION
-
-# Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
+
+# imagemagick - not used anymore - may remove
+# IMAGE_MAGICK_PATH = "/usr/local/bin/"
+
+# settings we don't want to put into git
+SETTINGS = YAML::load(File.open("config/settings.yml")).symbolize_keys
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
@@ -86,6 +84,7 @@ Rails::Initializer.run do |config|
   config.after_initialize do
     # actually we'll use the production mode
     # http://www.codyfauser.com/2008/1/17/paypal-express-payments-with-activemerchant
+    # http://www.fortytwo.gr/blog/14/Using-Paypal-with-Rails
     # ActiveMerchant::Billing::Base.mode = :test
     # ActiveMerchant::Billing::Base.gateway_mode = :test
     # ActiveMerchant::Billing::Base.integration_mode = :test

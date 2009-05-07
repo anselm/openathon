@@ -11,4 +11,5 @@ db/db_development
 public/system/photos/*
 public/photos/*
 public/system/*
+config/settings.yml
 
