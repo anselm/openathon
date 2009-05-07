@@ -6,6 +6,13 @@ Start a team! <%= link_to "New team", new_team_path %>
 <% end %>
 <hr>
 
+<% if @user.photo.exists? then %>
+<p>Small:<%= image_tag @user.photo.url(:small) %></p>
+<p>Medium:<%= image_tag @user.photo.url(:medium) %></p>
+<% else %>
+<p> There are no photo's attached, upload one. </p>
+<% end %>
+
 <p>
   <b>Login:</b>
   <%=h @user.login %>

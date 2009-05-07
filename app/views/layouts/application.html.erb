@@ -13,11 +13,11 @@
 <div style="float:right">
 <%= link_to "Home", "/" %> |
 <% if !current_user %>
-  <%= link_to "Signup", new_account_path %> |
-  <%= link_to "Signin", new_user_session_path %> 
+  <%= link_to "Signup", signup_path %> |
+  <%= link_to "Signin", signin_path %> 
 <% else %>
   <%= link_to "My Account", account_path %> |
-  <%= link_to "Signout", user_session_path, :method => :delete %>
+  <%= link_to "Signout", signout_path, :method => :delete %>
 <% end %>
 </div>
 <div style="clear:both"/>
@@ -25,9 +25,13 @@
 
 <%= link_to '<img style="float:left" src="/images/vb_logo_cyan.jpg" height="50%" width="50%">', root_path %>
 <div id="mainheader">Raise Your Voice!</div>
+<img style="float:left" src="/images/vb_logo_cyan.jpg" height="50%" width="50%"><br/>
 <img style="float:right" src="/images/EthosLogo_1_sm.gif">
-  
 <div style="clear:both"/>
+<div id="mainheader">Raise Your Voice!</div>
+<hr>
+<h1><p style="color: green"><%= flash[:notice] %></p></h1>
+<h1><p style="color: red"><%= flash[:warning] %></p></h1>
 <hr>
 
 <div id="rightside" style="float:right;width:100px">

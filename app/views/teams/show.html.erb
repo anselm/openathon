@@ -1,5 +1,10 @@
 <div style="float:right;width:200px;height:200px;border:1px solid red;">
- <%= @team.depiction %>
+<% if @team.photo.exists? then %>
+<p>Small:<%= image_tag @team.photo.url(:small) %></p>
+<p>Medium:<%= image_tag @team.photo.url(:medium) %></p>
+<% else %>
+<p> There are no photo's attached, upload one. </p>
+<% end %>
 </div>
 
 <h1><%= @team.title %></h1>
