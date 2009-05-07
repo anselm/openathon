@@ -8,3 +8,7 @@ nbproject/*
 .git/config
 *.swp
 db/db_development
+public/system/photos/*
+public/photos/*
+public/system/*
+
