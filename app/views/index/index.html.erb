@@ -2,19 +2,16 @@
 <div id="mainmenu" style="padding:40px">
 <h1>
 
-<%= link_to "Start a new Team!", :action => 'new', :controller => 'teams' %>
+<%= link_to "Create a team", :action => 'new', :controller => 'teams' %>
 <br/><br/>
  
-<%= link_to "See Team Calendar!", calendar_path %>
+<%= link_to "Join a team",  teams_path %>
 <br/><br/>
  
-<%= link_to "Search for a team!", search_path %>
-<br/><br/>
- 
-<%= link_to "Browse the teams!", teams_path %>
+<%= link_to "Donate", donate_path %>
 <br/><br/>
 
-<%= link_to "Administration", admin_path %>
+<%= link_to "(Administration)", admin_path %>
 <br/><br/>
 
 </h1>
