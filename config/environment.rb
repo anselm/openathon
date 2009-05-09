@@ -8,7 +8,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 # IMAGE_MAGICK_PATH = "/usr/local/bin/"
 
 # settings we don't want to put into git
-SETTINGS = YAML::load(File.open("config/settings.yml")).symbolize_keys
+#SETTINGS = YAML::load(File.open("config/settings.yml")).symbolize_keys
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
