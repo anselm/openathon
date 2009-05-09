@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.signup    'signup',      :controller => 'users',           :action => 'new'
   map.signin    'signin',      :controller => 'user_sessions',   :action => 'new'
-  map.signout   'signout',     :controller => 'user_sessions',   :action => 'delete'
+  map.signout   'signout',     :controller => 'user_sessions',   :action => 'destroy'
 
   map.resources :teams
   map.invite   'invite/:id',  :controller => 'teams',    :action => 'invite'

@@ -183,7 +183,10 @@ public
   def join
     if !current_user
       redirect_to :controller => :users, :action => :signup
-    elsif @team.is_member(current_user)
+    #TODO: bug!
+    elsif @team == nil
+      flash[:notice] = "team is nil"
+    elsif @team.is_member(current_user) 
       flash[:notice] = "You're already a member of this team."
     elsif current_user.team_id == nil
       flash[:notice] = "You're now a member of this team."
