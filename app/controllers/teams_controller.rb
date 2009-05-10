@@ -22,11 +22,20 @@ class TeamsController < ApplicationController
                                           :destroy
                                          ]
 
+  before_filter :verify_new_team, :only => [:new]
+
 private
 
   def get_team
     @team = Team.find(params[:id])
     return @team != nil
+  end
+
+  def verify_new_team
+    if current_user.team_id != nil
+      flash[:notice] = "You already have a team, showing your team status page instead."
+      redirect_to :controller => :teams, :action => :show, :id => current_user.team_id
+    end
   end
 
   def verify_member
