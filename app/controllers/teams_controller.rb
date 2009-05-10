@@ -82,11 +82,13 @@ public
 
   def create
     @team = Team.new(params[:team])
+    @team.teamstatus = "active"
     respond_to do |format|
       if @team.save
         if !@team.set_captain(current_user)
           raise "No user logged in"
         end
+
         flash[:notice] = 'Team was successfully created.'
         format.html { redirect_to(@team) }
         format.xml  { render :xml => @team, :status => :created, :location => @team }
@@ -191,7 +193,7 @@ public
     #TODO: bug!
     elsif @team == nil
       flash[:notice] = "team is nil"
-    elsif @team.is_member(current_user) 
+    elsif @team.is_member(current_user)
       flash[:notice] = "You're already a member of this team."
     elsif current_user.team_id == nil
       flash[:notice] = "You're now a member of this team."
@@ -201,7 +203,7 @@ public
       flash[:notice] = "You're now a member of this team."
       current_user.team_id = @team.id
       current_user.save
-    end    
+    end
   end
 
 end
