@@ -11,7 +11,9 @@ Invite others to your team
   <% end %>
 <% end %>
 
-
+<% if flash[:no_emails] %>
+  <h3 style="color:red">Please enter at least one email address.</h3>
+<% end %>
 
 <!-- TODO:  gmail and other contact import -->
 <% form_tag :action => 'invite_confirm', :method => 'post' do -%>
@@ -27,7 +29,6 @@ Invite others to your team
   <%= text_area_tag :email_blob, @recipients.join("\n"), :cols => 40, :rows => 10 %>
   <%= submit_tag "Invite!" %>
 <%end%>
-
 
 
 

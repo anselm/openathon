@@ -152,6 +152,11 @@ public
   def invite_confirm
     @team = Team.find(current_user.team_id)
     email_blob = params[:email_blob]
+    if email_blob.empty?
+      flash[:no_emails] = true
+      flash[:body] = params[:user_message]
+      redirect_to :action => :invite
+    end
     @recipients = email_blob.split
     @error_array = Array.new
     @recipients.each do |email|
