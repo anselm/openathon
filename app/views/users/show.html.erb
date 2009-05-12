@@ -1,8 +1,8 @@
 <% @team = Team.first(@user.team_id) %>
-<% if @team %>
+<% if @team.is_member?(@user) %>
 Your team is here <%= link_to @team.title, "/teams/#{@team.id}" %> 
 <% else %>
-Start a team! <%= link_to "New team", new_team_path %>
+<%= link_to "Start a team", new_team_path %> 
 <% end %>
 <hr>
 

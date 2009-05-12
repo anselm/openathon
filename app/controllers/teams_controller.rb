@@ -54,7 +54,7 @@ public
 
 
   def index
-    @teams = Team.find(:all, :conditions => ["teamstatus != ?", 'retired'])
+    @teams = Team.find(:all, :conditions => ["active = ?", true])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @teams }

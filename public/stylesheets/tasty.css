@@ -1,4 +1,21 @@
-body { background-color: #fff; color: #333; }
+body { background-color: #fff; color: #333;
+  margin:0;
+  padding: 0;
+}
+
+#login-header { 
+  width: 100%;
+  background-color: #999;
+  padding: 10px;
+  text-align: right;
+}
+#login-header a {
+  color: #fff;
+}
+
+#content { padding-left: 10px; }
+
+#mainmenu { padding-left: 30px; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
