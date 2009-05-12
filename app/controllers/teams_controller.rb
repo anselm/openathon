@@ -22,11 +22,20 @@ class TeamsController < ApplicationController
                                           :destroy
                                          ]
 
+  before_filter :verify_new_team, :only => [:new]
+
 private
 
   def get_team
     @team = Team.find(params[:id])
     return @team != nil
+  end
+
+  def verify_new_team
+    if current_user.team_id != nil
+      flash[:notice] = "You already have a team, showing your team status page instead."
+      redirect_to :controller => :teams, :action => :show, :id => current_user.team_id
+    end
   end
 
   def verify_member
@@ -82,11 +91,13 @@ public
 
   def create
     @team = Team.new(params[:team])
+    @team.teamstatus = "active"
     respond_to do |format|
       if @team.save
         if !@team.set_captain(current_user)
           raise "No user logged in"
         end
+
         flash[:notice] = 'Team was successfully created.'
         format.html { redirect_to(@team) }
         format.xml  { render :xml => @team, :status => :created, :location => @team }
@@ -152,6 +163,11 @@ public
   def invite_confirm
     @team = Team.find(current_user.team_id)
     email_blob = params[:email_blob]
+    if email_blob.empty?
+      flash[:no_emails] = true
+      flash[:body] = params[:user_message]
+      redirect_to :action => :invite
+    end
     @recipients = email_blob.split
     @error_array = Array.new
     @recipients.each do |email|
@@ -186,7 +202,7 @@ public
     #TODO: bug!
     elsif @team == nil
       flash[:notice] = "team is nil"
-    elsif @team.is_member(current_user) 
+    elsif @team.is_member(current_user)
       flash[:notice] = "You're already a member of this team."
     elsif current_user.team_id == nil
       flash[:notice] = "You're now a member of this team."
@@ -196,7 +212,7 @@ public
       flash[:notice] = "You're now a member of this team."
       current_user.team_id = @team.id
       current_user.save
-    end    
+    end
   end
 
 end
