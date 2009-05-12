@@ -45,23 +45,4 @@ buffer << "</table>"
 
 <h1>2. Fill out your team profile.</h1>
 
-<% form_for(@team,:html=>{:multipart=>true}) do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :photo %><br />
-    <%= f.file_field :photo %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-
+<%= render :partial => "form" %>
