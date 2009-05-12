@@ -1,0 +1,34 @@
+#depiction{:style=>"float:right;width:200px;height:200px;border:1px solid red;"}= @team.depiction
+
+%h1= @team.title
+%h2= @team.description
+
+- if !current_user
+  = link_to "Signup to join this team!", new_account_path
+- elsif @team.is_owner?(current_user)
+  = link_to 'Edit', edit_team_path(@team)
+  = link_to 'Invite team members!', :action => "invite"
+  = link_to "Destroy team :(", @team, :confirm => 'Are you sure?', :method => :delete
+- elsif @team.is_member?(current_user)
+  = link_to 'Leave team', :action => "leave" , :id => @team.id
+- else
+  = link_to 'Join team', :action => "join"
+
+%h3 Team members
+%table.users
+  %tr
+    -# TODO ALLOW REORDERING
+    %th Rank
+    %th Name
+    %th Amount Raised
+    %th Details
+  - @member_list.each do |user|
+    %tr
+      %td= user.id
+      %td= "#{user.firstname} #{user.lastname}"
+      %td= $1,000
+      %td= link_to "Show", user
+  %tr
+    %td
+    %th Total
+    %th $1,000,000
