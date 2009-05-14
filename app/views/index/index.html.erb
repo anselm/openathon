@@ -10,8 +10,9 @@
  
 <%= link_to "Donate", donate_path %>
 <br/><br/>
-
+<% if current_user.admin? || current_user == nil %>
 <%= link_to "(Administration)", admin_path %>
+<% end %>
 <br/><br/>
 
 </h1>
