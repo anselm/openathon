@@ -63,7 +63,8 @@ public
 
 
   def index
-    @teams = Team.find(:all, :conditions => ["active = ?", true])
+    q = params[:q]
+    @teams = Team.get_active_with_search(q)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @teams }

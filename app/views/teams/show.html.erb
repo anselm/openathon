@@ -1,12 +1,9 @@
 <div style="float:right;width:200px;height:200px;border:1px solid red;">
 <% if @team.photo.exists? then %>
-<p>Small:<%= image_tag @team.photo.url(:small) %></p>
-<p>Medium:<%= image_tag @team.photo.url(:medium) %></p>
-<% else %>
-<p> There are no photo's attached, upload one. </p>
+<p><%= image_tag @team.photo.url(:small) %></p>
 <% end %>
 </div>
-<% debugger %>
+
 <h1><%= @team.title %></h1>
 <h2><%= @team.description %></h2>
 
@@ -22,6 +19,8 @@
  <%= link_to 'Join team', :action => "join" %>
 <% end %>
 
+<% donation_total = 0 %>
+
 <h3>Team members</h3>
 <table>
  <tr>
@@ -31,15 +30,18 @@
   <th>Amount Raised</th>
   <th>Details</th>
  </tr>
- <% @member_list.each do |user| %>
+ <% @member_list.each do |user|
+       donation = user.get_donations
+       donation_total = donation_total + donation
+ %>
   <tr>
    <td><%=user.id%></td><td><%= user.firstname %> <%= user.lastname %></td>
-   <td>$1,000</td>
+   <td><%= donation %></td>
    <td><%= link_to "Show", user %></td>
   </tr>
  <% end %>
  <tr>
-   <td></td><th>Total</th><th>$1,000,000</th>
+   <td></td><th>Total</th><th><%= donation_total %></th>
  </tr>
 </table>
 

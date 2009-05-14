@@ -1,48 +1,6 @@
-
-<%
-
-# move this into a helper later TODO
-
-room_names = [ "1","2","3","4","5","6" ]
-room_times = [ 
-               "5pm to 8pm",
-               "8pm to 11pm",
-               "11pm to 2am",
-               "2am to 5am",
-               "5am to 8am",
-               "8am to 11am",
-               "11am to 2pm",
-               "2pm to 5pm"
-             ]
-buffer = []
-
-# Print a banner in the table of the room names
-buffer << "<table border=1>"
-buffer << "<tr>"
-buffer << "<th></th>"
-room_names.each do |roomname|
-  buffer << "<th>#{roomname}</th>"
-end
-buffer << "</tr>"
-
-# Print each row of times
-room_times.each do |roomtime|
-  buffer << "<tr>"
-  buffer << "<td>#{roomtime}</td>" 
-  room_names.each do |roomname|
-    buffer << "<td></td>"
-  end
-  buffer << "</tr>"
-end
+<h1>Please fill out your team profile and pick some desired times that you would like to sing at</h1>
 
 
-buffer << "</table>"
-
-%>
-
-<h1>1. Pick a time slot. </h1>
-<%= buffer.to_s %>
-
-<h1>2. Fill out your team profile.</h1>
-
-<%= render :partial => "form" %>
+<div style="float:left;padding:30px"><%= render :partial => "calendar" %></div>
+<div style="float:left;padding:30px"><%= render :partial => "form"%></div>
+<div style="clear:both"></div>

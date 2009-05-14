@@ -1,24 +1,14 @@
-<h1>Listing teams</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Depiction</th>
-  </tr>
+<h1>Search Filter</h1>
+<form>
+<input name="q"/>
+<input type=submit value="search!"/>
+</form>
 
+<h1>Results</h1>
+
+<h3>Team Name and Descriptions</h3>
 <% @teams.each do |team| %>
-  <tr>
-    <td><%=h team.title %></td>
-    <td><%=h team.description %></td>
-    <td><%=h team.depiction %></td>
-    <td><%= link_to 'Show', team %></td>
-    <td><%= link_to 'Edit', edit_team_path(team) %></td>
-    <td><%= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<%= link_to team.title, team %> ><%= team.description %><br/>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New team', new_team_path %>

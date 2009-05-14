@@ -1,5 +1,7 @@
 <h1>Login</h1>
 
+<h2>Or <%= link_to "Signup instead?", signup_path %></h2>
+
 <% form_for UserSession.new, :url => user_session_path do |f| %>
   <%= f.error_messages %>
   <%= f.label :email %><br />

@@ -18,4 +18,9 @@ class User
       :large => "400x400>" 
     }
 
+
+  def get_donations
+    return 0
+  end
+
 end

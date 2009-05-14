@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -9,33 +8,10 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-
- <%= render :partial => "index/lhead" %>
-
- </div>
-  <div id ="header" style="clear:both;">
-    <p style="color: green"><%= flash[:notice] %></p>
-
-    <%= link_to '<img style="float:left" src="/images/vb_logo_cyan.jpg" height="50%" width="50%">', root_path %>
-    <div id="mainheader">Raise Your Voice!</div>
-    <img style="float:right" src="/images/EthosLogo_1_sm.gif">
-    <div style="clear:both"/>
-    <hr>
-    <h1><p style="color: green"><%= flash[:notice] %></p></h1>
-    <h1><p style="color: red"><%= flash[:warning] %></p></h1>
-  </div>
-
-  <div id="rightside" style="float:right;width:100px">
-  Sponsored by:
-  <a href="http://siliconflorist.com">Silicon Florist</a>
-  <a href="http://disney.com">Disney</a>
-  </div>
-
-  </div>
-
-  <div id="content">
-  <%= yield  %>
-  </div>
-
+<%= render :partial => "index/banner_header" %>
+<%= render :partial => "index/sponsors" %>
+<div id="content">
+<%= yield  %>
+</div>
 </body>
 </html>
