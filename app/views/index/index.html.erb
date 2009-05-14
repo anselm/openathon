@@ -17,3 +17,11 @@
 </h1>
 </div>
 
+  <div id="rightcol">
+  <% unless current_user %>
+  <%= render :partial => "user_sessions/login" %>
+  <% else %>
+  <p>Hi there, <%= current_user.email %>!</p>
+  <% end %>
+  </div>
+

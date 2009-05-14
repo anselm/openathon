@@ -91,7 +91,6 @@ public
 
   def create
     @team = Team.new(params[:team])
-    @team.teamstatus = "active"
     respond_to do |format|
       if @team.save
         if !@team.set_captain(current_user)
@@ -127,7 +126,7 @@ public
       user.team_id = nil
       user.save
     end
-    @team.teamstatus = "retired"
+    @team.active = false 
     @team.save
     respond_to do |format|
       format.html { redirect_to(teams_url) }
@@ -197,22 +196,8 @@ public
   end
 
   def join
-    if !current_user
-      redirect_to :controller => :users, :action => :signup
-    #TODO: bug!
-    elsif @team == nil
-      flash[:notice] = "team is nil"
-    elsif @team.is_member(current_user)
-      flash[:notice] = "You're already a member of this team."
-    elsif current_user.team_id == nil
-      flash[:notice] = "You're now a member of this team."
-      current_user.team_id = @team.id
-      current_user.save
-    else # If you are switching teams, since a user can only be on one team. (ugly)
-      flash[:notice] = "You're now a member of this team."
-      current_user.team_id = @team.id
-      current_user.save
-    end
+     current_user.team_id = @team.id
+    current_user.save
   end
 
 end
