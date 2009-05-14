@@ -10,10 +10,8 @@
  
 <%= link_to "Donate", donate_path %>
 <br/><br/>
-<% if current_user == nil %>
-  <% if current_user.admin? %> 
+<% if current_user != nil && current_user.admin? %> 
 <%= link_to "(Administration)", admin_path %>
-<% end %>
 <% end %>
 <br/><br/>
 
