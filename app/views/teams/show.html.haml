@@ -14,6 +14,8 @@
 - else
   = link_to 'Join team', :action => "join"
 
+- donations_total = 0
+
 %h3 Team members
 %table.users
   %tr
@@ -23,12 +25,14 @@
     %th Amount Raised
     %th Details
   - @member_list.each do |user|
+    - donations = user.get_donations
+    - donations_total = donations_total + donations
     %tr
       %td= user.id
       %td= "#{user.firstname} #{user.lastname}"
-      %td= $1,000
+      %td= donations 
       %td= link_to "Show", user
   %tr
     %td
     %th Total
-    %th $1,000,000
+    %th donations_total

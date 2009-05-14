@@ -1,15 +1,23 @@
 <h1>Welcome to the VoiceBox Karaokeathon.</h1>
+
 <div id="mainmenu">
 <h1>
 
-<%= link_to "Create a team", :action => 'new', :controller => 'teams' %>
+<% @team = Team.get_team(current_user) %>
+
+<% if @team %>
+Your team is here <%= link_to @team.title, "/teams/#{@team.id}" %>
+<% else %>
+<%= link_to "Start a team", new_team_path %>
+<% end %>
 <br/><br/>
  
-<%= link_to "Find a team",  teams_path %>
+<%= link_to "Explore teams",  teams_path %>
 <br/><br/>
  
-<%= link_to "Donate", donate_path %>
+<%= link_to "Donate!", donate_path %>
 <br/><br/>
+
 <% if current_user != nil && current_user.admin? %> 
 <%= link_to "(Administration)", admin_path %>
 <% end %>
@@ -17,12 +25,4 @@
 
 </h1>
 </div>
-
-  <div id="rightcol">
-  <% unless current_user %>
-  <%= render :partial => "user_sessions/login" %>
-  <% else %>
-  <p>Hi there, <%= current_user.email %>!</p>
-  <% end %>
-  </div>
 

@@ -1,3 +1,5 @@
+# require 'acts_as_ferret'
+require 'sanitize'
 require 'yaml'
 
 # ENV['RAILS_ENV'] ||= 'production'
