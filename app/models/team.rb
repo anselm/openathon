@@ -3,7 +3,9 @@ class Team < ActiveRecord::Base
   # acts_as_ferret :fields => [ :name, :description ]
 
   has_many :users
-  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/
+
+ # anselm - i cannot get this to work
+ #  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/
 
   # super lazy
   # def lazy_search(phrase)
@@ -28,8 +30,8 @@ class Team < ActiveRecord::Base
 
     words = phrase.to_s.split.collect { |c| Sanitize.clean(c.downcase) }
     teams = []
-    temp = Team.find(:all, :conditions => ["active = ?", true])
-    temp.each do |team|
+    all = Team.find(:all, :conditions => ["active = ?", true])
+    all.each do |team|
       words.each do |word|
         if team.name != nil && team.name.to_s.downcase.include?(word)
           teams << team
@@ -44,6 +46,33 @@ class Team < ActiveRecord::Base
     return teams
 
   end
+
+  #
+  # helper utilities to figure the availability of a team time slot
+  # a lazy way to do this is to browse all team calendar times
+  # TODO a cleaner way would be to build a separate Booking enumeration of these
+  # TODO in fact this is needed because we must indicate if a slot is GRANTED or not
+  #
+
+  def self.slot_taken?(slotname)
+    # TODO booking = Booking.find(:first, :conditions => ["slot = ?", slotname])
+    all = Team.find(:all, :conditions => ["active = ?", true])
+    all.each do |team|
+      times = team.calendar || ""
+      times.split(",").each do |time|
+        return true if time == slotname
+      end
+    end
+    return false
+  end
+  def self.slot_free?(slotname)
+    return !self.slot_taken?(slotname)
+  end
+
+
+  #
+  # helper utilities to figure the role of a participant in a team
+  #
 
   def is_owner?(person)
     return person !=nil &&  person.team_id == self.id && person.role == "captain"

@@ -60,7 +60,6 @@ function openathon_gather_choices() {
   var all = new Array(); for(var key in openathon_choices) { all.push(openathon_choices[key]); }
   var store = document.getElementById('team_calendar');
   if(store) {
-    alert('saved value');
     store.value = all.join(',');
   }
 }
@@ -96,7 +95,7 @@ room_times.each do |roomtime|
   room_names.each do |roomname|
     slot = "#{roomname} - #{roomtime}"
     pick = "pickfree"
-    pick = "pickbusy" if Booking.slot_taken?(slot)
+    pick = "pickbusy" if Team.slot_taken?(slot)
     buffer << "<td>"
     buffer << "<div id='#{slot}' class='#{pick}' onclick='openathon_pick_handler(this);'></div>"
     buffer << "</td>"
