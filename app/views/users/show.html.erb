@@ -1,4 +1,5 @@
-<h2><%= @user.firstname.capitalize + " " + @user.lastname.capitalize %></h2>
+
+<h2><%= @user.firstname + " " + @user.lastname %></h2>
 <% if @user.photo.exists? then %>
 <%= image_tag @user.photo.url(:small) %><br/>
 <% else %>
@@ -6,9 +7,9 @@
 <% end %>
 
 <% if @user.team_id %>
-Your team is here <%= link_to Team.find(@user.team_id).name, "/teams/#{Team.find(@user.team_id)}" %> <br />
+Your team is here <%= link_to Team.find(@user.team_id).name, "/teams/#{Team.find(@user.team_id).id}" %><br />
 <% else %>
-<%= link_to "Start a team", new_team_path %> 
+<%= link_to "Start a team", new_team_path %> or <%= link_to "Explore teams", "/teams" %><br />
 <% end %>
 
 <%= link_to 'Edit account info', edit_account_path %>

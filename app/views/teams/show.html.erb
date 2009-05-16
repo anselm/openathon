@@ -16,7 +16,7 @@
 <% elsif @team.is_member?(current_user) %>
  <%= link_to 'Leave team', :action => "leave" , :id => @team.id %>
 <% else %> 
- <%= link_to 'Join team', :action => "join" %>
+ <%= link_to 'Join team', :action => "join", :id => @team.id %>
 <% end %>
 
 <% donation_total = 0 %>
@@ -28,16 +28,14 @@
   <th>Rank</th>
   <th>Name</th>
   <th>Amount Raised</th>
-  <th>Details</th>
  </tr>
  <% @member_list.each do |user|
        donation = user.get_donations
        donation_total = donation_total + donation
  %>
   <tr>
-   <td><%=user.id%></td><td><%= user.firstname %> <%= user.lastname %></td>
+   <td><%= user.id %></td><td><%= link_to "#{user.firstname} #{user.lastname}", user %></td>
    <td><%= donation %></td>
-   <td><%= link_to "Show", user %></td>
   </tr>
  <% end %>
  <tr>

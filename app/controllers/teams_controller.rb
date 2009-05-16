@@ -197,8 +197,15 @@ public
   end
 
   def join
-     current_user.team_id = @team.id
+    current_user.team_id = params[:id]
     current_user.save
+    redirect_to(Team.find(current_user.team_id))
+  end
+  
+  def leave
+    current_user.team_id = nil
+    current_user.save
+    redirect_to(current_user.show)
   end
 
 end
