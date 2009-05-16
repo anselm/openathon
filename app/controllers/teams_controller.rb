@@ -97,7 +97,11 @@ public
         if !@team.set_captain(current_user)
           raise "No user logged in"
         end
-
+        if current_user && current_user.admin?
+          @team.slot_finalize_admin
+        else
+          @team.slot_finalize_not_admin
+        end
         flash[:notice] = 'Team was successfully created.'
         format.html { redirect_to(@team) }
         format.xml  { render :xml => @team, :status => :created, :location => @team }
@@ -111,6 +115,11 @@ public
   def update
     respond_to do |format|
       if @team.update_attributes(params[:team])
+        if current_user && current_user.admin?
+          @team.slot_finalize_admin
+        else
+          @team.slot_finalize_not_admin
+        end
         flash[:notice] = 'Team was successfully updated.'
         format.html { redirect_to(@team) }
         format.xml  { head :ok }
@@ -122,11 +131,15 @@ public
   end
 
   def destroy
+    # remove members
     @member_list = User.find(:all, :conditions => ["team_id = ?", @team.id])
     @member_list.each do |user|
       user.team_id = nil
       user.save
     end
+    # remove time
+    Booking.destroy_all(:team_id => @team.id)
+    # deactivate
     @team.active = false 
     @team.save
     respond_to do |format|

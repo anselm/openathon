@@ -1,10 +1,12 @@
+
 class Team < ActiveRecord::Base
 
   # acts_as_ferret :fields => [ :name, :description ]
 
   has_many :users
+  has_many :bookings
 
- # anselm - i cannot get this to work
+ # i cannot get this to work - anselm may 15 2009
  #  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/
 
   # super lazy
@@ -48,23 +50,54 @@ class Team < ActiveRecord::Base
   end
 
   #
-  # helper utilities to figure the availability of a team time slot
-  # a lazy way to do this is to browse all team calendar times
-  # TODO a cleaner way would be to build a separate Booking enumeration of these
-  # TODO in fact this is needed because we must indicate if a slot is GRANTED or not
+  # slot availability
+  #
+  # a team captain uses the team form to edit their team and select "hoped for" time slots
+  #
+  # an administrator can promote a slot to be the real one
   #
 
-  def self.slot_taken?(slotname)
-    # TODO booking = Booking.find(:first, :conditions => ["slot = ?", slotname])
-    all = Team.find(:all, :conditions => ["active = ?", true])
-    all.each do |team|
-      times = team.calendar || ""
-      times.split(",").each do |time|
-        return true if time == slotname
-      end
+  def before_destroy
+    Booking.destroy_all(:team_id => self.id)
+  end
+
+  def slot_finalize_not_admin
+    Booking.destroy_all(:team_id => self.id)
+    return if !self.calendar
+    self.calendar.split(",").each do |slot|
+      booking = Booking.new(:team_id => self.id, :slot => slot, :status => "desired" )
+      booking.save
+    end
+  end
+
+  def slot_finalize_admin
+    Booking.destroy_all(:team_id => self.id)
+    return if !self.calendar
+    self.calendar.split(",").each do |slot|
+      booking = Booking.new(:team_id => self.id, :slot => slot, :status => "reserved" )
+      booking.save
+      self.calendar = ""
+      self.save
+      return
+    end
+  end
+
+  def slot_desired?(slotname)
+    return false if !self.calendar
+    self.calendar.split(",").each do |slot|
+      return true if slot == slotname
     end
     return false
+  end 
+
+  def slot_yours?(slotname)
+    return Booking.find(:first, :conditions => ["slot = ? AND team_id = ?",slotname,self.id])
   end
+
+  def self.slot_taken?(slotname)
+    return Booking.find(:first, :conditions => ["slot = ? AND status = ?", slotname, "reserved"])
+  end
+
   def self.slot_free?(slotname)
     return !self.slot_taken?(slotname)
   end

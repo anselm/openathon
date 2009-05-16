@@ -11,15 +11,12 @@
 # the entire calendar acts as a hidden form element so it can be submitted with a form
 #
 
-pickfree = "green"
-pickbusy = "red"
-pickwant = "orange"
-
 buffer = []
 buffer << "<style type='text/css'>"
-buffer << ".pickfree { background-color: #{pickfree}; width:16px; height:16px; }"
-buffer << ".pickbusy { background-color: #{pickbusy}; width:16px; height:16px; }"
-buffer << ".pickwant { background-color: #{pickwant}; width:16px; height:16px; }"
+buffer << ".pickfree { background-color: green; width:16px; height:16px; }"
+buffer << ".pickbusy { background-color: red; width:16px; height:16px; }"
+buffer << ".pickwant { background-color: orange; width:16px; height:16px; }"
+buffer << ".pickglow { background-color: white; width:16px; height:16px; }"
 buffer << "</style>"
 
 #
@@ -32,35 +29,31 @@ buffer << "</style>"
 
 buffer << "
 <script language='javascript' type='text/javascript'>
-var openathon_choices = new Object();
 function openathon_pick_handler(node) {
   var c = node.getAttribute('class');
   var id = node.getAttribute('id');
   if(c == 'pickfree') {
     c = 'pickwant';
-    openathon_choices[id] = id;
-  } else if(c == 'pickwant') {
+  } else if(c == 'pickwant' || c == 'pickglow') {
     c = 'pickfree';
-    delete openathon_choices[id];
   }
   node.setAttribute('class',c);
   openathon_gather_choices();
   return false;
 }
-function openathon_gather_choices_old() {
-  var nodes = document.getElementsByTagName('div');
-  var results = new Array();
-  for (var i = nodes.length - 1 ; i >= 0 ; i-- ) {
-    var c = node.getAttribute('class');
-    if(c == 'pickwant') results.push(nodes.getAttribute('id'));
-  }
-  return results
-}
 function openathon_gather_choices() {
-  var all = new Array(); for(var key in openathon_choices) { all.push(openathon_choices[key]); }
+  var slots = new Array();
+  var nodes = document.getElementsByClassName('pickglow');
+  for (var i = nodes.length - 1 ; i >= 0 ; i-- ) {
+    slots.push(nodes[i].getAttribute('id'));
+  }
+  nodes = document.getElementsByClassName('pickwant');
+  for (var i = nodes.length - 1 ; i >= 0 ; i-- ) {
+    slots.push(nodes[i].getAttribute('id'));
+  }
   var store = document.getElementById('team_calendar');
   if(store) {
-    store.value = all.join(',');
+    store.value = slots.join(',');
   }
 }
 </script>
@@ -94,8 +87,12 @@ room_times.each do |roomtime|
   buffer << "<td>#{roomtime}</td>"
   room_names.each do |roomname|
     slot = "#{roomname} - #{roomtime}"
+    yours = @team && @team.slot_yours?(slot)
+    taken = Team.slot_taken?(slot)
     pick = "pickfree"
-    pick = "pickbusy" if Team.slot_taken?(slot)
+    pick = "pickwant" if yours
+    pick = "pickbusy" if taken && !yours
+    pick = "pickglow" if taken && yours
     buffer << "<td>"
     buffer << "<div id='#{slot}' class='#{pick}' onclick='openathon_pick_handler(this);'></div>"
     buffer << "</td>"
