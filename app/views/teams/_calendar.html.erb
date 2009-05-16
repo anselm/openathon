@@ -1,6 +1,76 @@
 <%
 
-# move this into a helper later TODO
+# TODO move this into a helper later TODO
+
+#
+# the calendar shall show slots that have varying availabilities
+# slots that are available to be taken are one color
+# slots that are reserved are another color ( probably red )
+# slots that you have chosen for use yet another color
+#
+# the entire calendar acts as a hidden form element so it can be submitted with a form
+#
+
+pickfree = "green"
+pickbusy = "red"
+pickwant = "orange"
+
+buffer = []
+buffer << "<style type='text/css'>"
+buffer << ".pickfree { background-color: #{pickfree}; width:16px; height:16px; }"
+buffer << ".pickbusy { background-color: #{pickbusy}; width:16px; height:16px; }"
+buffer << ".pickwant { background-color: #{pickwant}; width:16px; height:16px; }"
+buffer << "</style>"
+
+#
+# calendar javascript helpers
+#
+# when you select an available slot it will be marked as reserved
+# when you select a busy slot nothing shall happen
+# when you select a picked slot it shall be freed
+#
+
+buffer << "
+<script language='javascript' type='text/javascript'>
+var openathon_choices = new Object();
+function openathon_pick_handler(node) {
+  var c = node.getAttribute('class');
+  var id = node.getAttribute('id');
+  if(c == 'pickfree') {
+    c = 'pickwant';
+    openathon_choices[id] = id;
+  } else if(c == 'pickwant') {
+    c = 'pickfree';
+    delete openathon_choices[id];
+  }
+  node.setAttribute('class',c);
+  openathon_gather_choices();
+  return false;
+}
+function openathon_gather_choices_old() {
+  var nodes = document.getElementsByTagName('div');
+  var results = new Array();
+  for (var i = nodes.length - 1 ; i >= 0 ; i-- ) {
+    var c = node.getAttribute('class');
+    if(c == 'pickwant') results.push(nodes.getAttribute('id'));
+  }
+  return results
+}
+function openathon_gather_choices() {
+  var all = new Array(); for(var key in openathon_choices) { all.push(openathon_choices[key]); }
+  var store = document.getElementById('team_calendar');
+  if(store) {
+    alert('saved value');
+    store.value = all.join(',');
+  }
+}
+</script>
+"
+
+#
+# The calendar shall show rows and columns indicating slots that we can use
+# These shall be the names of those rows and columns
+#
 
 room_names = [ "1","2","3","4","5","6" ]
 room_times = [
@@ -13,31 +83,36 @@ room_times = [
                "11am to 2pm",
                "2pm to 5pm"
              ]
-buffer = []
-
-# Print a banner in the table of the room names
 buffer << "<table border=1>"
 buffer << "<tr>"
-buffer << "<th></th>"
+buffer << "<th>&nbsp;</th>"
 room_names.each do |roomname|
   buffer << "<th>#{roomname}</th>"
 end
 buffer << "</tr>"
-
-# Print each row of times
 room_times.each do |roomtime|
   buffer << "<tr>"
   buffer << "<td>#{roomtime}</td>"
   room_names.each do |roomname|
-    buffer << "<td></td>"
+    slot = "#{roomname} - #{roomtime}"
+    pick = "pickfree"
+    pick = "pickbusy" if Booking.slot_taken?(slot)
+    buffer << "<td>"
+    buffer << "<div id='#{slot}' class='#{pick}' onclick='openathon_pick_handler(this);'></div>"
+    buffer << "</td>"
   end
   buffer << "</tr>"
 end
-
-
 buffer << "</table>"
+
+#
+# the calendar is a form element
+# TODO a bit ugly here - i am hardcoding the form name
+# 
+
+buffer << "<input id='team_calendar' name='team[calendar]' type='hidden' />"
 
 %>
 
-<%= buffer %>
+<%= buffer.join("\n") %>
 

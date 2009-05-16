@@ -1,4 +1,11 @@
+
 <% form_for(@team,:html=>{:multipart=>true}) do |f| %>
+
+<div style="float:left;padding:30px">
+<%= render :partial => "calendar" %>
+</div>
+
+<div style="float:left;padding:30px">
   <%= f.error_messages %>
   <p>
     <%= f.label :title %><br />
@@ -19,5 +26,8 @@
   <p>
     <%= f.submit ( @team.new_record? ? 'Create' : 'Update' ) %>
   </p>
-<% end %>
+</div>
 
+<div style="clear:both"></div>
+
+<% end %>
