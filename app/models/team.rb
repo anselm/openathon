@@ -3,7 +3,7 @@ class Team < ActiveRecord::Base
   # acts_as_ferret :fields => [ :name, :description ]
 
   has_many :users
-  validates_format_of :name, :with => ^[;\[\^\$\.\\|\(\)\\\/]
+  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/
 
   # super lazy
   # def lazy_search(phrase)
