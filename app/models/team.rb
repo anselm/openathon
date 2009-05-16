@@ -1,8 +1,9 @@
 class Team < ActiveRecord::Base
 
-  # acts_as_ferret :fields => [ :title, :description ]
+  # acts_as_ferret :fields => [ :name, :description ]
 
   has_many :users
+  validates_format_of :name, :with => ^[;\[\^\$\.\\|\(\)\\\/]
 
   # super lazy
   # def lazy_search(phrase)
@@ -30,7 +31,7 @@ class Team < ActiveRecord::Base
     temp = Team.find(:all, :conditions => ["active = ?", true])
     temp.each do |team|
       words.each do |word|
-        if team.title != nil && team.title.to_s.downcase.include?(word)
+        if team.name != nil && team.name.to_s.downcase.include?(word)
           teams << team
           break
         end

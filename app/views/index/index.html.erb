@@ -6,7 +6,7 @@
 <% @team = Team.get_team(current_user) %>
 
 <% if @team %>
-Your team is here <%= link_to @team.title, "/teams/#{@team.id}" %>
+Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %>
 <% else %>
 <%= link_to "Start a team", new_team_path %>
 <% end %>
