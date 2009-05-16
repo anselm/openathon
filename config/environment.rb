@@ -2,12 +2,12 @@
 require 'sanitize'
 require 'yaml'
 
+# Do the utf-8 safety dance!
+$KCODE = 'UTF8'
+
 # ENV['RAILS_ENV'] ||= 'production'
 RAILS_GEM_VERSION = '2.1.2' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
-
-# imagemagick - not used anymore - may remove
-# IMAGE_MAGICK_PATH = "/usr/local/bin/"
 
 # settings we don't want to put into git
 #SETTINGS = YAML::load(File.open("config/settings.yml")).symbolize_keys

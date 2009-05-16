@@ -3,7 +3,8 @@ class Team < ActiveRecord::Base
   # acts_as_ferret :fields => [ :name, :description ]
 
   has_many :users
-  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/
+  validates_format_of :name, :with => /([a-zA-Z0-9_\-]+\s?)*/u 
+  # Currently no way to use non-ascii chars...
 
   # super lazy
   # def lazy_search(phrase)
