@@ -3,6 +3,8 @@ tmp/**/*
 doc/api
 doc.app
 config/database.yml
+config/settings.yml
+config/config.yml
 nbproject
 nbproject/*
 .git/config

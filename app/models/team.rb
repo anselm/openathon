@@ -76,6 +76,7 @@ class Team < ActiveRecord::Base
     self.calendar.split(",").each do |slot|
       booking = Booking.new(:team_id => self.id, :slot => slot, :status => "reserved" )
       booking.save
+      # TODO we shouldn't use this to build pre admin state in the ui...
       self.calendar = ""
       self.save
       return
