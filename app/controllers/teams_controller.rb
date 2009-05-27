@@ -91,24 +91,29 @@ public
   end
 
   def create
-    @team = Team.new(params[:team])
-    respond_to do |format|
-      if @team.save
-        if !@team.set_captain(current_user)
-          raise "No user logged in"
-        end
-        if current_user && current_user.admin?
-          @team.slot_finalize_admin
+    if current_user.paid?
+      @team = Team.new(params[:team])
+      respond_to do |format|
+        if @team.save
+          if !@team.set_captain(current_user)
+            raise "No user logged in"
+          end
+          if current_user && current_user.admin?
+            @team.slot_finalize_admin
+          else
+            @team.slot_finalize_not_admin
+          end
+          flash[:notice] = 'Team was successfully created.'
+          format.html { redirect_to(@team) }
+          format.xml  { render :xml => @team, :status => :created, :location => @team }
         else
-          @team.slot_finalize_not_admin
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
         end
-        flash[:notice] = 'Team was successfully created.'
-        format.html { redirect_to(@team) }
-        format.xml  { render :xml => @team, :status => :created, :location => @team }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
       end
+      else 
+        flash[:notice] = 'You must pay the entry fee before starting a team.'
+        redirect_to payment_path
     end
   end
 

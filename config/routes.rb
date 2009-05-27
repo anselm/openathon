@@ -21,9 +21,12 @@ ActionController::Routing::Routes.draw do |map|
   # map.connect 'notes/:number', :controller => 'notes', :action => 'search' 
   # map.resources :notes, :collection => { :search => [:get, :post] }
 
+  # Payment related
+  map.payment  'payment/:id', :controller => 'payment', :action => 'index'
+  map.donate   'donate', :controller => 'payment',    :action => 'donate'
+
   # general activities
   map.admin    'admin',  :controller => 'index',    :action => 'admin'
-  map.donate   'donate', :controller => 'index',    :action => 'donate'
   map.news     'news',   :controller => 'index',    :action => 'news'
   map.root               :controller => 'index',    :action => 'index'
 

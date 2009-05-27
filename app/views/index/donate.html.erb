@@ -1,12 +1,29 @@
-<br/>
-enter your credit card
-<br/>
-enter your name ...
-<br/>
-... find some thing which validates all this crap before sending it...
-<br/>
-[x] would you like to be on our mailing list?
-<br/>
-privacy policy
-<br/>
+<h2>Donate</h2>
+<% payment_service_for @enrollment.id, PAYPAL_ACCOUNT,
+        :amount => @enrollment.course.deposit, :currency => 'USD',
+        :service => :paypal do |service| 
+
+    service.customer :first_name => @enrollment.student.first_name,
+        :last_name => @enrollment.student.last_name,
+        :phone => @enrollment.student.phone,
+        :email => @enrollment.student.email
+    service.billing_address :city => @enrollment.student.city,
+        :address1 => @enrollment.student.street,
+        :state => @enrollment.student.state,
+        :country => 'USA',
+        :zip => @enrollment.student.zip
+    service.item_name "#{@enrollment.course.program} Deposit"
+    service.invoice @enrollment.invoice.id
+    service.tax '0.00'
+
+    service.notify_url url_for(:only_path => false, :action => 'notify')
+    service.return_url url_for(:only_path => false,
+        :controller => 'account', :action => 'show')
+    service.cancel_return_url url_for(:only_path => false,
+        :controller => 'account', :action => 'show') %>
+
+    <!-- display payment summary here -->
+
+    <%= submit_tag 'Make Payment' %>
+<% end %>
 
