@@ -4,7 +4,6 @@
 
 <%= link_to "Explore teams",  teams_path %>
 <p class="explain">Explanitory text about exploring some teams</p>
-<br/><br/>
  
 <% if @team %>
 Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %>
@@ -12,16 +11,13 @@ Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %>
 <%= link_to "Start your own team", new_team_path %>
 <p class="explain">Explanitory text about exploring some teams</p>
 <% end %>
-<br/><br/>
  
 <%= link_to "Make a donation!", donate_path %>
 <p class="explain">Explanitory text about exploring some teams</p>
-<br/><br/>
 
 <% if current_user != nil && current_user.admin? %> 
 <%= link_to "Administration", admin_path %>
 <% end %>
-<br/><br/>
 
 </div>
 
