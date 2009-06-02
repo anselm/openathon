@@ -1,0 +1,39 @@
+/* Adapted from http://www.alistapart.com/articles/multicolumnlayouts/ */
+
+#container{
+  background-color:#0ff;
+  float:left;
+  width:500px;
+  border-left:150px solid #fff; 
+  /* The width and color of the left rail */
+  border-right:200px solid #fff; 
+  /* The width and color of the right rail */
+}
+#leftside{
+  float:left;
+  width:150px;
+  margin-left:-150px;
+  position:relative;
+}
+#content{
+  float:left;
+  width:500px;
+  margin-right:-500px;
+}
+#rightside{
+  float:right;
+  width:200px;
+  margin-right:-200px;
+  position:relative;
+}
+
+#raise-voice{
+  background-color:#000;
+  color: #fff;
+}
+#raise-voice h2{
+  color: orange;
+  text-transform: uppercase;
+  font-size: 100%;
+  display:inline;
+}

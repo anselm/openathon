@@ -1,28 +1,84 @@
-<h1>Welcome to the VoiceBox Karaokeathon.</h1>
-
 <div id="mainmenu">
-<h1>
 
 <% @team = Team.get_team(current_user) %>
 
+<%= link_to "Explore teams",  teams_path %>
+<p class="explain">Explanitory text about exploring some teams</p>
+<br/><br/>
+ 
 <% if @team %>
 Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %>
 <% else %>
-<%= link_to "Start a team", new_team_path %>
+<%= link_to "Start your own team", new_team_path %>
+<p class="explain">Explanitory text about exploring some teams</p>
 <% end %>
 <br/><br/>
  
-<%= link_to "Explore teams",  teams_path %>
-<br/><br/>
- 
-<%= link_to "Donate!", donate_path %>
+<%= link_to "Make a donation!", donate_path %>
+<p class="explain">Explanitory text about exploring some teams</p>
 <br/><br/>
 
 <% if current_user != nil && current_user.admin? %> 
-<%= link_to "(Administration)", admin_path %>
+<%= link_to "Administration", admin_path %>
 <% end %>
 <br/><br/>
 
-</h1>
 </div>
 
+
+<!-- The following tables are for layout only. TODO: table info automation. -->
+<div id="topraisers">
+  <h2>*Top 5 Raisers</h2>
+  <table class="top5">
+    <tr>
+      <th title="top fundraising teams" scope="col">teams</th>
+      <th title="amount of money raised" scope="col">$$$</th>
+    </tr>
+    <tr>
+      <td>Team name</td>
+      <td>$2039</td>
+    </tr>
+    <tr>
+      <td>Team name</td>
+      <td>$2039</td>
+    </tr>
+    <tr>
+      <td>Team name</td>
+      <td>$2039</td>
+    </tr>
+    <tr>
+      <td>Team name</td>
+      <td>$2039</td>
+    </tr>
+    <tr>
+      <td>Team name</td>
+      <td>$2039</td>
+    </tr>
+  </table>
+  <table class="top5">
+    <tr>
+      <th title="top fundraising members" scope="col">members</th>
+      <th title="amount of money raised" scope="col">$$$</th>
+    </tr>
+    <tr>
+      <td>Ham Chuttlesworth</td>
+      <td>$2039</td>
+    </tr>
+    <tr>
+      <td>Bob Jones</td>
+      <td>$2039</td>
+    </tr>
+    <tr>
+      <td>Adam Curry</td>
+      <td>$2039</td>
+    </tr>
+    <tr>
+      <td>Emma Goldman</td>
+      <td>$2039</td>
+    </tr>
+    <tr>
+      <td>Inigo Montoya</td>
+      <td>$2039</td>
+    </tr>
+  </table>
+</div>

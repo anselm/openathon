@@ -4,14 +4,22 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>VoiceBox Karaokethon! <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'tasty' %>
+  <%= stylesheet_link_tag 'screen' %>
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-<%= render :partial => "index/banner_header" %>
-<%= render :partial => "index/sponsors" %>
-<div id="content">
-<%= yield  %>
-</div>
+  <div id="container">
+    <%= image_tag("temp-head.png") %>
+    <div id="content">
+    <%= render :partial => "index/intro" %>
+    <%= yield  %>
+    </div>
+    <div id="leftside">
+    <p>&nbsp;</p>
+    </div>
+    <div id="rightside">
+    <%= render :partial => "index/login_header" %>
+    </div>
+  </div>
 </body>
 </html>
