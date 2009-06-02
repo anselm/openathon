@@ -6,7 +6,7 @@
 <% end %>
 
 <% if @user.team_id %>
-Your team is here <%= link_to Team.find(@user.team_id).name, "/teams/#{Team.find(@user.team_id)}" %> <br />
+Your team is here <%= link_to Team.find(@user.team_id).name, "/teams/#{@user.team_id}" %> <br />
 <% else %>
 <%= link_to "Start a team", new_team_path %> 
 <% end %>
