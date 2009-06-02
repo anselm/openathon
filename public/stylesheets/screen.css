@@ -30,10 +30,43 @@
 #raise-voice{
   background-color:#000;
   color: #fff;
+  padding: 30px 10px;
+  text-align: justify;
 }
 #raise-voice h2{
   color: orange;
   text-transform: uppercase;
   font-size: 100%;
   display:inline;
+}
+
+#content #mainmenu {
+  padding: 10px;
+  margin: 0; 
+} 
+
+#mainmenu a {
+  color: white;
+  text-decoration: none;
+  font-size: 200%; 
+  font-weight: bold;
+  padding: 0;
+} 
+#mainmenu p{
+  text-transform: uppercase;
+  font-size: 70%; 
+  color: #000;
+  padding: 0;
+}
+
+#topraisers {
+  background-color: #666;
+  margin: 0px 40px;
+}
+
+.top5 { display: inline; }
+
+#topraisers th{
+  border-top: 3px dashed green;
+  border-bottom: 3px dashed green;
 }
