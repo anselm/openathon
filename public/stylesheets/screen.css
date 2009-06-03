@@ -1,7 +1,11 @@
 /* Adapted from http://www.alistapart.com/articles/multicolumnlayouts/ */
 
-#container{
-  background-color:#0ff;
+body { padding: 0;
+margin: 0;
+font-family: sans-serif;
+}
+
+#splash_container{
   float:left;
   width:500px;
   border-left:150px solid #fff; 
@@ -10,18 +14,19 @@
   /* The width and color of the right rail */
   padding-bottom: 30px;
 }
-#leftside{
+#splash_leftside{
   float:left;
   width:150px;
   margin-left:-150px;
   position:relative;
 }
-#content{
+#splash_middleside{
+  background-color:#0ff;
   float:left;
   width:500px;
   margin-right:-500px;
 }
-#rightside{
+#splash_rightside{
   float:right;
   width:200px;
   margin-right:-200px;
@@ -36,7 +41,7 @@
 #raise-voice{
   background-color:#000;
   color: #fff;
-  padding: 10px 30px;
+  padding: 30px 10px;
   text-align: justify;
 }
 #raise-voice h2{
@@ -82,5 +87,5 @@
 }
 
 #topraisers td {
-  padding:10px 15px;
+  padding:10px;
 }
