@@ -1,11 +1,6 @@
-<div style="float:right;width:200px;height:200px;border:1px solid red;">
-<% if @team.photo.exists? then %>
-<p><%= image_tag @team.photo.url(:small) %></p>
-<% end %>
-</div>
-
+<div id="team">
 <h1><%= @team.name %></h1>
-<h2><%= @team.description %></h2>
+<p class="explain"><%= @team.description %></p>
 
 <% if !current_user %>
  <%= link_to "Signup to join this team!", new_account_path %> 
@@ -21,7 +16,26 @@
 
 <% donation_total = 0 %>
 
-<h3>Team members</h3>
+<div id="teamtop5">
+  <%= image_tag("no1.png") %>
+  <%= image_tag("default.jpg") %>
+  <p>Scott Schmimon</p>
+  <table>
+   <tr>
+    <th>Top 5</th>
+    <th>$$$</th>
+   </tr>
+   <% @member_list.each do |user|
+         donation = user.get_donations
+   %>
+    <tr>
+     <td><%= user.firstname %> <%= user.lastname %></td>
+     <td><%= donation %></td>
+    </tr>
+   <% end %>
+  </table>
+</div>
+
 <table>
  <tr>
   <% # TODO ALLOW REORDERING %>
@@ -45,3 +59,4 @@
  </tr>
 </table>
 
+<div>

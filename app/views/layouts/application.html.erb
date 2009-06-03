@@ -3,15 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>VoiceBox Karaokethon! <%= controller.action_name %></title>
+  <title>VoiceBox Karaokethon! <%= controller.controller_name + " => " + controller.action_name %></title>
   <%= stylesheet_link_tag 'screen' %>
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
   <div id="container">
-    <%= image_tag("temp-head.png") %>
+    <% if controller.controller_name == "index" %>
+      <%= image_tag("temp-head.png") %> 
+    <% else %>
+      <%= render :partial => "index/alt_header" %>
+    <% end %>
     <div id="content">
-    <%= render :partial => "index/intro" %>
+    <%= render :partial => "index/intro" if controller.controller_name == "index" %>
     <%= yield  %>
     </div>
     <div id="leftside">
