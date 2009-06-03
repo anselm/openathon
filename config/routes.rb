@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.join     'join',        :controller => 'teams',    :action => 'join'
   map.leave    'leave',       :controller => 'teams',    :action => 'leave'
   map.calendar 'calendar',    :controller => 'teams',    :action => 'calendar'
-  map.search   'search',      :controller => 'teams',    :action => 'search'
+  map.search   'search',      :controller => 'teams',    :action => 'teams'
   map.teams    'teams',       :controller => 'teams',    :action => 'teams'
 
   # map.resources :notes
@@ -24,6 +24,9 @@ ActionController::Routing::Routes.draw do |map|
   # Payment related
   map.payment  'payment/:id', :controller => 'payment', :action => 'index'
   map.donate   'donate', :controller => 'payment',    :action => 'donate'
+
+  map.password_resets 'password_resets', :controller => 'password_resets', :action => 'create'
+  map.edit_password_reset 'password_reset/:id', :controller => 'password_resets', :action => 'edit'
 
   # general activities
   map.admin    'admin',  :controller => 'index',    :action => 'admin'
