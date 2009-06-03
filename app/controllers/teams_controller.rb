@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
 
+  layout 'normal'
+
   # for these methods there MUST be a team in mind
   before_filter :get_team, :only => [:show,
                                      :edit,
@@ -158,9 +160,6 @@ public
   ########################################################################
 
   def calendar
-  end
-
-  def search
   end
 
   def invite

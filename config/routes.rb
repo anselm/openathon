@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.join     'join',        :controller => 'teams',    :action => 'join'
   map.leave    'leave',       :controller => 'teams',    :action => 'leave'
   map.calendar 'calendar',    :controller => 'teams',    :action => 'calendar'
-  map.search   'search',      :controller => 'teams',    :action => 'search'
+  map.search   'search',      :controller => 'teams',    :action => 'teams'
   map.teams    'teams',       :controller => 'teams',    :action => 'teams'
 
   # map.resources :notes

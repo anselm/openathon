@@ -1,14 +1,27 @@
-
-<h1>Search Filter</h1>
+<table>
+<tr><td><h1>search</h1></td>
+<td>
 <form>
-<input name="q"/>
+<input name="q" />
 <input type=submit value="search!"/>
 </form>
+</td></tr>
+</table>
 
-<h1>Results</h1>
+<h2>teams</h2>
 
-<h3>Team Name and Descriptions</h3>
-<% @teams.each do |team| %>
-<%= link_to team.name, team %> ><%= team.description %><br/>
-<% end %>
+<%
+ left = "left" 
+ @teams.each do |team|
+  %><div class="people<%=left%>"><%
+  @member_list = User.find(:all, :conditions => ["team_id = ?", team.id])
+   %><h3><%= link_to team.name, team %></h3>
+   <%= team.description.strip %><br/>
+   <% @member_list.each do |user| %>
+    <%= link_to "#{user.firstname}",user, {:class=>'peoplelinks'} %><%
+  end
+  %></div><%
+  if left == "left" then left = "right" else left = "left" end
+ end
+%>
 
