@@ -7,41 +7,46 @@ font-family: sans-serif;
 
 #splash_container{
   float:left;
-  width:500px;
+  width: 422px;
   border-left:150px solid #fff; 
   /* The width and color of the left rail */
-  border-right:200px solid #fff; 
+  border-right:300px solid #fff; 
   /* The width and color of the right rail */
-  padding-bottom: 30px;
 }
 #splash_leftside{
   float:left;
   width:150px;
   margin-left:-150px;
   position:relative;
+  background-color: #a5ceff;
+  height:112px;
 }
 #splash_middleside{
-  background-color:#0ff;
+  background-color: #009989;
   float:left;
-  width:500px;
+  width:422px;
   margin-right:-500px;
+  padding-bottom: 30px;
 }
 #splash_rightside{
+  font-size: 60%;
+  text-transform: uppercase;
+  font-weight: bold;
   float:right;
-  width:200px;
-  margin-right:-200px;
+  width:300px;
+  margin-right:-317px;
   position:relative;
-}
-
-#login-header{
-  background-color: #0ff;
+  background-color: #a5ceff;
   text-align: right;
+  height:95px;
+  padding: 17px 17px 0px 0px;
 }
 
 #raise-voice{
+  font-size: 75%;
   background-color:#000;
   color: #fff;
-  padding: 30px 10px;
+  padding: 17px 22px;
   text-align: justify;
 }
 #raise-voice h2{
@@ -51,8 +56,8 @@ font-family: sans-serif;
   display:inline;
 }
 
-#content #mainmenu {
-  padding: 10px;
+#splash_middleside #mainmenu {
+  padding: 22px;
   margin: 0; 
 } 
 
@@ -68,24 +73,33 @@ font-family: sans-serif;
   font-size: 70%; 
   color: #000;
   padding: 0;
+  padding-bottom: 15px;
   line-height:.1;
 }
 
 #topraisers {
-  background-color: #666;
+  background-image: url("/images/top5bg.png");
   margin: 0px 40px;
+  font-size: 85%;
+  color: white;
+  width: 316px;
+  height: 161px;
+  padding: 17px 20px 17px;
+  overflow: none;
 }
 
 .top5 { 
   display: inline;
   width: 70%;
+  background-color: #2f2d24;
 }
 
-#topraisers th{
-  border-top: 3px dashed green;
-  border-bottom: 3px dashed green;
+#topraisers tr > th{
+  border-top: 3px dashed #76d842;
+  border-bottom: 3px dashed #76d842;
+  color: #c9f41c;
 }
 
 #topraisers td {
-  padding:10px;
+  padding: 0px;
 }

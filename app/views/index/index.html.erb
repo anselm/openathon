@@ -24,7 +24,7 @@ Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %>
 
 <!-- The following tables are for layout only. TODO: table info automation. -->
 <div id="topraisers">
-  <h2>*Top 5 Raisers</h2>
+  <%= image_tag "top5h2.png", :title => 'Top 5 Raisers' %>
   <table class="top5">
     <tr>
       <th title="top fundraising teams" scope="col">teams</th>

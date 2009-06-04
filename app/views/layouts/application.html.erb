@@ -10,16 +10,12 @@
 <body>
   <% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
   <div id="splash_container">
-    <% if controller.controller_name == "index" %>
-      <%= image_tag("temp-head.png") %>
-    <% end %>
-  <div id="splash_container">
     <%= image_tag("temp-head.png") %>
     <div id="splash_leftside">
     <p>&nbsp;</p>
     </div>
     <div id="splash_middleside">
-    <%= render :partial => "index/intro" if controller.controller_name == "index" %>
+    <%= render :partial => "index/intro" %>
     <%= yield  %>
     </div>
     <div id="splash_rightside">
