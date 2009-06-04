@@ -7,7 +7,7 @@ font-family: sans-serif;
 
 #splash_container{
   float:left;
-  width: 422px;
+  width: 421px;
   border-left:150px solid #fff; 
   /* The width and color of the left rail */
   border-right:300px solid #fff; 
@@ -22,9 +22,9 @@ font-family: sans-serif;
   height:112px;
 }
 #splash_middleside{
-  background-color: #009989;
+  background: #009989 url("/images/bg1.png") repeat-y top right;
   float:left;
-  width:422px;
+  width:421px;
   margin-right:-500px;
   padding-bottom: 30px;
 }
@@ -44,9 +44,9 @@ font-family: sans-serif;
 
 #raise-voice{
   font-size: 75%;
-  background-color:#000;
+  background:#000  url("/images/bg2.png") repeat-y top right;
   color: #fff;
-  padding: 17px 22px;
+  padding: 17px 42px 17px 22px;
   text-align: justify;
 }
 #raise-voice h2{
@@ -79,7 +79,7 @@ font-family: sans-serif;
 
 #topraisers {
   background-image: url("/images/top5bg.png");
-  margin: 0px 40px;
+  margin: 0px 20px;
   font-size: 85%;
   color: white;
   width: 316px;
