@@ -103,3 +103,111 @@ font-family: sans-serif;
 #topraisers td {
   padding: 0px;
 }
+
+
+
+// 'normal' pages - every page except the splash - have this style
+
+a {
+ text-decoration:none;
+ font-family: Arial;
+}
+
+#stripe1 {
+  position:absolute;
+  left:700px;
+  width:20px;
+  height:1200px;
+  background-color:red;
+  filter: alpha(opacity=55);
+  -moz-opacity: .55;
+}
+
+#stripe2 {
+  position:absolute;
+  left:730px;
+  width:10px;
+  height:1200px;
+  background-color:purple;
+  filter: alpha(opacity=55);
+  -moz-opacity: .55;
+}
+
+#normal {
+  float:left;
+  width: 421px;
+  border-left:150px solid #fff; 
+  /* The width and color of the left rail */
+  border-right:300px solid #fff; 
+  /* The width and color of the right rail */
+}
+
+#normal_banner {
+  background-image: url('/images/lace.png');
+  background-repeat: repeat-x;
+  width:800px;
+}
+
+#normal_banner a {
+ text-decoration:none;
+  color: #666;
+  font-size: 0.9em;
+  font-weight: lighter; 
+  font-family: Times serif;
+}
+
+#normal_middle {
+  width:800px;
+}
+
+#normal_middle .login {
+  float:right;
+  width:400px;
+  height:100px;
+}
+#normal_middle h1 {
+  clear:both;
+  color: #8c4;
+  font-weight: bold;
+  font-family: Arial;
+}
+#normal_middle input {
+  border: 8px solid #f0f0f0;
+  font-size: 1.5em;
+  font-family: Arial;
+  font-weight: bold;
+  margin-left: 20px;
+}
+#normal_middle h2 {
+  clear:both;
+  color: #666;
+  font-weight: bold;
+  font-family: Arial;
+}
+#normal_middle a {
+  color: #e73;
+  font-size: 1.3em;
+  font-weight: lighter; 
+  font-style: italic;
+  font-family: Times serif;
+}
+.peoplelinks {
+ text-decoration:none;
+  color: #666;
+  font-size: 0.9em;
+  font-weight: lighter; 
+  font-family: Times serif;
+}
+.peopleleft {
+  width:300px;
+  height:200px;
+  float:left;
+}
+.peopleright {
+  width:300px;
+  height:200px;
+  float:right;
+}
+
+
+

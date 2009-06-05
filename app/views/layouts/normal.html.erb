@@ -7,82 +7,16 @@
   <%= stylesheet_link_tag 'screen' %>
   <%= javascript_include_tag :defaults %>
 </head>
-<style>
-.wide_container {
-  background-image: url('images/lace.png');
-  background-repeat: repeat-x;
-  width:800px;
-}
-.login {
-  float:right;
-  width:400px;
-  height:100px;
-}
-h1 {
-  clear:both;
-  color: #8c4;
-  font-weight: bold;
-  font-family: Arial;
-}
-input {
-  border: 8px solid #f0f0f0;
-  font-size: 1.5em;
-  font-family: Arial;
-  font-weight: bold;
-  margin-left: 20px;
-}
-h2 {
-  clear:both;
-  color: #666;
-  font-weight: bold;
-  font-family: Arial;
-}
-a {
- text-decoration:none;
- font-family: Arial;
-}
-a {
-  color: #e73;
-  font-size: 1.3em;
-  font-weight: lighter; 
-  font-style: italic;
-  font-family: Times serif;
-}
-#login-header a {
- text-decoration:none;
-  color: #666;
-  font-size: 0.9em;
-  font-weight: lighter; 
-  font-family: Times serif;
-}
-.peoplelinks {
- text-decoration:none;
-  color: #666;
-  font-size: 0.9em;
-  font-weight: lighter; 
-  font-family: Times serif;
-}
-.peopleleft {
-  width:300px;
-  height:200px;
-  float:left;
-}
-.peopleright {
-  width:300px;
-  height:200px;
-  float:right;
-}
-</style>
-
 <body>
-<div style="position:absolute;left:700px;width:20px;height:1200px;background-color:red; filter: alpha(opacity=55); -moz-opacity: .55;"></div>
-<div style="position:absolute;left:730px;width:10px;height:1200px;background-color:purple; filter: alpha(opacity=55); -moz-opacity: .55;"></div>
-<div class="wide_container">
-<div class="login">
-<%= render :partial => "index/login_header" %>
-</div>
-<div style="clear:both;"></div>
-<%= yield  %>
+<div id="stripe1"></div>
+<div id="stripe2"></div>
+<div id="normal">
+ <div id="normal_banner">
+  <%= render :partial => "index/login_header" %>
+ </div>
+ <div id="normal_middle">
+  <%= yield  %>
+ </div>
 </div>
 </body>
 </html>
