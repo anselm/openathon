@@ -6,7 +6,9 @@ class TeamsController < ApplicationController
   before_filter :get_team, :only => [:show,
                                      :edit,
                                      :update,
-                                     :destroy
+                                     :destroy,
+                                     :invite,
+                                     :sponsor
                                     ]
 
   # for these methods there MUST be a member logged in
@@ -166,8 +168,15 @@ public
     if flash[:body]
       @body = flash[:body]
     else
-      @body = "Hey Friend, I'm doing this awesome thing!\n\n"
-              "Go to http://openathon.makerlab.com and support me!\n\nThanks!"
+      userid = 0
+      userid = current_user.id if current_user
+      teamid = 0
+      teamid = @team.id if @team
+      @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
+              "Help me raise funds our team for ethos music project" +
+	      "Click on this link to help sponsor me" +
+              "Go to http://openathon.makerlab.com/sponsor/#{teamid}&party=#{userid} and support me!\n\n" +
+              "Thanks!"
     end
     if flash[:recipients]
       @recipients = flash[:recipients]
@@ -214,7 +223,7 @@ public
   end
 
   def join
-     current_user.team_id = @team.id
+    current_user.team_id = @team.id
     current_user.save
   end
 

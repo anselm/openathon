@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  # http://guides.rubyonrails.org/routing.html
-
+  # people
   map.resource  :account, :controller => "users"
   map.resource  :user_session
   map.resources :users
@@ -9,6 +8,11 @@ ActionController::Routing::Routes.draw do |map|
   map.signin    'signin',      :controller => 'user_sessions',   :action => 'new'
   map.signout   'signout',     :controller => 'user_sessions',   :action => 'destroy'
 
+  # passwords
+  map.password_resets 'password_resets', :controller => 'password_resets', :action => 'create'
+  map.edit_password_reset 'password_reset/:id', :controller => 'password_resets', :action => 'edit'
+
+  # teams
   map.resources :teams
   map.invite   'invite/:id',  :controller => 'teams',    :action => 'invite'
   map.join     'join',        :controller => 'teams',    :action => 'join'
@@ -16,23 +20,18 @@ ActionController::Routing::Routes.draw do |map|
   map.calendar 'calendar',    :controller => 'teams',    :action => 'calendar'
   map.search   'search',      :controller => 'teams',    :action => 'teams'
   map.teams    'teams',       :controller => 'teams',    :action => 'teams'
-
-  # map.resources :notes
-  # map.connect 'notes/:number', :controller => 'notes', :action => 'search' 
-  # map.resources :notes, :collection => { :search => [:get, :post] }
-
-  # Payment related
+  
+  # money
+  map.sponsor  'sponsor/:id', :controller => 'payment',  :action => 'sponsor'
   map.payment  'payment/:id', :controller => 'payment', :action => 'index'
   map.donate   'donate', :controller => 'payment',    :action => 'donate'
-
-  map.password_resets 'password_resets', :controller => 'password_resets', :action => 'create'
-  map.edit_password_reset 'password_reset/:id', :controller => 'password_resets', :action => 'edit'
 
   # general activities
   map.admin    'admin',  :controller => 'index',    :action => 'admin'
   map.news     'news',   :controller => 'index',    :action => 'news'
   map.root               :controller => 'index',    :action => 'index'
 
+  # anything else
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 

@@ -1,7 +1,17 @@
 class PaymentController < ApplicationController
   include ActiveMerchant::Billing
 
+  layout 'normal'
+
+
+
   def index
+  end
+
+  def sponsor
+    @team = Team.find(params[:id])
+    @party = nil
+    @party = User.find(params[:party].to_i) if params[:party]
   end
 
   def checkout
