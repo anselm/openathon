@@ -20,11 +20,14 @@ ActionController::Routing::Routes.draw do |map|
   map.calendar 'calendar',    :controller => 'teams',    :action => 'calendar'
   map.search   'search',      :controller => 'teams',    :action => 'teams'
   map.teams    'teams',       :controller => 'teams',    :action => 'teams'
-  
+ 
   # money
   map.sponsor  'sponsor/:id', :controller => 'payment',  :action => 'sponsor'
-  map.payment  'payment/:id', :controller => 'payment', :action => 'index'
-  map.donate   'donate', :controller => 'payment',    :action => 'donate'
+  map.payment  'payment/:id', :controller => 'payment',  :action => 'sponsor'
+  map.checkout 'checkout',    :controller => 'payment',  :action => 'checkout'
+  map.confirm  'confirm',     :controller => 'payment',  :action => 'confirm'
+  map.donate   'donate',      :controller => 'payment',  :action => 'donate'
+  map.complete 'complete',    :controller => 'payment',  :action => 'complete'
 
   # general activities
   map.admin    'admin',  :controller => 'index',    :action => 'admin'

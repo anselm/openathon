@@ -3,8 +3,6 @@ class PaymentController < ApplicationController
 
   layout 'normal'
 
-
-
   def index
   end
 
@@ -15,16 +13,23 @@ class PaymentController < ApplicationController
   end
 
   def checkout
+    puts "************************"
+    ActionController::Base.logger.info "checking out"
     setup_response = setup_gateway.setup_purchase(100,
-      :ip                => request.remote_ip,
-      :return_url        => url_for(:action => 'confirm', :only_path => false),
-      :cancel_return_url => url_for(:action => 'index', :only_path => false)
+      :ip               => request.remote_ip,
+      :return_url       => "http://openathon.org/confirm", #url_for(:controller="payment",:action => 'confirm', :only_path => false),
+      :cancel_return_url => "http://openathon.org/" # url_for(:controller="payment",:action => 'sponsor', :only_path => false)
     )
-    redirect_to setup_gateway.redirect_url_for(setup_response.token)
+    ActionController::Base.logger.info "checking out gateway #{setup_response.token}"
+    url = setup_gateway.redirect_url_for(setup_response.token)
+    ActionController::Base.logger.info "checking out url #{url}"
+    redirect_to url
   end
 
   def confirm
+    ActionController::Base.logger.info "confirm"
     redirect_to :action => 'index' unless params[:token]
+    ActionController::Base.logger.info "confirm 2"
     details_response = setup_gateway.details_for(params[:token])
     if !details_response.success?
       @message = details_response.message
@@ -35,7 +40,8 @@ class PaymentController < ApplicationController
   end
 
   def complete
-    purchase = setup_gateway.purchase(5000,
+    ActionController::Base.logger.info "purchase"
+    purchase = setup_gateway.purchase(100,
       :ip       => request.remote_ip,
       :payer_id => params[:payer_id],
       :token    => params[:token]
