@@ -95,7 +95,10 @@ public
   end
 
   def create
-    if current_user.paid?
+    if false && !current_user.paid?
+      flash[:notice] = 'You must pay the entry fee before starting a team.'
+      redirect_to payment_path
+    else 
       @team = Team.new(params[:team])
       respond_to do |format|
         if @team.save
@@ -115,9 +118,6 @@ public
           format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
         end
       end
-      else 
-        flash[:notice] = 'You must pay the entry fee before starting a team.'
-        redirect_to payment_path
     end
   end
 

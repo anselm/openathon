@@ -17,8 +17,8 @@ class PaymentController < ApplicationController
     ActionController::Base.logger.info "checking out"
     setup_response = setup_gateway.setup_purchase(100,
       :ip               => request.remote_ip,
-      :return_url       => "http://openathon.org/confirm", #url_for(:controller="payment",:action => 'confirm', :only_path => false),
-      :cancel_return_url => "http://openathon.org/" # url_for(:controller="payment",:action => 'sponsor', :only_path => false)
+      :return_url       => "http://openathon.makerlab.com/confirm", #url_for(:controller="payment",:action => 'confirm', :only_path => false),
+      :cancel_return_url => "http://openathon.makerlab.com/" # url_for(:controller="payment",:action => 'sponsor', :only_path => false)
     )
     ActionController::Base.logger.info "checking out gateway #{setup_response.token}"
     url = setup_gateway.redirect_url_for(setup_response.token)
