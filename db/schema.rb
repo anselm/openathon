@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(:version => 20090529225402) do
     t.datetime "updated_at"
   end
 
+  create_table "payments", :force => true do |t|
+    t.integer  "owner_id"
+    t.integer  "amount"
+    t.string   "title"
+    t.string   "link"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "relations", :force => true do |t|
     t.string   "kind"
     t.text     "value"

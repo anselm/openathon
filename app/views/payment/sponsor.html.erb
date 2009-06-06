@@ -1,12 +1,20 @@
 
-<h1>GO <%=@team.name%></h1>
+<h1>Sponsor <%=@team.name%></h1>
 <% if @party %>
-<h2>Yeah <%= @party.firstname %></h2>
+<h2>On behalf of <%= @party.firstname %></h2>
 <% end %>
 
-Please select below to donate $1.00 .
-<p>
-  <%= link_to image_tag('https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'),
-         :action => 'checkout' %>
-</p>
+<h3>What sponsorship amount would you like?</h3>
+<form action="/checkout" >
+<input name="donation" value="10.00"/><br/>
+<input type="radio" name="donation2" value="10">10.00</input><br/>
+<input type="radio" name="donation2" value="20">20.00</input><br/>
+<input type="radio" name="donation2" value="40">40.00</input><br/>
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" value='submit' alt='submit'></input>
+</form>
+
+<%
+# this is what the book recommended
+#<%= link_to image_tag('https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'), :action => 'checkout' %>
+%>
 

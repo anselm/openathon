@@ -10,19 +10,46 @@ class PaymentController < ApplicationController
     @team = Team.find(params[:id])
     @party = nil
     @party = User.find(params[:party].to_i) if params[:party]
+    if !@party
+      @message = "Sorry we can't figure out who you mean to donate to"
+      render :action => 'error'
+      return
+    end
+    # build a new payment that is marked as state new
+    payment = Payment.new(:owner_id=>@party.id,:amount=>0,:description=>'new')
+    payment.save
+    session[:payment] = payment
   end
 
   def checkout
-    puts "************************"
-    ActionController::Base.logger.info "checking out"
-    setup_response = setup_gateway.setup_purchase(100,
+    # move payment state along
+    payment = session[:payment]
+    if !payment
+      @message = "Sorry an internal error has occured"
+      render :action => 'error'
+      return
+    end 
+    # collect both possible donations
+    donation = params[:donation]
+    donation2 = params[:donation2]
+    donation = donation2 if donation2
+    donation = donation.to_f
+    donation = donation * 100
+    donation = donation.to_i
+    if donation < 1
+      @message = "Sorry no donation found - did you pick a value?"
+      render :action => 'error'
+      return
+    end
+    payment.update_attributes( :description=>'checkout', :amount => donation )
+    
+    # TODO remove garbage
+    setup_response = setup_gateway.setup_purchase(donation,
       :ip               => request.remote_ip,
       :return_url       => "http://openathon.makerlab.com/confirm", #url_for(:controller="payment",:action => 'confirm', :only_path => false),
       :cancel_return_url => "http://openathon.makerlab.com/" # url_for(:controller="payment",:action => 'sponsor', :only_path => false)
     )
-    ActionController::Base.logger.info "checking out gateway #{setup_response.token}"
     url = setup_gateway.redirect_url_for(setup_response.token)
-    ActionController::Base.logger.info "checking out url #{url}"
     redirect_to url
   end
 
@@ -50,6 +77,16 @@ class PaymentController < ApplicationController
       @message = purchase.message
       render :action => 'error'
       return
+    else
+      # should be ok
+    end
+    payment = session[:payment]
+    if !payment
+      @message = "Sorry your payment went through but we had trouble recording it"
+      render :action => 'error'
+      return
+    else
+      payment.update_attributes( :description=>'done' )
     end
   end
 
