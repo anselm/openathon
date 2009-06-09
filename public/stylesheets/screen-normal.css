@@ -13,15 +13,34 @@ a {
 }
 #login-header{ 
   text-align: right;
-  background: url('/images/tile.png') repeat-x;
+  font-size:70%;
+  text-transform:uppercase;
 }
+
+#login-header form {
+  padding-top:10px;
+  background: url('/images/lace.png') repeat-x top right;
+  height:81px; 
+  width: 763px;
+}
+
+#login-header a{
+  background: url('/images/tile-stripe.png') no-repeat;
+  padding:40px;
+  margin-top: -91px;
+  margin-left: -216px;
+  position: absolute;
+}
+
 #normal_container {
   float:left;
-  width: 538px;
+  width: 547px;
   border-left:211px solid #fff; 
   /* The width and color of the left rail */
   border-right:300px solid #fff; 
   /* The width and color of the right rail */
+  padding: 0;
+  margin: 0;
 }
 
 #normal_left{
@@ -58,6 +77,9 @@ a {
   font-size: 100%; 
   color:#000;
 }
+
+#normal_left ul { padding: 0; }
+
 #normal_left li{
   list-style: none;
   list-style-position: outside;
@@ -65,9 +87,9 @@ a {
 }
 #normal_middle {
   float:left;
-  width:538px;
-  margin-right:-538px;
-  background: url('/images/bg1.png') repeat-y top right;
+  width:547px;
+  margin-right:-547px;
+  background: url('/images/bg3.png') repeat-y top right;
 }
 
 #normal_middle .login {
@@ -76,9 +98,9 @@ a {
   height:100px;
 }
 #normal_middle h1 {
-  clear:both;
   color: #8c4;
   font-family: "Arial Black";
+  line-height: .1;
 }
 #normal_middle input {
   border: 8px solid #f0f0f0;
@@ -99,6 +121,13 @@ a {
   font-family: Times serif;
 }
 
+.explain{
+  font-size:70%;
+  line-height:0.1;
+  padding:0 0 15px;
+  text-transform:uppercase;
+}
+
 #normal_right{
   float:right;
   width:200px;
@@ -109,22 +138,38 @@ a {
 #teamtop5{
 		width:468px;
 		padding:0 0 20px 0;
-		margin:10px auto;
+		margin:10px 0; 
 		background:url("/images/teambox.png") bottom right no-repeat;
-  
+   min-height: 150px;
 }
 
 #teamtop5 .no1 {
  float:left; 
 }
+
+#teamtop5 p, #teamtop5 th{
+  color: #00A49A;
+  font-family: "Arial Black";
+}
+#teamtop5 p{ 
+  margin: 0;
+ padding-left: 17px;
+}
+
+#teamtop5 th {
+  border-bottom: 2px dashed #88CC44;
+}
+
 #teamtop5 .boxxy{
 	padding: 20px 0px 0px 20px;
 	margin:0;
 	background:url("/images/teambox.png") top left no-repeat;
 }
 
-.teamtop5 table{
-  float:right;
+#teamtop5 table{
+ margin-right: 35px; 
+  width: 50%;
+float:right;
 }
 
 .teamtop5 a {
@@ -132,6 +177,8 @@ a {
   font-family: sans-serif;
   display:block;
 }
+
+
 
 .peoplelinks {
  text-decoration:none;

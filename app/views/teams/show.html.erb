@@ -20,8 +20,12 @@
   <div class="no1">
   <%= image_tag "no1.png" %>
   <img src="/images/default.jpg", width="88" height="88" style="border: 3px solid yellow;" />
-  <p>Scott Schmimon</p></div>
+  <p><%= User.find(1).firstname + " " +  User.find(1).lastname %></p></div>
   <table>
+    <tr>
+     <th>top 5</th>
+     <th>$$$</th>
+    </tr>
    <% @member_list.each do |user|
          donation = user.get_donations
    %>

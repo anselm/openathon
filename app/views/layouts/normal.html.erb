@@ -18,6 +18,7 @@
       <% end %>
      </div>
      <div id="normal_middle">
+  <% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
       <%= yield  %>
      </div>
      <div id="normal_right">
