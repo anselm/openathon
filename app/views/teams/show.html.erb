@@ -1,4 +1,3 @@
-<div id="team">
 <h1><%= @team.name %></h1>
 <p class="explain"><%= @team.description %></p>
 
@@ -17,14 +16,12 @@
 <% donation_total = 0 %>
 
 <div id="teamtop5">
-  <%= image_tag("no1.png") %>
-  <%= image_tag("default.jpg") %>
-  <p>Scott Schmimon</p>
+  <div class="boxxy">
+  <div class="no1">
+  <%= image_tag "no1.png" %>
+  <img src="/images/default.jpg", width="88" height="88" style="border: 3px solid yellow;" />
+  <p>Scott Schmimon</p></div>
   <table>
-   <tr>
-    <th>Top 5</th>
-    <th>$$$</th>
-   </tr>
    <% @member_list.each do |user|
          donation = user.get_donations
    %>
@@ -35,28 +32,6 @@
    <% end %>
   </table>
 </div>
+</div>
 
-<table>
- <tr>
-  <% # TODO ALLOW REORDERING %>
-  <th>Rank</th>
-  <th>Name</th>
-  <th>Amount Raised</th>
-  <th>Details</th>
- </tr>
- <% @member_list.each do |user|
-       donation = user.get_donations
-       donation_total = donation_total + donation
- %>
-  <tr>
-   <td><%=user.id%></td><td><%= user.firstname %> <%= user.lastname %></td>
-   <td><%= donation %></td>
-   <td><%= link_to "Show", user %></td>
-  </tr>
- <% end %>
- <tr>
-   <td></td><th>Total</th><th><%= donation_total %></th>
- </tr>
-</table>
 
-<div>
