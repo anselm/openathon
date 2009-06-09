@@ -1,0 +1,155 @@
+/* Adapted from http://www.alistapart.com/articles/multicolumnlayouts/ */
+/* 'normal' pages - every page except the splash - have this style */
+
+body { 
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+a {
+ text-decoration:none;
+ font-family: Arial;
+}
+#login-header{ 
+  text-align: right;
+  background: url('/images/tile.png') repeat-x;
+}
+#normal_container {
+  float:left;
+  width: 538px;
+  border-left:211px solid #fff; 
+  /* The width and color of the left rail */
+  border-right:300px solid #fff; 
+  /* The width and color of the right rail */
+}
+
+#normal_left{
+  float:left;
+  width:211px;
+  margin-left:-211px;
+  position:relative;  
+  padding-left:40px;
+}
+#normal_left h1 {
+  color: #8c4;
+  font-family: "Arial Black";
+  padding: 0;
+  line-height:.1;
+}
+
+#normal_left h1 a{
+  color: #e73;
+  font-family: "Arial Black";
+}
+#normal_left p{
+  text-transform: uppercase;
+  font-size: 70%; 
+  color:#F20073;
+  padding: 0;
+  padding-bottom: 15px;
+  line-height:.1;
+}
+
+#normal_left p.ital, #normal_left li{
+  font-family: Times, serif;
+  font-style: italic;
+  text-transform: normal;
+  font-size: 100%; 
+  color:#000;
+}
+#normal_left li{
+  list-style: none;
+  list-style-position: outside;
+  padding:0; 
+}
+#normal_middle {
+  float:left;
+  width:538px;
+  margin-right:-538px;
+  background: url('/images/bg1.png') repeat-y top right;
+}
+
+#normal_middle .login {
+  float:right;
+  width:400px;
+  height:100px;
+}
+#normal_middle h1 {
+  clear:both;
+  color: #8c4;
+  font-family: "Arial Black";
+}
+#normal_middle input {
+  border: 8px solid #f0f0f0;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 20px;
+}
+#normal_middle h2 {
+  clear:both;
+  color: #666;
+  font-weight: bold;
+}
+#normal_middle a {
+  color: #e73;
+  font-size: 1.3em;
+  font-weight: lighter; 
+  font-style: italic;
+  font-family: Times serif;
+}
+
+#normal_right{
+  float:right;
+  width:200px;
+  margin-right:-200px;
+  position:relative;
+}
+
+#teamtop5{
+		width:468px;
+		padding:0 0 20px 0;
+		margin:10px auto;
+		background:url("/images/teambox.png") bottom right no-repeat;
+  
+}
+
+#teamtop5 .no1 {
+ float:left; 
+}
+#teamtop5 .boxxy{
+	padding: 20px 0px 0px 20px;
+	margin:0;
+	background:url("/images/teambox.png") top left no-repeat;
+}
+
+.teamtop5 table{
+  float:right;
+}
+
+.teamtop5 a {
+  font-size: 70%;
+  font-family: sans-serif;
+  display:block;
+}
+
+.peoplelinks {
+ text-decoration:none;
+  color: #666;
+  font-size: 0.9em;
+  font-weight: lighter; 
+  font-family: Times serif;
+}
+.peopleleft {
+  width:300px;
+  height:200px;
+  float:left;
+}
+.peopleright {
+  width:300px;
+  height:200px;
+  float:right;
+}
+
+
+
