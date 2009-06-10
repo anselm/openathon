@@ -1,18 +1,16 @@
 <div id="login-header">
-  <%= link_to "Home", "/" %> |
+
   <% if current_user %>
-    Hi there, <%= current_user.email %>! 
-    <%= link_to "My Account", account_path %> |
-    <%= link_to "Signout", signout_path, :method => :delete %>
+    <p>logged in as <%= current_user.email %> : <%= link_to "My Account", account_path %></p>
+    <p><%= link_to "Signout", signout_path, :method => :delete %></p>
   <% else %>
-    <%= link_to "Signup", signup_path %>
     <% form_for UserSession.new, :url => user_session_path do |f| %>
-      <%= f.error_messages %>
-      <%= f.label :email %>: <%= f.text_field :email %>
+      <%= f.label :login %>: <%= f.text_field :email %>
       <%= f.label :password %>: <%= f.password_field :password %><br />
       <%= f.check_box :remember_me %><%= f.label :remember_me %>
       <%= f.submit "Login" %>
     <% end %>
+    <p><%= link_to "Signup", signup_path %></p>
   <% end %>
 </div>
 

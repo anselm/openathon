@@ -10,4 +10,12 @@ class InviteMailer < ActionMailer::Base
     body       :invitee => invitee, :user_text => user_text
   end
 
+ def password_reset_instructions(user, reset_url)  
+ subject       "Password Reset Instructions"  
+ from          "Voicebox Karaoke"  
+ recipients    user.email  
+ sent_on       Time.now  
+ body          :edit_password_reset_url => reset_url  
+ end 
+
 end

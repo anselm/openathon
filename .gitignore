@@ -1,7 +1,10 @@
+public/.DS_Store
+.DS_Store
 log/*.log
 tmp/**/*
 doc/api
 doc.app
+settings.yml
 config/database.yml
 config/settings.yml
 config/config.yml

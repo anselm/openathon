@@ -10,7 +10,12 @@ require File.join(File.dirname(__FILE__), 'boot')
 # IMAGE_MAGICK_PATH = "/usr/local/bin/"
 
 # settings we don't want to put into git
-#SETTINGS = YAML::load(File.open("config/settings.yml")).symbolize_keys
+SETTINGS = YAML::load(File.open("config/settings.yml"))
+SETTINGS.each do |k,v|
+  sym = k.respond_to?(:to_sym) ? k.to_sym : k
+  SETTINGS[sym] = v
+  SETTINGS.delete(k) unless k == sym
+end
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
@@ -41,7 +46,7 @@ Rails::Initializer.run do |config|
 
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
-  # config.log_level = :debug
+  config.log_level = :info
 
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.

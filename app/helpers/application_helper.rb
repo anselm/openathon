@@ -3,4 +3,9 @@ module ApplicationHelper
   def admin?
     @current_user.admin? 
   end
+
+  def paid?
+    @current_user.paid? 
+  end
+
 end

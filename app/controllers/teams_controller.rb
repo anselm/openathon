@@ -1,10 +1,14 @@
 class TeamsController < ApplicationController
 
+  layout 'normal'
+
   # for these methods there MUST be a team in mind
   before_filter :get_team, :only => [:show,
                                      :edit,
                                      :update,
-                                     :destroy
+                                     :destroy,
+                                     :invite,
+                                     :sponsor
                                     ]
 
   # for these methods there MUST be a member logged in
@@ -91,23 +95,28 @@ public
   end
 
   def create
-    @team = Team.new(params[:team])
-    respond_to do |format|
-      if @team.save
-        if !@team.set_captain(current_user)
-          raise "No user logged in"
-        end
-        if current_user && current_user.admin?
-          @team.slot_finalize_admin
+    if false && !current_user.paid?
+      flash[:notice] = 'You must pay the entry fee before starting a team.'
+      redirect_to payment_path
+    else 
+      @team = Team.new(params[:team])
+      respond_to do |format|
+        if @team.save
+          if !@team.set_captain(current_user)
+            raise "No user logged in"
+          end
+          if current_user && current_user.admin?
+            @team.slot_finalize_admin
+          else
+            @team.slot_finalize_not_admin
+          end
+          flash[:notice] = 'Team was successfully created.'
+          format.html { redirect_to(@team) }
+          format.xml  { render :xml => @team, :status => :created, :location => @team }
         else
-          @team.slot_finalize_not_admin
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
         end
-        flash[:notice] = 'Team was successfully created.'
-        format.html { redirect_to(@team) }
-        format.xml  { render :xml => @team, :status => :created, :location => @team }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @team.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -155,15 +164,19 @@ public
   def calendar
   end
 
-  def search
-  end
-
   def invite
     if flash[:body]
       @body = flash[:body]
     else
-      @body = "Hey Friend, I'm doing this awesome thing!\n\n"
-              "Go to http://openathon.makerlab.com and support me!\n\nThanks!"
+      userid = 0
+      userid = current_user.id if current_user
+      teamid = 0
+      teamid = @team.id if @team
+      @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
+              "Help me raise funds our team for ethos music project" +
+	      "Click on this link to help sponsor me" +
+              "Go to http://openathon.makerlab.com/sponsor/#{teamid}&party=#{userid} and support me!\n\n" +
+              "Thanks!"
     end
     if flash[:recipients]
       @recipients = flash[:recipients]
@@ -210,7 +223,7 @@ public
   end
 
   def join
-     current_user.team_id = @team.id
+    current_user.team_id = @team.id
     current_user.save
   end
 

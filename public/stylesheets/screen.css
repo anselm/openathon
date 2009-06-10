@@ -1,0 +1,106 @@
+/* Adapted from http://www.alistapart.com/articles/multicolumnlayouts/ */
+
+body { padding: 0;
+margin: 0;
+font-family: sans-serif;
+}
+
+#splash_container{
+  float:left;
+  width: 421px;
+  border-left:150px solid #fff; 
+  /* The width and color of the left rail */
+  border-right:300px solid #fff; 
+  /* The width and color of the right rail */
+}
+#splash_leftside{
+  float:left;
+  width:150px;
+  margin-left:-150px;
+  position:relative;
+  background-color: #a5ceff;
+  height:112px;
+}
+#splash_middleside{
+  background: #009989 url("/images/bg1.png") repeat-y top right;
+  float:left;
+  width:421px;
+  margin-right:-500px;
+  padding-bottom: 30px;
+}
+#splash_rightside{
+  font-size: 60%;
+  text-transform: uppercase;
+  font-weight: bold;
+  float:right;
+  width:300px;
+  margin-right:-317px;
+  position:relative;
+  background-color: #a5ceff;
+  text-align: right;
+  height:95px;
+  padding: 17px 17px 0px 0px;
+}
+
+#raise-voice{
+  font-size: 75%;
+  background:#000  url("/images/bg2.png") repeat-y top right;
+  color: #fff;
+  padding: 17px 42px 17px 22px;
+  text-align: justify;
+}
+#raise-voice h2{
+  color: orange;
+  text-transform: uppercase;
+  font-size: 100%;
+  display:inline;
+}
+
+#splash_middleside #mainmenu {
+  padding: 22px;
+  margin: 0; 
+} 
+
+#mainmenu a, #mainmenu h1 {
+  color: white;
+  text-decoration: none;
+  font-size: 200%; 
+  font-weight: bold;
+  padding: 0;
+} 
+#mainmenu p{
+  text-transform: uppercase;
+  font-size: 70%; 
+  color: #000;
+  padding: 0;
+  padding-bottom: 15px;
+  line-height:.1;
+}
+
+#topraisers {
+  background-image: url("/images/top5bg.png");
+  margin: 0px 20px;
+  font-size: 85%;
+  color: white;
+  width: 316px;
+  height: 161px;
+  padding: 17px 20px 17px;
+  overflow: none;
+}
+
+.top5 { 
+  display: inline;
+  width: 70%;
+  background-color: #2f2d24;
+}
+
+#topraisers tr > th{
+  border-top: 3px dashed #76d842;
+  border-bottom: 3px dashed #76d842;
+  color: #c9f41c;
+}
+
+#topraisers td {
+  padding: 0px;
+}
+
