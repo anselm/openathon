@@ -5,7 +5,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Arial, sans-serif;
-  background: url('/images/tile.png') repeat-x top center;
+  background: url('/images/lace.png') repeat-x top center;
 }
 
 a {
@@ -16,28 +16,29 @@ a {
   text-align: right;
   font-size:70%;
   text-transform:uppercase;
-  height:81px; 
-padding-right: 142px;
+  height:81px;
+  /*padding-top:15px;*/
 }
 
 #login-header * {
   display: inline;
 }
-
-#login-header form {
-  padding-top:10px;
-  width: 763px;
+#login-header #left-login {
+  padding: 10px 60px 57px 0;
+  margin-left: 589px;
+  background: url('/images/tile-stripe.png') no-repeat top right; 
+  float:left;
 }
 
-/*#login-header a{
-  padding:40px;
-  margin-top: -91px;
-  margin-left: -216px;
-  position: absolute;
-}*/
+.right-login{ float:right;
+margin: 10px 90px 0 0;
+}
 
-#login-header p {
-  vertical-align: top;
+#login-header i { text-transform: none;
+  font-family: serif; }
+
+#login-header #left-login p a {
+  padding: 10px;
 }
 
 #notice{
@@ -51,10 +52,10 @@ padding-right: 142px;
 
 #normal_container {
   float:left;
-  width: 547px;
+  width: 550px;
   border-left:211px solid #fff; 
   /* The width and color of the left rail */
-  border-right:300px solid #fff; 
+  border-right:px solid #fff; 
   /* The width and color of the right rail */
   padding: 0;
   margin: 0;
@@ -104,8 +105,8 @@ padding-right: 142px;
 }
 #normal_middle {
   float:left;
-  width:547px;
-  margin-right:-547px;
+  width:550px;
+  margin-right:-550px;
   background: url('/images/bg3.png') repeat-y top right;
 }
 
@@ -162,6 +163,10 @@ padding-right: 142px;
 
 #teamtop5 .no1 {
  float:left; 
+  padding-top:10px;
+}
+#teamtop5 .no1 img{
+  vertical-align: top;
 }
 
 #teamtop5 p, #teamtop5 th{

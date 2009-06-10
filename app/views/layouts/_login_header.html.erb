@@ -1,0 +1,15 @@
+<div id="login-header">
+  <div id="left-login">
+  <p><%= link_to "Home", root_url %>
+  <%= link_to "My Account", account_path %></p>
+  </div>
+  <div class="right-login">
+  <% if current_user %>
+    <p><i>logged in as <%= current_user.firstname %> <%= current_user.firstname %></i></p>
+    <p><%= link_to "Sign out", signout_path, :method => :delete %></p>
+  <% else %>
+    <p><%= link_to "Sign up", signup_path %> <i>or</i> <%= link_to "Sign in", signin_path %></p>
+  <% end %>
+  </div>
+</div>
+
