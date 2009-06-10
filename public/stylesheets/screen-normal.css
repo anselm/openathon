@@ -5,6 +5,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Arial, sans-serif;
+  background: url('/images/tile.png') repeat-x top center;
 }
 
 a {
@@ -15,21 +16,37 @@ a {
   text-align: right;
   font-size:70%;
   text-transform:uppercase;
+  height:81px; 
+padding-right: 142px;
+}
+
+#login-header * {
+  display: inline;
 }
 
 #login-header form {
   padding-top:10px;
-  background: url('/images/lace.png') repeat-x top right;
-  height:81px; 
   width: 763px;
 }
 
-#login-header a{
-  background: url('/images/tile-stripe.png') no-repeat;
+/*#login-header a{
   padding:40px;
   margin-top: -91px;
   margin-left: -216px;
   position: absolute;
+}*/
+
+#login-header p {
+  vertical-align: top;
+}
+
+#notice{
+  color: red;
+  font-family: Times, serif;
+  background: url('/images/oops.png') no-repeat;
+  margin: 15px 0;
+  padding-left: 165px;
+  min-height: 30px;
 }
 
 #normal_container {

@@ -11,7 +11,7 @@
   <%= render :partial => "index/login_header" %>
   <div id="normal_container">
      <div id="normal_left">
-      <% if controller.action_name == 'show' %>
+      <% if controller.controller_name == 'teams' && controller.action_name == 'show' %>
         <%= render :partial => "team_menu" %>
       <% else %>
       <p>&nbsp;</p>
