@@ -8,7 +8,7 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-  <%= render :partial => "index/login_header" %>
+  <%= render :partial => "layouts/login_header" %>
   <div id="normal_container">
      <div id="normal_left">
       <% if controller.controller_name == 'teams' && controller.action_name == 'show' %>
