@@ -26,7 +26,7 @@ ActionController::Routing::Routes.draw do |map|
   map.payment  'payment/:id', :controller => 'payment',  :action => 'sponsor'
   map.checkout 'checkout',    :controller => 'payment',  :action => 'checkout'
   map.confirm  'confirm',     :controller => 'payment',  :action => 'confirm'
-  map.donate   'donate',      :controller => 'payment',  :action => 'donate'
+  map.donate   'donate/:id',  :controller => 'payment',  :action => 'donate'
   map.complete 'complete',    :controller => 'payment',  :action => 'complete'
 
   # general activities
