@@ -30,14 +30,15 @@ a {
   float:left;
 }
 
-.right-login{ float:right;
-margin: 10px 90px 0 0;
+#login-header #right-login{
+  float:right;
+  margin-top: 10px;
 }
 
 #login-header i { text-transform: none;
   font-family: serif; }
 
-#login-header #left-login p a {
+#login-header #left-login p a, #login-header #right-login p a {
   padding: 10px;
 }
 
