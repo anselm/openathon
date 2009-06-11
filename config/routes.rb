@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # passwords
   map.password_resets 'password_resets', :controller => 'password_resets', :action => 'create'
-  map.edit_password_reset 'password_reset/:id', :controller => 'password_resets', :action => 'edit'
+  map.edit_password_reset 'password_reset/:token', :controller => 'password_resets', :action => 'update'
 
   # teams
   map.resources :teams
@@ -20,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.calendar 'calendar',    :controller => 'teams',    :action => 'calendar'
   map.search   'search',      :controller => 'teams',    :action => 'teams'
   map.teams    'teams',       :controller => 'teams',    :action => 'teams'
+  map.resources :notes
  
   # money
   map.sponsor  'sponsor/:id', :controller => 'payment',  :action => 'sponsor'
