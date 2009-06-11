@@ -175,7 +175,7 @@ public
       @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
               "Help me raise funds our team for ethos music project" +
 	      "Click on this link to help sponsor me" +
-              "Go to http://openathon.makerlab.com/sponsor/#{teamid}&party=#{userid} and support me!\n\n" +
+              "Go to http://openathon.makerlab.com/sponsor/#{teamid}?party=#{userid} and support me!\n\n" +
               "Thanks!"
     end
     if flash[:recipients]

@@ -226,19 +226,23 @@ float:right;
   margin-left: 40px;
 }
 
-.peoplelinks {
+.searchresults {
+  width:640px;
+}
+
+.searchlinks {
  text-decoration:none;
   color: #666;
   font-size: 0.9em;
   font-weight: lighter; 
   font-family: Times serif;
 }
-.peopleleft {
+.searchleft {
   width:300px;
   height:200px;
   float:left;
 }
-.peopleright {
+.searchright {
   width:300px;
   height:200px;
   float:right;
