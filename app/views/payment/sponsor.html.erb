@@ -1,20 +1,71 @@
-
-<h1>Sponsor <%=@team.name%></h1>
-<% if @party %>
-<h2>On behalf of <%= @party.firstname %></h2>
+<script>
+var users = [
+<% User.all().each do |user| %>
+  "<%=user.firstname%>",<%=user.id%>,<%=user.team_id%>,
 <% end %>
+];
+function change_team(form,value) {
+  var parent = document.getElementById('party');
+  if(parent.hasChildNodes()) {
+    while(parent.childNodes.length>0) {
+        parent.removeChild(parent.firstChild); 
+    }
+  }
+  for(var i = 0; i < users.length; i = i + 3 ) {
+    name = users[i];
+    id = users[i+1];
+    teamid = users[i+2];
+    if(teamid == value) {
+      var node = document.createElement('option');
+      node.value = id;
+      node.innerHTML = name;
+      parent.appendChild(node);
+    }
+  }
+}
+function clear_donation() {
+  document.getElementById("donation").value = "";
+}
+// force this form to reset!
+function reset_form() {
+  var f = document.getElementById("sponsorform");
+  if(f) {
+    f.reset();
+  }
+}
+// reset it now!
+reset_form();
+</script>
 
-<h3>What sponsorship amount would you like?</h3>
-<form action="/checkout" >
-<input name="donation" value="10.00"/><br/>
-<input type="radio" name="donation2" value="10">10.00</input><br/>
-<input type="radio" name="donation2" value="20">20.00</input><br/>
-<input type="radio" name="donation2" value="40">40.00</input><br/>
+<h1>Sponsor!</h1>
+<form id="sponsorform" name="sponsorform" action="/checkout" >
+Donate on behalf of team 
+<select name="team" id="team" onchange="change_team(this.form,this.value);">
+<% selected = "selected" if !@team %>
+<option <%=selected%> value="9">ethos general fund</option>
+<%
+@teams.each do |team|
+ selected = ""
+ selected = "selected" if @team && team == @team
+ %>
+ <option <%=selected%> value="<%=team.id%>" ><%=team.name%></option>
+<% end %>
+</select>
+and user
+<select name="party" id="party">
+<%
+@parties.each do |party|
+ selected = ""
+ selected = "selected" if @party && @party == party
+ %>
+ <option value="<%=party.id%>" <%=selected%>><%=party.firstname%></option>
+<% end %>
+</select>
+<input id="donation" name="donation" value="10.00" /><br/>
+<input type="radio" name="donation2" value="10" onchange="clear_donation();" >10.00</input><br/>
+<input type="radio" name="donation2" value="20" onchange="clear_donation();" >20.00</input><br/>
+<input type="radio" name="donation2" value="40" onchange="clear_donation();" >40.00</input><br/>
 <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" value='submit' alt='submit'></input>
 </form>
 
-<%
-# this is what the book recommended
-#<%= link_to image_tag('https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'), :action => 'checkout' %>
-%>
 
