@@ -127,8 +127,8 @@ class Team < ActiveRecord::Base
   end
 
   def self.get_team(person)
-    return Team.find(person.team_id) if person && person.team_id
-    return nil
+    return nil if !person || !person.team_id
+    return Team.find(:first,:conditions => { :id => person.team_id })
   end  
 
   # Paperclip

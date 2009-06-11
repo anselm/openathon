@@ -1,5 +1,6 @@
 class IndexController < ApplicationController
-  layout 'normal', :only => :admin
+
+#  layout 'normal', :only => :admin
 
   def index
   end

@@ -1,3 +1,4 @@
+db/schema.rb
 public/.DS_Store
 .DS_Store
 log/*.log

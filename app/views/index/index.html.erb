@@ -1,19 +1,22 @@
 <div id="mainmenu">
 
-<% @team = Team.get_team(current_user) %>
+<% 
+  @team = nil
+  @team = Team.get_team(current_user) if current_user != nil
+%>
 
 <%= link_to "Explore teams",  teams_path %>
-<p class="explain">Explanitory text about exploring some teams</p>
+<p class="explain">Explanatory text about exploring some teams</p>
  
 <% if @team %>
 Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %>
 <% else %>
 <%= link_to "Start your own team", new_team_path %>
-<p class="explain">Explanitory text about exploring some teams</p>
+<p class="explain">Explanatory text about exploring some teams</p>
 <% end %>
  
 <%= link_to "Make a donation!", donate_path %>
-<p class="explain">Explanitory text about exploring some teams</p>
+<p class="explain">Explanatory text about exploring some teams</p>
 
 <% if current_user != nil && current_user.admin? %> 
 <%= link_to "Administration", admin_path %>
