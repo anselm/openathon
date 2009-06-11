@@ -7,10 +7,11 @@ class PasswordResetsController < ApplicationController
 #  render  
 #  end  
     
-  def edit  
-  render  
-  end  
-    
+#  def edit  
+#  render  
+#  end  
+  
+  # user requests a password change  
   def create
   	if request.post?
 	    @user = User.find_by_email(params[:email])  
@@ -25,21 +26,24 @@ class PasswordResetsController < ApplicationController
 	 end
   end  
 
+  
   def update  
+  	if request.put?
     @user.password = params[:user][:password]  
     @user.password_confirmation = params[:user][:password_confirmation]  
-    if @user.save  
+    if @user.save
       flash[:notice] = "Password successfully updated."  
       redirect_to signin_url  
     else  
-      render :action => :edit  
+      flash.now[:error] = "Passwords did not match."  
     end  
+  end  
   end  
     
   private  
 
   def load_user_using_perishable_token  
-    @user = User.find_using_perishable_token(params[:id])  
+    @user = User.find_using_perishable_token(params[:token])  
     unless @user  
       flash[:notice] = "We're sorry, but we could not locate your account. " +  
       "If you are having issues try copying and pasting the URL " +  
