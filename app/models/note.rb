@@ -1,26 +1,5 @@
-
-#
-# relations give attributes to notes
-#
-
-class Relation < ActiveRecord::Base
-  belongs_to :note
-#  acts_as_solr( :fields => [ :value ] )
-  RELATION_NULL                = "null"
-  RELATION_TAG                 = "tag"
-end
-
-#
-# Notes
-#
-
 class Note < ActiveRecord::Base
-  has_many :relations
-#  acts_as_solr( :fields => [:title, :link, :description ] )
-  KIND_NULL = "null"
-  KIND_USER = "user"
-  KIND_NOTE = "note"
-  KIND_FEED = "feed"
+  belongs_to :teams
 end
 
 #
