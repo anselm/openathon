@@ -1,5 +1,3 @@
-require 'twitter'
-
 class NotesController < ApplicationController
   # GET /notes
   # GET /notes.xml
@@ -95,18 +93,6 @@ class NotesController < ApplicationController
   end
 
   # Twitter Test
-  def twitter
-    httpauth = Twitter::HTTPAuth.new('openathon','password')
-    base = Twitter::Base.new(httpauth)
-    puts "*************"
-    p base.user('openathon')
-    puts "*************"
-    p base.user_timeline
-    puts "*************"
-    search = Twitter::Search.new.from('jnunemaker')
-    search.each { |result| p result }
-    puts "*************"
-  end
 
 
 end
