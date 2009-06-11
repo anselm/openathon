@@ -5,8 +5,9 @@
 <img src="/images/default.jpg" width="50" height="50" style="border: 4px ridge grey" /><br/>
 <% end %>
 
-<% if @user.team_id %>
-Your team is here <%= link_to Team.find(@user.team_id).name, "/teams/#{@user.team_id}" %> <br />
+<% @team = Team.get_team(@user) %>
+<% if @team %>
+Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %> <br/>
 <% else %>
 <%= link_to "Start a team", new_team_path %> 
 <% end %>
