@@ -1,13 +1,39 @@
-<h1>Admin Panel</h1>
-<div id="mainmenu" style="padding:40px">
-<h1>
+<h1>Admin Dashboard</h1>
 
-<%= link_to "Show users", :action => 'index', :controller => 'users' %>
-<br/><br/>
+<% link_to "Show users", :action => 'index', :controller => 'users' %>
  
-<%= link_to "show teams", teams_path %>
-<br/><br/>
+<% link_to "show teams", teams_path %>
 
-</h1>
+<div id="admin">
+  <h2>stats</h2>
+  <table>
+   <% Team.find(:all).each do |team| %>
+    <tr>
+     <td><%= team.name %></td>
+     <td>$2049</td>
+      <table class="user">
+    <% User.find(:all, :conditions => { :team_id => team.id  }).each do |user| %>
+        <tr>
+          <td><%= user.firstname %></td>
+          <td>$233</td>
+        </tr>
+    <% end %>
+    </tr>
+   <% end %>
+  </table>
 </div>
 
+
+<div id="updates">
+<% # form_tag :controller => 'password_resets', :action => 'create' %>
+<%=# f.text_area :update %>
+<%=# submit_tag 'update' %>
+<%# end %>
+</div>
+
+<div id="email">
+<% # form_tag do |f| %>
+<%= # f.text_area :message %>
+<%= # submit_tag 'email' %>
+<% end %>
+</div>

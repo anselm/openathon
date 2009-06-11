@@ -201,7 +201,30 @@ float:right;
   display:block;
 }
 
+#admin{
+  width:468px;
+  padding:0 0 20px 0;
+  margin:10px 0; 
+  background:url("/images/teambox.png") bottom right no-repeat;
+ min-height: 150px;
+}
 
+#admin h2 {
+  color: #00A49A;
+  padding: 27px 0 0 30px;
+  margin: 0;
+  background:url("/images/teambox.png") top right no-repeat;
+  font-family: "Arial Black"; 
+}
+
+#admin table{
+  margin-left: 30px;
+}
+
+#admin table.user{
+  color: #444;
+  margin-left: 40px;
+}
 
 .peoplelinks {
  text-decoration:none;
