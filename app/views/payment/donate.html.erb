@@ -1,0 +1,74 @@
+<%
+# Get all teams
+@teams = Team.get_active_with_search(nil)
+# Get a team randomly if none is set
+@team = Team.find(:first,:conditions => { :id => params[:id] } ) if params[:id]
+#@team = @teams[rand(@teams.length)] if !@team && @teams.length
+# Get all parties of current team
+@parties = []
+@parties = User.find(:all, :conditions => ["team_id = ?", @team.id]) if @team
+%>
+
+<script>
+var users = [
+<% User.all().each do |user| %>
+  "<%=user.firstname%>",<%=user.id%>,<%=user.team_id%>,
+<% end %>
+];
+function change_team(form,value) {
+  var parent = document.getElementById('userpick');
+  if(parent.hasChildNodes()) {
+    while(parent.childNodes.length>0) {
+        parent.removeChild(parent.firstChild); 
+    }
+  }
+  for(var i = 0; i < users.length; i = i + 3 ) {
+    name = users[i];
+    id = users[i+1];
+    teamid = users[i+2];
+    if(teamid == value) {
+      var node = document.createElement('option');
+      node.value = id;
+      node.innerHTML = name;
+      parent.appendChild(node);
+    }
+  }
+}
+</script>
+
+<h1>Sponsor a team!</h1>
+<form>
+Donate to team
+<select onchange="change_team(this.form,this.value);">
+<% selected = "selected" if !@team %>
+<option <%=selected%> value="9">ethos general fund</option>
+<%
+@teams.each do |team|
+ selected = ""
+ selected = "selected" if @team && team == @team
+ %>
+ <option <%=selected%> value="<%=team.id%>" ><%=team.name%></option>
+<% end %>
+</select>
+Donate to user
+<select id="userpick">
+<%
+@parties.each do |party|
+ selected = ""
+ selected = "selected" if @party && @party == party
+ %>
+ <option value="<%=party.id%>" <%=selected%>><%=party.firstname%></option>
+<% end %>
+</select>
+</form>
+
+<h3>What sponsorship amount would you like?</h3>
+<form action="/checkout" >
+<input name="donation" value="10.00"/><br/>
+<input type="radio" name="donation2" value="10">10.00</input><br/>
+<input type="radio" name="donation2" value="20">20.00</input><br/>
+<input type="radio" name="donation2" value="40">40.00</input><br/>
+<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" value='submit' alt='submit'></input>
+</form>
+
+
