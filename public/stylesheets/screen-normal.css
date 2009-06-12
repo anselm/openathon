@@ -6,6 +6,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: url('/images/lace.png') repeat-x top center;
+  height: 100%;
 }
 
 a {
@@ -43,6 +44,15 @@ a {
 }
 
 #notice{
+  color: #ED1E79;
+  font-family: Times, serif;
+  margin: 15px 0;
+  background: url('/images/yeah.png') no-repeat;
+  padding-left: 165px;
+  min-height: 30px;
+}
+
+#error, #warning{
   color: red;
   font-family: Times, serif;
   background: url('/images/oops.png') no-repeat;
@@ -95,6 +105,7 @@ a {
   text-transform: normal;
   font-size: 100%; 
   color:#000;
+  line-height: 1;
 }
 
 #normal_left ul { padding: 0; }
@@ -109,6 +120,7 @@ a {
   width:550px;
   margin-right:-550px;
   background: url('/images/bg3.png') repeat-y top right;
+  min-height:550px;
 }
 
 #normal_middle .login {
@@ -125,8 +137,18 @@ a {
   border: 8px solid #f0f0f0;
   font-size: 1.5em;
   font-weight: bold;
-  margin-left: 20px;
+  margin-bottom: 20px;
 }
+
+#normal_middle input[type="submit"] {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 8px;
+  background-color: #EE7733;
+  color: white;
+  border: 0;
+}
+
 #normal_middle h2 {
   clear:both;
   color: #666;
@@ -139,7 +161,7 @@ a {
   font-style: italic;
   font-family: Times serif;
 }
-
+#normal_middle a.smallurl { font-size: .9em; }
 .explain{
   font-size:70%;
   line-height:0.1;
@@ -157,7 +179,7 @@ a {
 #teamtop5{
 		width:468px;
 		padding:0 0 20px 0;
-		margin:10px 0; 
+		margin:10px 0 42px 0; 
 		background:url("/images/teambox.png") bottom right no-repeat;
    min-height: 150px;
 }
@@ -190,9 +212,11 @@ a {
 }
 
 #teamtop5 table{
- margin-right: 35px; 
+  margin-right: 35px; 
   width: 50%;
-float:right;
+  float:right;
+  font-family: Verdana;
+  font-size: .9em;
 }
 
 .teamtop5 a {

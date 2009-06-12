@@ -22,7 +22,7 @@ class PasswordResetsController < ApplicationController
 			flash[:notice] = "Instructions to reset your password have been emailed to you."  
 			redirect_to root_url  
 		else  
-			flash[:notice] = "No user was found with that email address"  
+			flash[:error] = "No user was found with that email address"  
   		end
 	end
   end  

@@ -37,14 +37,14 @@ private
 
   def verify_new_team
     if current_user.team_id != nil
-      flash[:notice] = "You already have a team, showing your team status page instead."
+      flash[:error] = "You already have a team, showing your team status page instead."
       redirect_to :controller => :teams, :action => :show, :id => current_user.team_id
     end
   end
 
   def verify_member
     if current_user == nil
-      flash[:notice] = "Please signup to create or join a team"
+      flash[:error] = "Please signup to create or join a team."
       redirect_to "/signup"
       return false
     end
@@ -53,12 +53,12 @@ private
 
   def verify_powers
     if current_user == nil
-      flash[:notice] = "Please signin to edit your team"
+      flash[:error] = "Please sign in to edit your team."
       redirect_to "/signin"
       return false
     end
     if @team == nil || !@team.is_owner?(current_user)
-      flash[:notice] = "this is not your team - you cannot change it"
+      flash[:error] = "This is not your team - you cannot change it."
       return false
     end
   end
@@ -96,7 +96,7 @@ public
 
   def create
     if false && !current_user.paid?
-      flash[:notice] = 'You must pay the entry fee before starting a team.'
+      flash[:error] = 'You must pay the entry fee before starting a team.'
       redirect_to payment_path
     else 
       @team = Team.new(params[:team])

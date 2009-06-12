@@ -9,6 +9,7 @@
 </head>
 <body>
   <% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
+  <% if flash[:error] %><div id="error"><%= flash[:error] %></div><% end %>
   <div id="splash_container">
     <%= image_tag("yell2.png") %>
     <div id="splash_leftside">

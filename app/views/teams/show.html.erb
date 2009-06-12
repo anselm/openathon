@@ -19,19 +19,19 @@
   <div class="boxxy">
   <div class="no1">
   <%= image_tag "no1.png" %>
-  <img src="/images/default.jpg", width="88" height="88" style="border: 3px solid yellow;" />
+  <% if current_user.photo_file_name %>
+    <%= image_tag("/system/photos/#{current_user.id}/small/" + current_user.photo_file_name, :size => "88x88", :style => "border: 2px solid yellow;") %> 
+  <% else %>
+  <img src="/images/default.jpg", width="88" height="88" style="border: 2px solid yellow;" />
+  <% end %>
   <p><%= User.find(1).firstname + " " +  User.find(1).lastname %></p></div>
   <table>
-    <tr>
-     <th>top 5</th>
-     <th>$$$</th>
-    </tr>
    <% @member_list.each do |user|
          donation = user.get_donations
    %>
     <tr>
      <td><%= user.firstname %> <%= user.lastname %></td>
-     <td><%= donation %></td>
+     <td>$<%= donation %></td>
     </tr>
    <% end %>
   </table>

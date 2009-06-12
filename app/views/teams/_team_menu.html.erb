@@ -1,10 +1,6 @@
-<% if current_user %>
 <h1><%= link_to "invite", invite_path(current_user.id) %></h1>
-<% else %>
-<h1><%= link_to "invite", signup_path %></h1>
-<% end %>
 <p>friends to your team</p>
-<h1><a href="">raise</a></h1>
+<h1><%= link_to "raise", donate_path %></a></h1>
 <p>ask folks to donate</p>
 <h1>members</h1>
 <ul>
@@ -13,3 +9,5 @@
 <% end %>
 </ul>
 <h1>timeslot</h1>
+<p class="ital"><%= @team.calendar ? @team.calendar : "Pending: Your timeslot is awaiting confirmation" %></p>
+

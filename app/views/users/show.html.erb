@@ -1,15 +1,17 @@
 <h2><%= @user.firstname.capitalize + " " + @user.lastname.capitalize %></h2>
 <% if @user.photo.exists? then %>
-<%= image_tag @user.photo.url(:small) %><br/>
+<%= image_tag("/system/photos/#{current_user.id}/small/" + current_user.photo_file_name) %> 
 <% else %>
 <img src="/images/default.jpg" width="50" height="50" style="border: 4px ridge grey" /><br/>
 <% end %>
-
+<br />
 <% @team = Team.get_team(@user) %>
 <% if @team %>
 Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %> <br/>
 <% else %>
 <%= link_to "Start a team", new_team_path %> 
+<br />
+<%= link_to "Explore teams", teams_path %>
 <% end %>
-
-<%= link_to 'Edit account info', edit_account_path %>
+<br />
+<%= link_to 'Edit account info', edit_account_path, :class => "smallurl" %>
