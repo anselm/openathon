@@ -1,11 +1,26 @@
+<% if !current_user %>
+ <%= link_to "Signup to join this team!", new_account_path %> 
+<% elsif @team.is_owner?(current_user) %>
+<h1><a href="/sponsor">raise</a></h1>
+<p>ask folks to help sponsor</p>
 <h1><%= link_to "invite", invite_path(current_user.id) %></h1>
 <p>friends to your team</p>
-<h1><%= link_to "raise", donate_path %></a></h1>
-<p>ask folks to donate</p>
+<h1><%= link_to 'Edit', edit_team_path(@team) %></h1>
+<p>your team</p>
+<h1><%= link_to 'Leave team', :action => "leave" , :id => @team.id %></h1>
+<p>leave your own team!?</p>
+<h1><%= link_to "Destroy", @team, :confirm => 'Are you sure?', :method => :delete %></h1>
+<p>delete your team</p>
+<% elsif @team.is_member?(current_user) %>
+<h1><%= link_to 'Leave team', :action => "leave" , :id => @team.id %></h1>
+<% else %> 
+<h1><%= link_to 'Join team', :action => "join", :id => @team.id %></h1>
+<p>join this team</p>
+<% end %>
 <h1>members</h1>
 <ul>
 <% @member_list.each do |user| %>
-   <li><%= user.firstname %> <%= user.lastname %></li>
+   <li><%= user.firstname %> </li>
 <% end %>
 </ul>
 <h1>timeslot</h1>

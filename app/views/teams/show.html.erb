@@ -1,18 +1,6 @@
 <h1><%= @team.name %></h1>
 <p class="explain"><%= @team.description %></p>
 
-<% if !current_user %>
- <%= link_to "Signup to join this team!", new_account_path %> 
-<% elsif @team.is_owner?(current_user) %>
- <%= link_to 'Edit', edit_team_path(@team) %> | 
- <%= link_to 'Invite team members!', :action => "invite" %> | 
- <%= link_to "Destroy team :(", @team, :confirm => 'Are you sure?', :method => :delete %>
-<% elsif @team.is_member?(current_user) %>
- <%= link_to 'Leave team', :action => "leave" , :id => @team.id %>
-<% else %> 
- <%= link_to 'Join team', :action => "join" %>
-<% end %>
-
 <% donation_total = 0 %>
 
 <div id="teamtop5">

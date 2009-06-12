@@ -8,7 +8,9 @@ class TeamsController < ApplicationController
                                      :update,
                                      :destroy,
                                      :invite,
-                                     :sponsor
+                                     :sponsor,
+				     :join,
+				     :leave
                                     ]
 
   # for these methods there MUST be a member logged in
@@ -31,7 +33,8 @@ class TeamsController < ApplicationController
 private
 
   def get_team
-    @team = Team.find(params[:id])
+    @team = nil
+    @team = Team.find(:first,:conditions=>{:id=>params[:id]}) if params[:id]
     return @team != nil
   end
 
@@ -183,11 +186,13 @@ public
     else
       @recipients = Array.new
     end
-    @team = Team.find(current_user.team_id)
+    @team = nil
+    @team = Team.find(:first,:conditions=>{:id=>current_user.team_id}) if current_user
   end
 
   def invite_confirm
-    @team = Team.find(current_user.team_id)
+    @team = nil
+    @team = Team.find(:first,:conditions=>{:id=>current_user.team_id}) if current_user
     email_blob = params[:email_blob]
     if email_blob.empty?
       flash[:no_emails] = true
@@ -219,12 +224,28 @@ public
       InviteMailer.deliver_invite(current_user, email, body)
     end
     flash[:notice] = 'Invitations sent!'
-    redirect_to(Team.find(current_user.team_id))
+    @team = nil
+    @team = Team.find(:first,:conditions=>{:id=>current_user.team_id}) if current_user
+    redirect_to(@team) if @team
+    redirect_to("/") if !@team # OH OH
+  end
+
+  def leave
+    if current_user
+    current_user.team_id = nil
+    current_user.save
+    end
   end
 
   def join
-    current_user.team_id = @team.id
-    current_user.save
+    if @team && current_user
+      current_user.team_id = @team.id
+      current_user.save
+      @member_list = User.find(:all, :conditions => ["team_id = ?", @team.id])
+      if @member_list.length == 0
+        @team.set_captain(current_user)
+      end 
+    end
   end
 
 end
