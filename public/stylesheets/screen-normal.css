@@ -34,6 +34,7 @@ a {
 #login-header #right-login{
   float:right;
   margin-top: 10px;
+  max-width: 205px;
 }
 
 #login-header i { text-transform: none;
@@ -77,18 +78,19 @@ a {
   width:211px;
   margin-left:-211px;
   position:relative;  
-  padding-left:40px;
+  padding: 20px;
 }
 #normal_left h1 {
   color: #8c4;
   font-family: "Arial Black";
   padding: 0;
-  line-height:.1;
+  margin: 0;
 }
 
 #normal_left h1 a{
   color: #e73;
   font-family: "Arial Black";
+  font-size: 1em;
 }
 #normal_left p{
   text-transform: uppercase;
@@ -108,7 +110,9 @@ a {
   line-height: 1;
 }
 
-#normal_left ul { padding: 0; }
+#normal_left ul {
+  padding: 0;
+  margin: 0; }
 
 #normal_left li{
   list-style: none;
@@ -131,7 +135,6 @@ a {
 #normal_middle h1 {
   color: #8c4;
   font-family: "Arial Black";
-  line-height: .1;
 }
 #normal_middle input {
   border: 8px solid #f0f0f0;
@@ -153,8 +156,9 @@ a {
   clear:both;
   color: #666;
   font-weight: bold;
+  margin: 0px;
 }
-#normal_middle a {
+#normal_left a, #normal_middle a {
   color: #e73;
   font-size: 1.3em;
   font-weight: lighter; 
@@ -252,6 +256,7 @@ a {
 
 .searchresults {
   width:640px;
+  
 }
 
 .searchlinks {

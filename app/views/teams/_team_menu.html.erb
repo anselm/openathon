@@ -14,15 +14,16 @@
 <% elsif @team.is_member?(current_user) %>
 <h1><%= link_to 'Leave team', :action => "leave" , :id => @team.id %></h1>
 <% else %> 
-<h1><%= link_to 'Join team', :action => "join", :id => @team.id %></h1>
+<h1><%= link_to 'join team', :action => "join", :id => @team.id %></h1>
 <p>join this team</p>
 <% end %>
 <h1>members</h1>
 <ul>
 <% @member_list.each do |user| %>
-   <li><%= user.firstname %> </li>
+   <li><%= user.firstname %> <%= user.lastname %></li>
 <% end %>
 </ul>
 <h1>timeslot</h1>
-<p class="ital"><%= @team.calendar ? @team.calendar : "Pending: Your timeslot is awaiting confirmation" %></p>
-
+<ul>
+  <li><%= @team.calendar ? @team.calendar.gsub(',', "</li>\n<li>") : "Pending: Your timeslot is awaiting confirmation" %></li>
+</ul>

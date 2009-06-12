@@ -245,6 +245,11 @@ public
       if @member_list.length == 0
         @team.set_captain(current_user)
       end 
+      flash[:notice] = "You've joined the team!"
+      redirect_to(@team)
+    else
+      flash[:error] = "You have not paid the entry fee."
+      redirect_to payment_path
     end
   end
 

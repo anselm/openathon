@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # passwords
   map.password_resets 'password_resets', :controller => 'password_resets', :action => 'create'
-  map.edit_password_reset 'password_reset/:token', :controller => 'password_resets', :action => 'update'
+  map.edit_password_reset 'password_resets/:token', :controller => 'password_resets', :action => 'update'
 
   # teams
   map.resources :teams

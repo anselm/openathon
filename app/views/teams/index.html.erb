@@ -1,12 +1,8 @@
-<table>
-<tr><td><h1>search</h1></td>
-<td>
+<h1>search</h1>
 <form>
 <input name="q" />
 <input type=submit value="search!"/>
 </form>
-</td></tr>
-</table>
 
 <h2>teams</h2>
 
@@ -17,7 +13,7 @@
   %><div class="search<%=left%>"><%
   @member_list = User.find(:all, :conditions => ["team_id = ?", team.id])
    %><h3><%= link_to team.name, team %></h3>
-   <%= team.description.strip %><br/>
+   <p class="explain"><%= team.description.strip %></p>
    <% @member_list.each do |user| %>
     <%= link_to "#{user.firstname}",user, {:class=>'searchlinks'} %><%
   end
