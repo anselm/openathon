@@ -6,7 +6,7 @@
   <div class="boxxy">
   <div class="no1">
   <%= image_tag "no1.png" %>
-  <% if current_user.photo_file_name %>
+  <% if current_user && current_user.photo_file_name %>
     <%= image_tag("/system/photos/#{current_user.id}/small/" + current_user.photo_file_name, :size => "88x88", :style => "border: 2px solid yellow;") %> 
   <% else %>
   <img src="/images/default.jpg", width="88" height="88" style="border: 2px solid yellow;" />
