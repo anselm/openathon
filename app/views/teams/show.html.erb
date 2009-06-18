@@ -5,11 +5,11 @@
 <div id="teamtop5">
   <div class="boxxy">
   <div class="no1">
-  <%= image_tag "no1.png" %>
+  <img id="no1graphic" src="/images/no1.png?" alt="No1"/>
   <% if current_user && current_user.photo_file_name %>
     <%= image_tag("/system/photos/#{current_user.id}/small/" + current_user.photo_file_name, :size => "88x88", :style => "border: 2px solid yellow;") %> 
   <% else %>
-  <img src="/images/default.jpg", width="88" height="88" style="border: 2px solid yellow;" />
+  <img id="no1" src="/images/default.jpg", width="88" height="88"/>
   <% end %>
   <p><%= User.find(1).firstname + " " +  User.find(1).lastname %></p></div>
   <table>

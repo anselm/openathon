@@ -1,12 +1,14 @@
 /* Adapted from http://www.alistapart.com/articles/multicolumnlayouts/ */
 /* 'normal' pages - every page except the splash - have this style */
+/* colors >> orange: #EE7733 > hot pink: #F20073 > teal: #00A49A*/
 
 body { 
   padding: 0;
   margin: 0;
-  font-family: Arial, sans-serif;
+font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
   background: url('/images/lace.png') repeat-x top center;
   height: 100%;
+  font-size: 12px;
 }
 
 a {
@@ -15,7 +17,7 @@ a {
 }
 #login-header{ 
   text-align: right;
-  font-size:70%;
+  font-size:85%;
   text-transform:uppercase;
   height:81px;
   /*padding-top:15px;*/
@@ -25,23 +27,32 @@ a {
   display: inline;
 }
 #login-header #left-login {
-  padding: 10px 60px 57px 0;
-  margin-left: 589px;
-  background: url('/images/tile-stripe.png') no-repeat top right; 
-  float:left;
+background:transparent url(/images/tile-stripe.png) no-repeat scroll right top;
+height:160px;
+left:554px;
+padding:10px 47px 0 0;
+position:absolute;
+top:0;
+width:200px;
 }
 
 #login-header #right-login{
-  float:right;
-  margin-top: 10px;
-  max-width: 205px;
+ float:left;
+margin-left:810px;
+margin-top:10px;
+max-width:205px;
 }
 
 #login-header i { text-transform: none;
+margin:0 -8px;
   font-family: serif; }
 
 #login-header #left-login p a, #login-header #right-login p a {
   padding: 10px;
+}
+
+#login-header #left-login p a:hover, #login-header #right-login p a:hover {
+text-decoration: underline;
 }
 
 #notice{
@@ -75,26 +86,26 @@ a {
 
 #normal_left{
   float:left;
-  width:211px;
+  width:201px;
   margin-left:-211px;
   position:relative;  
-  padding: 20px;
+  padding: 25px;
 }
 #normal_left h1 {
   color: #8c4;
-  font-family: "Arial Black";
-  padding: 0;
+font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;  padding: 0;
   margin: 0;
 }
 
 #normal_left h1 a{
   color: #e73;
-  font-family: "Arial Black";
-  font-size: 1em;
+font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;  font-size: 1em;
+text-transform: lowercase; !important;
+text-decoration: none !important;
 }
 #normal_left p{
   text-transform: uppercase;
-  font-size: 70%; 
+  font-size: 85%; 
   color:#F20073;
   padding: 0;
   padding-bottom: 15px;
@@ -111,13 +122,15 @@ a {
 }
 
 #normal_left ul {
-  padding: 0;
+padding:6px 0 15px;
   margin: 0; }
 
 #normal_left li{
   list-style: none;
   list-style-position: outside;
   padding:0; 
+  line-height:140%;
+  font-size:1.1em;
 }
 #normal_middle {
   float:left;
@@ -134,8 +147,11 @@ a {
 }
 #normal_middle h1 {
   color: #8c4;
-  font-family: "Arial Black";
+font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;
+  line-height:120%;
+
 }
+
 #normal_middle input {
   border: 8px solid #f0f0f0;
   font-size: 1.5em;
@@ -151,7 +167,9 @@ a {
   color: white;
   border: 0;
 }
-
+#normal_middle textarea {
+	width:  33em;
+}
 #normal_middle h2 {
   clear:both;
   color: #666;
@@ -159,15 +177,21 @@ a {
   margin: 0px;
 }
 #normal_left a, #normal_middle a {
-  color: #e73;
-  font-size: 1.3em;
-  font-weight: lighter; 
-  font-style: italic;
-  font-family: Times serif;
+color:#EE7733;
+font-family:Verdana;
+font-size:0.9em;
+font-style:normal;
+font-weight:lighter;
+text-transform:uppercase;
+}
+
+#normal_left a:hover, #normal_middle a:hover{
+	text-decoration: underline;
+color: #F20073;
 }
 #normal_middle a.smallurl { font-size: .9em; }
 .explain{
-  font-size:70%;
+  font-size:85%;
   line-height:0.1;
   padding:0 0 15px;
   text-transform:uppercase;
@@ -183,7 +207,7 @@ a {
 #teamtop5{
 		width:468px;
 		padding:0 0 20px 0;
-		margin:10px 0 42px 0; 
+		margin:10px 0 35px 0; 
 		background:url("/images/teambox.png") bottom right no-repeat;
    min-height: 150px;
 }
@@ -198,11 +222,11 @@ a {
 
 #teamtop5 p, #teamtop5 th{
   color: #00A49A;
-  font-family: "Arial Black";
-}
+font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;}
 #teamtop5 p{ 
   margin: 0;
- padding-left: 17px;
+text-align: center;
+font-size:130%;
 }
 
 #teamtop5 th {
@@ -216,17 +240,32 @@ a {
 }
 
 #teamtop5 table{
-  margin-right: 35px; 
+  margin:10px 29px 0 0;
   width: 50%;
   float:right;
   font-family: Verdana;
-  font-size: .9em;
+  font-size: 1em;
 }
 
 .teamtop5 a {
-  font-size: 70%;
+  font-size: 85%;
   font-family: sans-serif;
   display:block;
+}
+
+#no1 {
+	border: 2px solid #D9E021;
+}
+#no1graphic {
+	padding: 3px;
+	padding:3px 0 0 7px;
+}
+#team_menu h1 {
+line-height: 100%;
+}
+
+#team_detail_controls {
+	padding-bottom: 13px;
 }
 
 #admin{
