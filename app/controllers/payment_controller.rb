@@ -1,7 +1,7 @@
 class PaymentController < ApplicationController
   include ActiveMerchant::Billing
 
-  layout 'normal'
+  layout 'twocolumn'
 
   def index
   end

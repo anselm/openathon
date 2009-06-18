@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
 
-  layout 'normal'
+  layout 'threecolumn'
 
   # for these methods there MUST be a team in mind
   before_filter :get_team, :only => [:show,
