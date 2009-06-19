@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # teams
   map.resources :teams
+  map.raise    'raise/:id',   :controller => 'teams',    :action => 'raise'
   map.invite   'invite/:id',  :controller => 'teams',    :action => 'invite'
   map.join     'join',        :controller => 'teams',    :action => 'join'
   map.leave    'leave',       :controller => 'teams',    :action => 'leave'
