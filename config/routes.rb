@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
   map.complete 'complete',    :controller => 'payment',  :action => 'complete'
 
   # general activities
+  map.about    'about',  :controller => 'index',    :action => 'about'
   map.admin    'admin',  :controller => 'index',    :action => 'admin'
   map.news     'news',   :controller => 'index',    :action => 'news'
   map.root               :controller => 'index',    :action => 'index'

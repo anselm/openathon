@@ -11,6 +11,9 @@ class IndexController < ApplicationController
   def donate
   end
 
+  def about
+  end
+
   def admin
     # TODO GUARDS HERE
   end
