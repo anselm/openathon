@@ -6,7 +6,7 @@ body {
   padding: 0;
   margin: 0;
 font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
-  background: url('/images/lace.png') repeat-x top center;
+  background: url('/images/lace.png') repeat-x top left;
   height: 100%;
   font-size: 12px;
 }

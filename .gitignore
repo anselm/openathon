@@ -20,3 +20,4 @@ public/system
 db/schema.rb
 db/openathon.sqlite3
 config/environment.rb
+openathon.esproj/
