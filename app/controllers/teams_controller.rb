@@ -225,7 +225,7 @@ public
     recipients = flash[:recipients]
     body = flash[:body]
     recipients.each do |email|
-      InviteMailer.deliver_invite(current_user, email, body)
+      MailMailer.deliver_invite(current_user, email, body)
     end
     flash[:notice] = 'Invitations sent!'
     @team = nil
@@ -288,7 +288,7 @@ public
     recipients = flash[:recipients]
     body = flash[:body]
     recipients.each do |email|
-      InviteMailer.deliver_invite(current_user, email, body)
+      MailMailer.deliver_invite(current_user, email, body)
     end
     flash[:notice] = 'Invitations sent!'
     @team = nil

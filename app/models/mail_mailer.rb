@@ -1,4 +1,4 @@
-class InviteMailer < ActionMailer::Base
+class MailMailer < ActionMailer::Base
   
   def raise(invitor, invitee, user_text, sent_at = Time.now)
     subject    'Help me raise funds for Ethos Karaokathon'
