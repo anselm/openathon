@@ -1,0 +1,78 @@
+/* Adapted from http://www.alistapart.com/articles/multicolumnlayouts/ */
+/* 'normal' pages - every page except the splash - have this style */
+/* colors >> orange: #EE7733 > hot pink: #F20073 > teal: #00A49A*/
+
+body { 
+  padding: 0;
+  margin: 0;
+font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
+  background: url('/images/lace.png') repeat-x top center;
+  height: 100%;
+  font-size: 12px;
+}
+
+a {
+ text-decoration:none;
+ font-family: Arial;
+}
+#login-header{ 
+  text-align: right;
+  font-size:85%;
+  text-transform:uppercase;
+  height:81px;
+  /*padding-top:15px;*/
+}
+
+#login-header * {
+  display: inline;
+}
+#login-header #left-login {
+background:transparent url(/images/tile-stripe.png) no-repeat scroll right top;
+height:160px;
+left:554px;
+padding:10px 47px 0 0;
+position:absolute;
+top:0;
+width:200px;
+}
+
+#login-header #right-login{
+ float:left;
+margin-left:810px;
+margin-top:10px;
+max-width:205px;
+}
+
+#login-header i { text-transform: none;
+margin:0 -8px;
+  font-family: serif; }
+
+#login-header #left-login p a, #login-header #right-login p a {
+  padding: 10px;
+}
+
+#login-header #left-login p a:hover, #login-header #right-login p a:hover {
+text-decoration: underline;
+}
+
+#notice{
+  color: #ED1E79;
+  font-family: Times, serif;
+  margin: 15px 0;
+  background: url('/images/yeah.png') no-repeat;
+  padding-left: 165px;
+  min-height: 30px;
+}
+
+#error, #warning{
+  color: red;
+  font-family: Times, serif;
+  background: url('/images/oops.png') no-repeat;
+  margin: 15px 0;
+  padding-left: 165px;
+  min-height: 30px;
+}
+
+
+
+
