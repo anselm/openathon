@@ -8,6 +8,7 @@ class TeamsController < ApplicationController
                                      :update,
                                      :destroy,
                                      :invite,
+                                     :raise,
                                      :sponsor,
 				     :join,
 				     :leave
@@ -16,6 +17,9 @@ class TeamsController < ApplicationController
   # for these methods there MUST be a member logged in
   before_filter :verify_member, :only => [:new,
                                           :create,
+                                          :raise,
+                                          :raise_confirm,
+                                          :raise_do,
                                           :invite,
                                           :invite_confirm,
                                           :invite_do,
@@ -165,6 +169,69 @@ public
   ########################################################################
 
   def calendar
+  end
+
+  def raise
+    if flash[:body]
+      @body = flash[:body]
+    else
+      userid = 0
+      userid = current_user.id if current_user
+      teamid = 0
+      teamid = @team.id if @team
+      @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
+              "Help me raise funds our team for ethos music project" +
+	      "Click on this link to help sponsor me" +
+              "Go to http://openathon.makerlab.com/sponsor/#{teamid}?party=#{userid} and support me!\n\n" +
+              "Thanks!"
+    end
+    if flash[:recipients]
+      @recipients = flash[:recipients]
+    else
+      @recipients = Array.new
+    end
+    @team = nil
+    @team = Team.find(:first,:conditions=>{:id=>current_user.team_id}) if current_user
+  end
+
+  def raise_confirm
+    @team = nil
+    @team = Team.find(:first,:conditions=>{:id=>current_user.team_id}) if current_user
+    email_blob = params[:email_blob]
+    if email_blob.empty?
+      flash[:no_emails] = true
+      flash[:body] = params[:user_message]
+      redirect_to :action => :raise
+    end
+    @recipients = email_blob.split
+    @error_array = Array.new
+    @recipients.each do |email|
+      begin
+        TMail::Address.parse(email)
+      rescue
+        @error_array << email
+      end
+    end
+    flash[:body] = params[:user_message]
+    flash[:recipients] = @recipients
+    if @error_array.length > 0
+      flash[:email_errors] = @error_array
+      redirect_to :action => :raise
+    end
+    @body = params[:user_message]
+  end
+
+  def raise_do
+    recipients = flash[:recipients]
+    body = flash[:body]
+    recipients.each do |email|
+      InviteMailer.deliver_invite(current_user, email, body)
+    end
+    flash[:notice] = 'Invitations sent!'
+    @team = nil
+    @team = Team.find(:first,:conditions=>{:id=>current_user.team_id}) if current_user
+    redirect_to(@team) if @team
+    redirect_to("/") if !@team # OH OH
   end
 
   def invite
