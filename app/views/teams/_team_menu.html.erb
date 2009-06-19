@@ -4,7 +4,7 @@
 <h1><%= link_to 'join team', :action => "join", :id => @team.id %></h1>
 <p>join this team</p>
 <% elsif @team.is_owner?(current_user) %>
-<h1><a href="/sponsor">raise</a></h1>
+<h1><a href="/raise">raise</a></h1>
 <p>ask folks to help sponsor</p>
 <h1><%= link_to "invite", invite_path(current_user.id) %></h1>
 <p>friends to your team</p>
@@ -13,7 +13,7 @@
 <%= link_to '>Leave Team', :action => "leave" , :id => @team.id %>
 </div>
 <% elsif @team.is_member?(current_user) %>
-<h1><a href="/sponsor">raise</a></h1>
+<h1><a href="/raise">raise</a></h1>
 <p>ask folks to help sponsor</p>
 <h1><%= link_to "invite", invite_path(current_user.id) %></h1>
 <p>friends to your team</p>
