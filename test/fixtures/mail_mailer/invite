@@ -1,0 +1,3 @@
+MailMailer#invite
+
+Find me in app/views/mail_mailer/invite.erb

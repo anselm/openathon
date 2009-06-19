@@ -18,7 +18,7 @@ class PasswordResetsController < ApplicationController
 		if @user    
 			@user.reset_perishable_token!
 			magic_url = edit_password_reset_path(:id => @user.perishable_token)  
-			InviteMailer.deliver_password_reset_instructions(@user,magic_url) 
+			MailMailer.deliver_password_reset_instructions(@user,magic_url) 
 			flash[:notice] = "Instructions to reset your password have been emailed to you."  
 			redirect_to root_url  
 		else  
