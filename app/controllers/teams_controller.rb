@@ -239,11 +239,9 @@ public
       userid = current_user.id if current_user
       teamid = 0
       teamid = @team.id if @team
-      @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
-              "Help me raise funds our team for ethos music project" +
-	      "Click on this link to help sponsor me" +
-              "Go to http://openathon.makerlab.com/sponsor/#{teamid}?party=#{userid} and support me!\n\n" +
-              "Thanks!"
+      @body =  "Hey Friend, I'm doing this awesome thing!" +
+               "Join my team! Go to http://openathon.makerlab.com/teams/3?party=3 and lets do this thing." +
+               "Thanks!"
     end
     if flash[:recipients]
       @recipients = flash[:recipients]
