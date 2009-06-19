@@ -2,6 +2,8 @@ class IndexController < ApplicationController
 
   layout 'home'  # :only => :admin
 
+  before_filter :require_admin , :only => :admin
+
   def privacy
     render :layout => 'twocolumn'
   end

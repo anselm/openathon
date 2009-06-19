@@ -1,5 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
+  # activescaffold
+  map.resources :scaffold
+  map.resources :scaffoldusers
+
   # people
   map.resource  :account, :controller => "users"
   map.resource  :user_session
