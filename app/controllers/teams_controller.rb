@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
 
-  layout 'threecolumn'
+  layout 'twocolumn'
 
   # for these methods there MUST be a team in mind
   before_filter :get_team, :only => [:show,
@@ -84,10 +84,7 @@ public
 
   def show
     @member_list = User.find(:all, :conditions => ["team_id = ?", @team.id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @team }
-    end
+    render :layout => "threecolumn"
   end
 
   def new
