@@ -5,30 +5,26 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>VoiceBox Karaokethon! <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'main' %>
-  <%= stylesheet_link_tag 'threecolumn' %>
+  <%= stylesheet_link_tag 'twocolumn' %>
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
   <%= render :partial => "layouts/login_header" %>
   <div id="normal_container">
-     <div id="normal_left">
-      <% if controller.controller_name == 'teams' && controller.action_name == 'show' %>
-        <%= render :partial => "team_menu" %>
-      <% else %>
-      <p>&nbsp;</p>
-      <% end %>
-     </div>
+
      <div id="normal_middle">
   <% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
   <% if flash[:error] %><div id="error"><%= flash[:error] %></div><% end %>
       <%= yield  %>
+
      </div>
+        <%= render :partial => "layouts/footer" %>
+
      <div id="normal_right">
         <% #render :partial => "ads"
 	 %>
      </div>
   </div>
-  <%= render :partial => "layouts/footer" %>
 </body>
 </html>
 

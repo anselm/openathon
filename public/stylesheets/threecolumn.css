@@ -7,6 +7,9 @@
   /* The width and color of the right rail */
   padding: 0;
   margin: 0;
+    min-height: 100%;
+	position: relative;
+
 }
 
 #normal_left{

@@ -9,6 +9,7 @@ font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
   background: url('/images/lace.png') repeat-x top left;
   height: 100%;
   font-size: 12px;
+	height: 100%;
 }
 
 a {
@@ -53,6 +54,31 @@ margin:0 -8px;
 
 #login-header #left-login p a:hover, #login-header #right-login p a:hover {
 text-decoration: underline;
+}
+
+#footer {
+	text-align: center;
+	clear: both;
+	padding-right:70px;
+	width:707px;
+	position: absolute;
+    bottom: 0;
+    color: #aaa;
+}
+
+#footer a {
+	color: #888;
+}
+
+#footer a:visited {
+	color: #aaa;
+}
+#footer a:hover {
+	color: #EE7733;
+	text-decoration: underline;
+}
+#threecolumn #footer {
+	margin-left: -211px;
 }
 
 #notice{
@@ -275,12 +301,12 @@ line-height: 100%;
 }
 .searchleft {
   width:300px;
-  height:200px;
+  height:150px;
   float:left;
 }
 .searchright {
   width:300px;
-  height:200px;
+  height:150px;
   float:right;
 }
 
