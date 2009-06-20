@@ -15,7 +15,7 @@
    %><h3><%= link_to team.name, team %></h3>
    <p class="explain"><%= team.description.strip %></p>
    <% @member_list.each do |user| %>
-    <%= link_to "#{user.firstname}",user, {:class=>'searchlinks'} %><%
+    <%=  user.firstname %><%
   end
   %></div><%
   if left == "right"

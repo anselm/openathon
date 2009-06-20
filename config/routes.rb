@@ -1,5 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
+  # activescaffold
+  map.resources :scaffold
+  map.resources :scaffoldusers
+
   # people
   map.resource  :account, :controller => "users"
   map.resource  :user_session
@@ -32,6 +36,9 @@ ActionController::Routing::Routes.draw do |map|
   map.complete 'complete',    :controller => 'payment',  :action => 'complete'
 
   # general activities
+  map.privacy    'privacy',:controller => 'index',    :action => 'privacy'
+  map.tos    'tos',    :controller => 'index',    :action => 'tos'
+  map.about    'about',  :controller => 'index',    :action => 'about'
   map.admin    'admin',  :controller => 'index',    :action => 'admin'
   map.news     'news',   :controller => 'index',    :action => 'news'
   map.root               :controller => 'index',    :action => 'index'

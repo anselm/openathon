@@ -1,8 +1,17 @@
 class IndexController < ApplicationController
 
-  layout 'home'  # :only => :admin
+  layout 'twocolumn'
+
+  before_filter :require_admin , :only => :admin
 
   def index
+    render :layout => 'home'
+  end
+
+  def privacy
+  end
+
+  def tos
   end
 
   def news
@@ -11,8 +20,12 @@ class IndexController < ApplicationController
   def donate
   end
 
+  def about
+  end
+
   def admin
-    # TODO GUARDS HERE
+    @teams = Team.all
+    @users = User.all
   end
 
 end
