@@ -24,7 +24,7 @@ class PaymentController < ApplicationController
     # throw away the team basically after this - we don't care about it
     @party = nil
     @party = User.find(params[:party].to_i) if params[:party]
-    @partyid = -1
+    @partyid = 0
     @partyid = @party.id if @party
     # collect both possible donations ( we can do this later but might as well get it now also )
     donation = params[:donation]
@@ -34,9 +34,9 @@ class PaymentController < ApplicationController
     donation = donation * 100
     donation = donation.to_i
     # build a new payment that is marked as state new
-    payment = Payment.new(:owner_id=>@partyid,:amount=>donation,:description=>'new')
-    payment.save
-    session[:payment] = payment
+    @payment = Payment.new(:owner_id=>@partyid,:amount=>donation,:description=>'new')
+    @payment.save
+    session[:payment] = @payment
   end
 
   # here is the real meat - all values need to be prepared by here
@@ -44,14 +44,14 @@ class PaymentController < ApplicationController
   # http://localhost:3000/donate?team=2&party=2&donation=10.00&donation2=20&x=101&y=11
   def checkout
     # there must be a payment
-    payment = session[:payment]
-    if !payment
+    @payment = session[:payment]
+    if !@payment
       @message = "Sorry an internal error has occured"
       render :action => 'error'
       return
     end
     # the donation can change based on parameters supplied
-    if payment.amount < 100
+    if @payment.amount < 100
       # collect both possible donations
       donation = params[:donation]
       donation2 = params[:donation2]
@@ -59,9 +59,9 @@ class PaymentController < ApplicationController
       donation = donation.to_f
       donation = donation * 100
       donation = donation.to_i
-      payment.update_attributes( :amount => donation )
+      @payment.update_attributes( :amount => donation )
     end
-    if payment.amount < 100
+    if @payment.amount < 100
       @message = "Sorry no donation found - did you pick a value?"
       render :action => 'error'
       return
@@ -69,18 +69,18 @@ class PaymentController < ApplicationController
     # try get a party if there is one passed - this overrides anything from before.
     @party = nil
     @party = User.find(params[:party].to_i) if params[:party]
-    @partyid = -1
+    @partyid = 0
     @partyid = @party.id if @party
-    payment.update_attributes( :owner_id => @partyid )
+    @payment.update_attributes( :owner_id => @partyid ) if @partyid > 0
     # it is ok not to have a person to donate to in the case of the general fun
-    #if payment.owner_id < 0
+    #if @payment.owner_id == 0
     #  @message = "Sorry no person to donate to found"
     #  render :action => 'error'
     #  return
     #end
 
     # move payment along to the next stage
-    payment.update_attributes( :description=>'checkout', :amount => donation )
+    @payment.update_attributes( :description=>'checkout', :amount => donation )
     
     # TODO remove garbage
     setup_response = setup_gateway.setup_purchase(donation,
@@ -121,13 +121,13 @@ class PaymentController < ApplicationController
     else
       # should be ok
     end
-    payment = session[:payment]
-    if !payment
+    @payment = session[:payment]
+    if !@payment
       @message = "Sorry your payment went through but we had trouble recording it"
       render :action => 'error'
       return
     else
-      payment.update_attributes( :description=>'done' )
+      @payment.update_attributes( :description=>'done' )
     end
   end
 

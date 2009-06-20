@@ -4,36 +4,40 @@
  
 <% link_to "show teams", teams_path %>
 
-<div id="admin">
-  <h2>stats</h2>
-  <table>
-   <% Team.find(:all).each do |team| %>
-    <tr>
-     <td><%= team.name %></td>
-     <td>$2049</td>
-      <table class="user">
-    <% User.find(:all, :conditions => { :team_id => team.id  }).each do |user| %>
-        <tr>
-          <td><%= user.firstname %></td>
-          <td>$233</td>
-        </tr>
-    <% end %>
-    </tr>
-   <% end %>
-  </table>
-</div>
+<script>
+function visibility_toggle(id) {
+  var node = document.getElementById(id);
+  if( node ) {
+    if(node.style.visibility == 'visible') node.style.visibility = 'hidden';
+    else node.style.visibility = 'visible';
+  }
+}
+</script>
 
+<div id="admin">
+ <% @teams.each do |team| %>
+  <div onclick="visibility_toggle('members<%=team.id%>');"><%= team.name %></div>
+  <div id="members<%=team.id%>" style="visibility:hidden">
+    <% User.find(:all, :conditions => { :team_id => team.id  }).each do |user| %>
+      <%= 0 %> <%= user.firstname %>
+    <% end %>
+  </div>
+ <% end %>
+</div>
 
 <div id="updates">
-<% # form_tag :controller => 'password_resets', :action => 'create' %>
-<%=# f.text_area :update %>
-<%=# submit_tag 'update' %>
-<%# end %>
+<% form_tag '/posts' do -%>
+<%= text_area_tag "post", "Message that shows up everywhere", :rows => 10, :cols => 20 %>
+<br/>
+<%= submit_tag 'update' %>
+<% end -%>
 </div>
-
+<br/>
 <div id="email">
-<% # form_tag do |f| %>
-<%= # f.text_area :message %>
-<%= # submit_tag 'email' %>
+<% form_tag do %>
+<%= text_area_tag "post", "Send this message to everybody", :rows => 10, :cols => 20 %>
+<%= submit_tag 'email' %>
 <% end %>
 </div>
+
+
