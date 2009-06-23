@@ -26,5 +26,21 @@
 </div>
 
 <h1>what's up</h1>
+<% if current_user %>
+<div id="notes">
+<% form_for Note.new do |f| %>
+  <%= f.hidden_field(:team_id, :value => @team.id) %>
+  <%= f.hidden_field(:owner_id, :value => current_user.id) %>
+  <%= f.hidden_field(:kind, :value => 'comment') %>
+  <%= f.text_field :description %>
+  <%= submit_tag 'share' %>
+<% end %>
+</div> 
+<% end %>
 
-<%= Note.find(:all) %>
+<% Note.find(:all).each do |n| %>
+<% nowner = User.find_by_id(n.owner_id) %>
+<%= image_tag("/system/photos/#{n.owner_id}/small/" + nowner.photo_file_name, :size => "50x50") %>
+<p><span class="namelabel"><%= nowner.firstname %> <%= nowner.lastname %></span> <%= n.description %></p>
+<p class="date"><%= n.created_at %></p>
+<% end %>

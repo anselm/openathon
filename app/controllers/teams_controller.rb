@@ -315,5 +315,21 @@ public
     end
   end
 
+  def create_note
+    @note = Note.new(params[:note])
+
+    respond_to do |format|
+      if @note.save
+        flash[:notice] = 'Note was successfully created.'
+        # redirect_to teams_path
+        format.html { redirect_to teams_path }
+        format.xml  { render :xml => @note, :status => :created, :location => @note }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @note.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
 end
 

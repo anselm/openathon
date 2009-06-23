@@ -5,6 +5,7 @@ class Team < ActiveRecord::Base
 
   has_many :users
   has_many :bookings
+  has_many :notes
 
  # i cannot get this to work - anselm may 15 2009
  #  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/

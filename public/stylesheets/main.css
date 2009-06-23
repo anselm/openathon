@@ -309,6 +309,21 @@ line-height: 100%;
   height:150px;
   float:right;
 }
+#notes form{
+  background-color:#9fd7ff;
+  padding: 20px;
+  margin-right: 60px;
+  margin-bottom: 20px;
+}
+.namelabel { 
+  font-weight: bold;
+  text-transform:uppercase;
+  font-size: 90%;
+  display: inline;
+}
 
-
-
+.date{
+  color: grey;
+  background-image: url("/images/line.png") repeat-x top center;
+  text-align: right;
+}

@@ -1,4 +1,7 @@
 class NotesController < ApplicationController
+
+  #before_filter :require_user, :except => [:show]
+
   # GET /notes
   # GET /notes.xml
   def index
@@ -45,7 +48,8 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.save
         flash[:notice] = 'Note was successfully created.'
-        format.html { redirect_to(@note) }
+        # redirect_to teams_path
+        format.html { redirect_to teams_path }
         format.xml  { render :xml => @note, :status => :created, :location => @note }
       else
         format.html { render :action => "new" }
