@@ -30,7 +30,8 @@ class IndexController < ApplicationController
 
   def admin_announcement
     note = Note.find(:first, :conditions => { :kind => "announcement" } )
-    note = Note.new(:kind => "announcement", :description => params[:announcement] ) if !note
+    note = Note.new(:kind => "announcement" ) if !note
+    note.description = params[:announcement]
     note.save
     redirect_to "/admin"
   end
