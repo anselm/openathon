@@ -22,3 +22,16 @@ kandi:
   password_salt: ERYLClbKXEA8KS9eIgjp
   persistence_token: 468df715a475233589d64cdb3b1f090eda81b6379017e487392f2a98383f71685845fffd67ba63741f8f34c82b6e37e55fb785d25767e2ce376c88775462ef39
 
+brandi:
+  id: 3
+  team_id: 2
+  role: captain
+  admin: true
+  paid: true
+  firstname: brandi
+  lastname: kane
+  email: brandi@kane.com
+  crypted_password: d48bf71b97ee65fc7d2202320ee129d6e3c9e3732a7d96d86a877f46dc63035618968ac8883bb34c953b7c155457b97f91fe63a9e6cad6010a09fae507bdc0e9
+  password_salt: ERYLClbKXEA8KS9eIgjp
+  persistence_token: 468df715a475233589d64cdb3b1f090eda81b6379017e487392f2a98383f71685845fffd67ba63741f8f34c82b6e37e55fb785d25767e2ce376c88775462ef39
+

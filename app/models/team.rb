@@ -29,7 +29,7 @@ class Team < ActiveRecord::Base
 	member.payments = total
 	members << member
     end
-    members.sort! { |x,y| x.payments <=> y.payments }
+    members.sort! { |y,x| x.payments <=> y.payments }
     # less than elegant
     self.total_donations = 0
     members.each do |member|
@@ -46,7 +46,7 @@ class Team < ActiveRecord::Base
        team.payment_sorted_users
        t << team
     end
-    t.sort! { |x,y| x.total_donations <=> y.total_donations }
+    t.sort! { |y,x| x.total_donations <=> y.total_donations }
     return t
   end
 
@@ -58,7 +58,7 @@ class Team < ActiveRecord::Base
        users = team.payment_sorted_users
        u.concat( users )
     end
-    u.sort! { |x,y| x.payments <=> y.payments }
+    u.sort! { |y,x| x.payments <=> y.payments }
     return u
   end
 

@@ -4,3 +4,13 @@ one:
   id: 1
   name: warriors
   description: the warriors are the team to love
+
+two:
+  id: 2
+  name: suga mommas
+  description: the suga mammas are the team to love
+
+tre:
+  id: 3
+  name: kletzo champs 
+  description: the kletzos are the team to love
