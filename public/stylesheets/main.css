@@ -12,36 +12,50 @@ font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
 	height: 100%;
 }
 
+html {
+	height: 100%;
+}
 a {
  text-decoration:none;
  font-family: Arial;
 }
 #login-header{ 
-  text-align: right;
-  font-size:85%;
-  text-transform:uppercase;
-  height:81px;
-  /*padding-top:15px;*/
+ clear:both;
+font-size:85%;
+height:95px;
+overflow:hidden;
+text-align:right;
+text-transform:uppercase;
 }
 
 #login-header * {
   display: inline;
 }
+#login-header #logo {
+	background: url(/images/logo_RYV.png) no-repeat scroll left top;
+	width: 124px;
+	height: 93px;
+	display: block;
+	margin-left:19px;
+	float: left;
+	/margin-left: 9px;
+}
 #login-header #left-login {
 background:transparent url(/images/tile-stripe.png) no-repeat scroll right top;
 height:160px;
-left:264px;
+left:364px;
 padding:10px 47px 0 0;
 position:absolute;
 top:0;
-width:500px;
+width:400px;
 }
 
 #login-header #right-login{
- float:left;
-margin-left:810px;
+left:823px;
 margin-top:10px;
 max-width:205px;
+position:absolute;
+top:0;
 }
 
 #login-header i { text-transform: none;
@@ -202,7 +216,7 @@ color: #F20073;
 		width:468px;
 		padding:0 0 20px 0;
 		margin:10px 0 35px 0; 
-		background:url("/images/teambox.png") bottom right no-repeat;
+		background:url("/images/teambox.png") bottom left no-repeat;
    min-height: 150px;
 }
 
@@ -235,7 +249,7 @@ font-size:130%;
 
 #teamtop5 table{
   margin:10px 29px 0 0;
-  width: 50%;
+  width: 222px;
   float:right;
   font-family: Verdana;
   font-size: 1em;
