@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
 end
 
 class User
+
+  attr_accessor :payments
+
   # roles are hardcoded TODO we could be more flexible
   ROLE_PARTICIPANT = "participant"
   ROLE_CAPTAIN = "captain"
@@ -17,10 +20,5 @@ class User
       :medium => "300x300>",
       :large => "400x400>" 
     }
-
-
-  def get_donations
-    return 0
-  end
 
 end

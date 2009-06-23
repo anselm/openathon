@@ -16,7 +16,6 @@ class TeamsController < ApplicationController
 
   # for these methods there MUST be a member logged in
   before_filter :verify_member, :only => [:new,
-                                          :create,
                                           :raise,
                                           :raise_confirm,
                                           :raise_do,
@@ -51,7 +50,7 @@ private
 
   def verify_member
     if current_user == nil
-      flash[:error] = "Please signup to create or join a team."
+      # flash[:error] = "Please signup to create or join a team."
       redirect_to "/signup"
       return false
     end
@@ -83,7 +82,7 @@ public
   end
 
   def show
-    @member_list = User.find(:all, :conditions => ["team_id = ?", @team.id])
+    @member_list = @team.payment_sorted_users()
     render :layout => "threecolumn"
   end
 
@@ -99,6 +98,13 @@ public
   end
 
   def create
+
+    if !current_user
+      store_location "/create"
+      redirect_to "/signup"
+      return
+    end
+
     if false && !current_user.paid?
       flash[:error] = 'You must pay the entry fee before starting a team.'
       redirect_to payment_path

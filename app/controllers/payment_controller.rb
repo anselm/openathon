@@ -34,7 +34,7 @@ class PaymentController < ApplicationController
     donation = donation * 100
     donation = donation.to_i
     # build a new payment that is marked as state new
-    @payment = Payment.new(:owner_id=>@partyid,:amount=>donation,:description=>'new')
+    @payment = Payment.new(:owner_id=>@partyid,:amount=>donation,:description=> Payment::NEW )
     @payment.save
     session[:payment] = @payment
   end
@@ -80,7 +80,7 @@ class PaymentController < ApplicationController
     #end
 
     # move payment along to the next stage
-    @payment.update_attributes( :description=>'checkout', :amount => donation )
+    @payment.update_attributes( :description=> Payment::CHECKOUT , :amount => donation )
     
     # TODO remove garbage
     setup_response = setup_gateway.setup_purchase(donation,
@@ -127,7 +127,7 @@ class PaymentController < ApplicationController
       render :action => 'error'
       return
     else
-      @payment.update_attributes( :description=>'done' )
+      @payment.update_attributes( :description=> Payment::DONE )
     end
   end
 

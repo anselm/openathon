@@ -5,23 +5,45 @@ class Team < ActiveRecord::Base
 
   has_many :users
   has_many :bookings
+  # has_many :payments, :through => :owner_id
 
- # i cannot get this to work - anselm may 15 2009
- #  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/
+  # TODO fix i cannot get this to work - anselm may 15 2009
+  #  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/
+
+  ##################################################################################################
+  # helpers for payments
+  ##################################################################################################
+
+  # not the most elegant code ever written...  basically associate payment totals with members
+  def payment_sorted_users
+    members = []
+    User.find(:all, :conditions => ["team_id = ?", self.id]).each do |member|
+	total = 0
+	@payments = Payment.find(:all,
+                     :conditions => ["owner_id = ? AND description = ?", member.id, Payment::DONE ] )
+	@payments.each do |payment|
+		total = total + payment.amount
+	end
+	member.payments = total
+	members << member
+    end
+    members.sort! { |x,y| x.payments <=> y.payments }
+    return members 
+  end
+
+  ##################################################################################################
+  # Search
+  #
+  # We're going to want to at some point allow real search
+  # We also want to push down work on the model to the model as we are doing
+  # For now this implements what we need but it is not efficient
+  ##################################################################################################
 
   # super lazy
   # def lazy_search(phrase)
   #  terms = phrase.split.collect { |c| "%{c.downcase}%" }
   #  find_by_sql(["select t.* from table teams where #{ (["(lower(t.text_field1) like ? or lower(t.text_field1) like ?)"] * tokens.size).join(" and ") } order by s.created_on desc", *(tokens * 2).sort])
   # end
-
-  #
-  # Search
-  #
-  # We're going to want to at some point allow real search
-  # We also want to push down work on the model to the model as we are doing
-  # For now this implements what we need but it is not efficient
-  # 
 
   def self.get_active_with_search(phrase)
 
@@ -49,13 +71,13 @@ class Team < ActiveRecord::Base
 
   end
 
-  #
+  ################################################################################################
   # slot availability
   #
   # a team captain uses the team form to edit their team and select "hoped for" time slots
   #
   # an administrator can promote a slot to be the real one
-  #
+  ################################################################################################
 
   def before_destroy
     Booking.destroy_all(:team_id => self.id)
@@ -104,9 +126,9 @@ class Team < ActiveRecord::Base
   end
 
 
-  #
+  ################################################################################################
   # helper utilities to figure the role of a participant in a team
-  #
+  ################################################################################################
 
   def is_owner?(person)
     return person !=nil &&  person.team_id == self.id && person.role == "captain"
