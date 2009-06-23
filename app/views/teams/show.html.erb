@@ -1,13 +1,5 @@
-
-<%
-  total_donations = 0
-  @member_list.each do |member|
-    total_donations = total_donations + member.payments
-  end
-%>
-
 <h1><%= @team.name %></h1>
-<h1>total donations are <%= number_to_currency(total_donations/100) %></h1>
+<h1>total donations are <%= number_to_currency(@team.total_donations/100) %></h1>
 <p class="explain"><%= @team.description %></p>
 <div id="teamtop5">
  <div class="boxxy">

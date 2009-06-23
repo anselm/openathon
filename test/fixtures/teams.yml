@@ -1,11 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
-  description: MyString
-  depiction: MyString
-
-two:
-  title: MyString
-  description: MyString
-  depiction: MyString
+  id: 1
+  name: warriors
+  description: the warriors are the team to love

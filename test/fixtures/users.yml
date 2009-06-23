@@ -1,6 +1,24 @@
 ben:
-  login: bjohnson
-  password_salt: <%= salt = User.unique_token %>
-  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("benrocks" + salt) %>
-  persistence_token: 6cde0674657a8a313ce952df979de2830309aa4c11ca65805dd00bfdc65dbcc2f5e36718660a1d2e68c1a08c276d996763985d2f06fd3d076eb7bc4d97b1e317
+  id: 1
+  team_id: 1
+  role: normal
+  firstname: ben
+  lastname: johnson
   email: ben@ben.com
+  crypted_password: 1234
+  password_salt: 1234
+  persistence_token: 1234
+
+kandi:
+  id: 2
+  team_id: 1
+  role: captain
+  admin: true
+  paid: true
+  firstname: kandi
+  lastname: kane
+  email: kandi@kane.com
+  crypted_password: d48bf71b97ee65fc7d2202320ee129d6e3c9e3732a7d96d86a877f46dc63035618968ac8883bb34c953b7c155457b97f91fe63a9e6cad6010a09fae507bdc0e9
+  password_salt: ERYLClbKXEA8KS9eIgjp
+  persistence_token: 468df715a475233589d64cdb3b1f090eda81b6379017e487392f2a98383f71685845fffd67ba63741f8f34c82b6e37e55fb785d25767e2ce376c88775462ef39
+
