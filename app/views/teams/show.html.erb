@@ -1,12 +1,3 @@
-
-<%
-  total_donations = 0
-  @member_list.each do |member|
-    total_donations = total_donations + member.payments
-  end
-%>
-
-
 <h1 class="grey"><%= @team.name %></h1>
 <p class="explain"><%= @team.description %></p>
 <div id="teamtop5">
@@ -14,12 +5,12 @@
   <div class="no1">
   <img id="no1graphic" src="/images/no1.png?" alt="No1"/>
   <% if @member_list && @member_list.length >0 && @member_list[0].photo_file_name %>
-  <%= image_tag("/system/photos/#{@member_list[0].id}/small/" + @member_list[0].photo_file_name, :size => "88x88", :style => "border: 2px solid yellow;") %> 
+  <%= image_tag("/system/photos/#{@member_list[0].id}/small/" + @member_list[0].photo_file_name, :size => "88x88", :style => "border: 2px solid yellow;") %>
   <% else %>
   <img id="no1" src="/images/default.jpg", width="88" height="88"/>
   <% end %>
   <% if @member_list && @member_list.length >0 %>
-  <p><%= @member_list[0].firstname + " " +  @member_list[0].lastname %></p>
+  <p><%= @member_list[0].firstname + " " + @member_list[0].lastname %></p>
   <% end %>
   </div>
   <table>
@@ -33,6 +24,11 @@
  </div>
 </div>
 <h2 class="grey">total donations are <%= number_to_currency(@team.total_donations/100) %></h2>
-<h1>what's up</h1>
+<h1>the drop</h1>
 
+<% if @announcement %>
+<%= @announcement.description %>
+<% end %>
+ 
+<h1>what's up</h1>
 <%= Note.find(:all) %>

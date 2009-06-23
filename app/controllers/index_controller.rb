@@ -28,4 +28,14 @@ class IndexController < ApplicationController
     @users = User.all
   end
 
+  def admin_announcement
+    note = Note.find(:first, :conditions => { :kind => "announcement" } )
+    note = Note.new(:kind => "announcement", :description => params[:announcement] ) if !note
+    note.save
+    redirect_to "/admin"
+  end
+
+  def admin_message
+  end
+
 end
