@@ -51,19 +51,26 @@ width:400px;
 }
 
 #login-header #right-login{
-left:823px;
+left:843px;
 margin-top:10px;
 max-width:205px;
 position:absolute;
 top:0;
 }
 
-#login-header i { text-transform: none;
-margin:0 -8px;
-  font-family: serif; }
+#login-header i { 
+text-transform: none;
+  font-family: serif;
+padding:0 15px 0 0;
+   }
+   
+#login-header i#signedout {
+	padding: 0 5px;
+	margin-left: -20px;
+}
 
 #login-header #left-login p a, #login-header #right-login p a {
-  padding: 10px;
+  padding-right: 20px;
 }
 
 #login-header #left-login p a:hover, #login-header #right-login p a:hover {
@@ -75,7 +82,6 @@ text-decoration: underline;
 	clear: both;
 	padding-right:70px;
 	width:707px;
-	position: absolute;
     bottom: 0;
     color: #aaa;
 }
@@ -166,13 +172,15 @@ font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;
   line-height:120%;
 
 }
+#normal_middle h1.grey, .grey {
+	color:  #666;
+}
 
 #normal_middle input {
   border: 8px solid #f0f0f0;
   font-size: 1.5em;
   font-weight: bold;
-  margin-bottom: 20px;
-}
+margin:4px;}
 
 #normal_middle input[type="submit"] {
   font-size: 1.5em;
@@ -215,7 +223,7 @@ color: #F20073;
 #teamtop5{
 		width:468px;
 		padding:0 0 20px 0;
-		margin:10px 0 35px 0; 
+		margin:10px 0 12px 0; 
 		background:url("/images/teambox.png") bottom left no-repeat;
    min-height: 150px;
 }

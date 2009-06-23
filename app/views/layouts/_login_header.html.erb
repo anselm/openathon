@@ -9,7 +9,7 @@
     <p><i>logged in as <%= current_user.firstname %> <%= current_user.lastname %></i></p>
     <p><%= link_to "Sign out", signout_path, :method => :delete %></p>
   <% else %>
-    <p><%= link_to "Sign up", signup_path %> <i>or</i> <%= link_to "Sign in", signin_path %></p>
+    <p><%= link_to "Sign up", signup_path %> <i id="signedout">or</i> <%= link_to "Sign in", signin_path %></p>
   <% end %>
   </div>
 </div>
