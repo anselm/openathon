@@ -1,6 +1,8 @@
 
 class Team < ActiveRecord::Base
 
+  attr_accessor :total_donations
+
   # acts_as_ferret :fields => [ :name, :description ]
 
   has_many :users
@@ -27,8 +29,37 @@ class Team < ActiveRecord::Base
 	member.payments = total
 	members << member
     end
-    members.sort! { |x,y| x.payments <=> y.payments }
+    members.sort! { |y,x| x.payments <=> y.payments }
+    # less than elegant
+    self.total_donations = 0
+    members.each do |member|
+      self.total_donations = self.total_donations + member.payments
+    end
     return members 
+  end
+
+  # not the most elegant code ever written...
+  def self.payment_top_teams
+    t = []
+    teams = Team.find(:all, :conditions => ["active = ?", true])
+    teams.each do |team|
+       team.payment_sorted_users
+       t << team
+    end
+    t.sort! { |y,x| x.total_donations <=> y.total_donations }
+    return t
+  end
+
+  # not the most elegant code ever written...
+  def self.payment_top_users
+    u = []
+    teams = Team.find(:all, :conditions => ["active = ?", true])
+    teams.each do |team|
+       users = team.payment_sorted_users
+       u.concat( users )
+    end
+    u.sort! { |y,x| x.payments <=> y.payments }
+    return u
   end
 
   ##################################################################################################

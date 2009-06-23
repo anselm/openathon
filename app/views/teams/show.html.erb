@@ -6,6 +6,7 @@
   end
 %>
 
+
 <h1 class="grey"><%= @team.name %></h1>
 <p class="explain"><%= @team.description %></p>
 <div id="teamtop5">
@@ -31,7 +32,7 @@
   </table>
  </div>
 </div>
-<h2 class="grey">total donations are <%= number_to_currency(total_donations/100) %></h1>
+<h2 class="grey">total donations are <%= number_to_currency(@team.total_donations/100) %></h2>
 <h1>what's up</h1>
 
 <%= Note.find(:all) %>
