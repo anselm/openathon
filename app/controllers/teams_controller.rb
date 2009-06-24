@@ -82,6 +82,7 @@ public
   end
 
   def show
+    @announcement = Note.find(:first, :conditions => { :kind => "announcement" } )
     @member_list = @team.payment_sorted_users()
     render :layout => "threecolumn"
   end
