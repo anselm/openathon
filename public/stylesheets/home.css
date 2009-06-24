@@ -19,6 +19,7 @@ html {
 #horiz_bar {
 	background: url(/images/bground_blue.gif) repeat-x left top;
 overflow: hidden;
+width: 100%;
 }
 #splash_container{
   float:left;
@@ -36,7 +37,7 @@ overflow: hidden;
 #splash_middleside{
   float:left;
   width:560px;
-  background: url('/images/bg3.png') repeat-y top right;
+  background: url('/images/bg_home.gif') repeat-y top right;
   min-height:560px;
 
 }
@@ -54,10 +55,10 @@ overflow: hidden;
 }
 
 #raise-voice{
-  font-size: 85%;
+  font-size: 90%;
   background:#000  url("/images/bg2.png") repeat-y top right;
   color: #fff;
-  padding: 17px 42px 17px 22px;
+  padding: 17px 58px 17px 22px;
   text-align: justify;
   height: 80px;
 }
@@ -116,7 +117,9 @@ overflow: hidden;
 #topraisers td {
   padding: 0px;
 }
-
+a {
+ text-decoration:none;
+}
 #footer {
 	text-align: center;
 	clear: both;
@@ -124,6 +127,7 @@ overflow: hidden;
 	width:707px;
     bottom: 0;
     color: #aaa;
+    padding-top: 1px;
 }
 
 #footer a {
