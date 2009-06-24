@@ -1,6 +1,6 @@
 /* Adapted from http://www.alistapart.com/articles/multicolumnlayouts/ */
 /* 'normal' pages - every page except the splash - have this style */
-/* colors >> orange: #EE7733 > hot pink: #F20073 > teal: #00A49A*/
+/* colors >> orange: #F15A24 > hot pink: #F20073 > teal: #00A49A*/
 
 body { 
   padding: 0;
@@ -92,7 +92,7 @@ text-decoration: underline;
 	color: #aaa;
 }
 #footer a:hover {
-	color: #EE7733;
+	color: #F15A24;
 	text-decoration: underline;
 }
 
@@ -187,7 +187,7 @@ margin:6px 0 12px;
   font-size: 1.5em;
   font-weight: bold;
   padding: 8px;
-  background-color: #EE7733;
+  background-color: #F15A24;
   color: white;
   border: 0;
 }
@@ -201,7 +201,7 @@ margin:6px 0 12px;
   margin: 0px;
 }
 #normal_left a, #normal_middle a {
-color:#EE7733;
+color:#F15A24;
 font-family:Verdana;
 font-size:0.9em;
 font-style:normal;
@@ -283,6 +283,30 @@ line-height: 100%;
 
 #team_detail_controls {
 	padding-bottom: 13px;
+}
+
+#latest_drop {
+	margin: 18px 0;
+}
+#latest_drop p {
+	margin: 4px 0;
+}
+#drop_title {
+	color:#F15A24;
+font-weight:bold;
+margin-right:4px;
+text-transform:uppercase;
+}
+#drop_date {
+	color: #666;
+	margin-right: 3px;
+	font-size: 90%;
+}
+#drop_author {
+	font-style: italic;	
+	font-family:Georgia,Garamond,"Times New Roman",serif;
+		color: #666;
+
 }
 
 #admin{

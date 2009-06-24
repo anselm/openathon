@@ -24,8 +24,11 @@
  </div>
 </div>
 <h2 class="grey">total donations are <%= number_to_currency(@team.total_donations/100) %></h2>
-<h1>the drop</h1>
-
+<div id="latest_drop">
+<span id="drop_title">Latest Drop </span><span id="drop_date">05-11-2010</span><span id="drop_author">
+from Scott</span>
+<p>Some important news goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
 <% if @announcement %>
 <%= @announcement.description %>
 <% end %>
