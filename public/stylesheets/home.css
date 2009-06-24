@@ -3,51 +3,63 @@
 body { padding: 0;
 margin: 0;
 font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
+  font-size: 12px;
+	height: 100%;
 }
 
+
+html {
+	height: 100%;
+}
+
+
+#normal_container {
+	width: 100%;
+	}
+#horiz_bar {
+	background: url(/images/bground_blue.gif) repeat-x left top;
+overflow: hidden;
+}
 #splash_container{
   float:left;
   width: 421px;
-  border-left:150px solid #fff; 
-  /* The width and color of the left rail */
-  border-right:300px solid #fff; 
-  /* The width and color of the right rail */
+  margin-left: 400px;
 }
 #splash_leftside{
   float:left;
-  width:150px;
-  margin-left:-150px;
-  position:relative;
-  background-color: #a5ceff;
-  height:112px;
+  width:201px;
+  position:relative;  
+  padding: 25px;
+  background-color: #A5CEFF;
+  height: 64px;
 }
 #splash_middleside{
-  background: #009989 url("/images/bg1.png") repeat-y top right;
   float:left;
-  width:421px;
-  margin-right:-500px;
-  padding-bottom: 30px;
+  width:560px;
+  background: url('/images/bg3.png') repeat-y top right;
+  min-height:560px;
+
 }
 #splash_rightside{
-  font-size: 60%;
+  font-size: 70%;
   text-transform: uppercase;
   font-weight: bold;
-  float:right;
+  float:left;
   width:300px;
-  margin-right:-317px;
   position:relative;
   background-color: #a5ceff;
   text-align: right;
-  height:95px;
+  height:97px;
   padding: 17px 17px 0px 0px;
 }
 
 #raise-voice{
-  font-size: 75%;
+  font-size: 85%;
   background:#000  url("/images/bg2.png") repeat-y top right;
   color: #fff;
   padding: 17px 42px 17px 22px;
   text-align: justify;
+  height: 80px;
 }
 #raise-voice h2{
   color: orange;
@@ -70,7 +82,7 @@ font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
 } 
 #mainmenu p{
   text-transform: uppercase;
-  font-size: 70%; 
+  font-size: 80%; 
   color: #000;
   padding: 0;
   padding-bottom: 15px;
@@ -80,7 +92,7 @@ font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
 #topraisers {
   background-image: url("/images/top5bg.png");
   margin: 0px 20px;
-  font-size: 85%;
+  font-size: 95%;
   color: white;
   width: 316px;
   height: 161px;
@@ -90,11 +102,12 @@ font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
 
 .top5 { 
   display: inline;
-  width: 70%;
+  width: 47%;
+  float: l;
   background-color: #2f2d24;
 }
 
-#topraisers tr > th{
+#topraisers tr th{
   border-top: 3px dashed #76d842;
   border-bottom: 3px dashed #76d842;
   color: #c9f41c;
@@ -102,5 +115,26 @@ font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
 
 #topraisers td {
   padding: 0px;
+}
+
+#footer {
+	text-align: center;
+	clear: both;
+	padding-right:70px;
+	width:707px;
+    bottom: 0;
+    color: #aaa;
+}
+
+#footer a {
+	color: #888;
+}
+
+#footer a:visited {
+	color: #aaa;
+}
+#footer a:hover {
+	color: #EE7733;
+	text-decoration: underline;
 }
 

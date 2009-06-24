@@ -4,14 +4,16 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>VoiceBox Karaokethon! <%= controller.controller_name + " => " + controller.action_name %></title>
-  <%= stylesheet_link_tag 'home' %>
+  <%= stylesheet_link_tag 'threecolumn' %>
+  <%= stylesheet_link_tag 'home' %> 
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
   <% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
   <% if flash[:error] %><div id="error"><%= flash[:error] %></div><% end %>
-  <div id="splash_container">
+  <div id="normal_container">
     <%= image_tag("yell2.png") %>
+    <div id="horiz_bar">
     <div id="splash_leftside">
     <p>&nbsp;</p>
     </div>
@@ -21,6 +23,7 @@
     </div>
     <div id="splash_rightside">
     <%= render :partial => "index/login_header" %>
+    </div>
     </div>
   </div>
   <%= render :partial => "layouts/footer" %>

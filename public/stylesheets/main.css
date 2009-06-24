@@ -35,10 +35,8 @@ text-transform:uppercase;
 	background: url(/images/logo_RYV.png) no-repeat scroll left top;
 	width: 124px;
 	height: 93px;
-	display: block;
 	margin-left:19px;
 	float: left;
-	/margin-left: 9px;
 }
 #login-header #left-login {
 background:transparent url(/images/tile-stripe.png) no-repeat scroll right top;
@@ -62,6 +60,7 @@ top:0;
 text-transform: none;
   font-family: serif;
 padding:0 15px 0 0;
+font-size:105%;
    }
    
 #login-header i#signedout {
@@ -96,9 +95,6 @@ text-decoration: underline;
 #footer a:hover {
 	color: #EE7733;
 	text-decoration: underline;
-}
-#threecolumn #footer {
-	margin-left: -211px;
 }
 
 #notice{
@@ -137,7 +133,7 @@ text-decoration: none !important;
   color:#F20073;
   padding: 0;
   padding-bottom: 15px;
-  line-height:.1;
+	margin-top: 6px;
 }
 
 #normal_left p.ital, #normal_left li{
@@ -180,9 +176,15 @@ font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;
   border: 8px solid #f0f0f0;
   font-size: 1.5em;
   font-weight: bold;
-margin:4px;}
+margin:6px 0 12px;
+;}
 
-#normal_middle input[type="submit"] {
+#normal_middle input#checkbox_field {
+	margin: 0 4px;
+	border: 0;
+}
+
+#normal_middle input.submit {
   font-size: 1.5em;
   font-weight: bold;
   padding: 8px;
