@@ -104,11 +104,14 @@ class Team < ActiveRecord::Base
 
   ################################################################################################
   # slot availability
+  # no longer used
   #
   # a team captain uses the team form to edit their team and select "hoped for" time slots
   #
   # an administrator can promote a slot to be the real one
   ################################################################################################
+
+=begin
 
   def before_destroy
     Booking.destroy_all(:team_id => self.id)
@@ -156,6 +159,7 @@ class Team < ActiveRecord::Base
     return !self.slot_taken?(slotname)
   end
 
+=end
 
   ################################################################################################
   # helper utilities to figure the role of a participant in a team

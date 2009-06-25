@@ -1,10 +1,6 @@
 
 <% form_for(@team,:html=>{:multipart=>true}) do |f| %>
 
-<div style="float:left;padding:30px">
-<%= render :partial => "calendar" %>
-</div>
-
 <div style="float:left;">
   <%= f.error_messages %>
     <%= f.label :name %><br />
@@ -16,6 +12,15 @@
     <%= f.label :photo %><br />
     <%= f.file_field :photo %>
 <br />
+how many hours would you like to sing for?</br>
+<input type="radio" name="team[hours]" value="3" >3</input><br/>
+<input type="radio" name="team[hours]" value="4" >4</input><br/>
+<input type="radio" name="team[hours]" value="5" >5</input><br/>
+<br />
+please describe in english the ideal times that you would like to sing at. we will use your input to help plan out the schedule.
+    <%= f.text_area :calendar %>
+<br/>
+
   <% if admin? %>
    <%= f.label :active, "Team is active: " %>
    <%= f.check_box :active %>
