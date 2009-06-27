@@ -5,6 +5,10 @@ class IndexController < ApplicationController
   before_filter :require_admin , :only => :admin
 
   def index
+    if current_user && current_user.team_id > 0
+      redirect_to :controller => :teams, :action => :show, :id => current_user.team_id
+      return
+    end
     render :layout => 'home'
   end
 
