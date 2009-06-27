@@ -24,13 +24,12 @@
  </div>
 </div>
 <h2 class="grey">total donations are <%= number_to_currency(@team.total_donations/100) %></h2>
-<div id="latest_drop">
-<span id="drop_title">Latest Drop </span><span id="drop_date">05-11-2010</span><span id="drop_author">
-from Scott</span>
-<p>Some important news goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
 <% if @announcement %>
-<%= @announcement.description %>
+<div id="latest_drop">
+<span id="drop_title">Latest Drop </span><span id="drop_date"><%= @announcement.created_at.strftime("%d-%m-%y %H:%M") %></span><span id="drop_author">
+from Scott</span>
+<p> <%= @announcement.description %> </p>
+</div>
 <% end %>
  
 <h1>what's up</h1>
