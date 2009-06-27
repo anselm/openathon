@@ -1,33 +1,32 @@
+<div style="float:left;">
 
 <% form_for(@team,:html=>{:multipart=>true}) do |f| %>
-
-<div style="float:left;">
-  <%= f.error_messages %>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-<br />
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-<br />
-    <%= f.label :photo %><br />
-    <%= f.file_field :photo %>
-<br />
-how many hours would you like to sing for?</br>
-<input type="radio" name="team[hours]" value="3" >3</input><br/>
-<input type="radio" name="team[hours]" value="4" >4</input><br/>
-<input type="radio" name="team[hours]" value="5" >5</input><br/>
-<br />
-please describe in english the ideal times that you would like to sing at. we will use your input to help plan out the schedule.
-    <%= f.text_area :calendar %>
-<br/>
-
-  <% if admin? %>
-   <%= f.label :active, "Team is active: " %>
-   <%= f.check_box :active %>
-  <% end %>
-  <p>
-    <%= f.submit ( @team.new_record? ? 'Create' : 'Update' ) %>
-  </p>
+ <%= f.error_messages %>
+ <%= f.label :Name %> <br/>
+ <%= f.text_field :name %> <br/>
+ <%= f.label :Description %><br/>
+ <%= f.text_field :description %> <br/>
+ <%= f.label :"Select Photo (optional)" %> <br/>
+ <%= f.file_field :photo %> <br/>
+ <%= f.label :"What donation goal do you want to aim for?" %> <br/>
+ <div style="border:dashed 1px grey">
+ <%= f.radio_button :hours,:"200" %>Three hours for a donation goal of $200<br/>
+ <%= f.radio_button :hours,:"400" %>Four hours for a donation goal of $400<br/>
+ <%= f.radio_button :hours,:"600" %>Five hours for a donation goal of $600<br/>
+ </div>
+ <br/>
+ <%= f.label :"Please describe in english the ideal times you'd like to sing" %> <br/>
+ <%= f.text_area :calendar, :cols => 30, :rows=>5 %>
+ <br/>
+ <% if admin? %>
+  <%= f.label :"Admin: Is team time slot approved?" %>
+  <%= f.check_box :approved %>
+  <%= f.label :"Admin: Is team active?" %>
+  <%= f.check_box :active %>
+ <% end %>
+ <p>
+   <%= f.submit ( @team.new_record? ? 'Create' : 'Update' ) %>
+ </p>
 </div>
 
 <div style="clear:both"></div>
