@@ -1,11 +1,2 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+# bookings
 
-one:
-  room: 1
-  status: MyString
-  time: 
-
-two:
-  room: 1
-  status: MyString
-  time: 

@@ -1,14 +1,17 @@
 <div id="login-header">
+	<div id="logo"><p></p></div>
   <div id="left-login">
   <p><%= link_to "Home", root_url %>
+  <% if current_user %>
   <%= link_to "My Account", account_path %></p>
+  <% end %>
   </div>
   <div id="right-login">
   <% if current_user %>
     <p><i>logged in as <%= current_user.firstname %> <%= current_user.lastname %></i></p>
     <p><%= link_to "Sign out", signout_path, :method => :delete %></p>
   <% else %>
-    <p><%= link_to "Sign up", signup_path %> <i>or</i> <%= link_to "Sign in", signin_path %></p>
+    <p><%= link_to "Sign up", signup_path %> <i id="signedout">or</i> <%= link_to "Sign in", signin_path %></p>
   <% end %>
   </div>
 </div>

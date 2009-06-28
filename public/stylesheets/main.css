@@ -1,6 +1,6 @@
 /* Adapted from http://www.alistapart.com/articles/multicolumnlayouts/ */
 /* 'normal' pages - every page except the splash - have this style */
-/* colors >> orange: #EE7733 > hot pink: #F20073 > teal: #00A49A*/
+/* colors >> orange: #F15A24 > hot pink: #F20073 > teal: #00A49A*/
 
 body { 
   padding: 0;
@@ -12,44 +12,63 @@ font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
 	height: 100%;
 }
 
+html {
+	height: 100%;
+}
 a {
  text-decoration:none;
- font-family: Arial;
 }
 #login-header{ 
-  text-align: right;
-  font-size:85%;
-  text-transform:uppercase;
-  height:81px;
-  /*padding-top:15px;*/
+ clear:both;
+font-size:85%;
+height:95px;
+overflow:hidden;
+text-align:right;
+text-transform:uppercase;
 }
 
 #login-header * {
   display: inline;
 }
+#login-header #logo {
+	background: url(/images/logo_RYV.png) no-repeat scroll left top;
+	width: 124px;
+	height: 93px;
+	margin-left:19px;
+	float: left;
+}
 #login-header #left-login {
 background:transparent url(/images/tile-stripe.png) no-repeat scroll right top;
 height:160px;
-left:264px;
+left:364px;
 padding:10px 47px 0 0;
 position:absolute;
 top:0;
-width:500px;
+width:400px;
 }
 
 #login-header #right-login{
- float:left;
-margin-left:810px;
+left:843px;
 margin-top:10px;
 max-width:205px;
+position:absolute;
+top:0;
 }
 
-#login-header i { text-transform: none;
-margin:0 -8px;
-  font-family: serif; }
+#login-header i { 
+text-transform: none;
+  font-family: serif;
+padding:0 15px 0 0;
+font-size:105%;
+   }
+   
+#login-header i#signedout {
+	padding: 0 5px;
+	margin-left: -20px;
+}
 
 #login-header #left-login p a, #login-header #right-login p a {
-  padding: 10px;
+  padding-right: 20px;
 }
 
 #login-header #left-login p a:hover, #login-header #right-login p a:hover {
@@ -61,7 +80,6 @@ text-decoration: underline;
 	clear: both;
 	padding-right:70px;
 	width:707px;
-	position: absolute;
     bottom: 0;
     color: #aaa;
 }
@@ -74,11 +92,8 @@ text-decoration: underline;
 	color: #aaa;
 }
 #footer a:hover {
-	color: #EE7733;
+	color: #F15A24;
 	text-decoration: underline;
-}
-#threecolumn #footer {
-	margin-left: -211px;
 }
 
 #notice{
@@ -117,7 +132,7 @@ text-decoration: none !important;
   color:#F20073;
   padding: 0;
   padding-bottom: 15px;
-  line-height:.1;
+	margin-top: 6px;
 }
 
 #normal_left p.ital, #normal_left li{
@@ -152,19 +167,27 @@ font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;
   line-height:120%;
 
 }
+#normal_middle h1.grey, .grey {
+	color:  #666;
+}
 
 #normal_middle input {
   border: 8px solid #f0f0f0;
   font-size: 1.5em;
   font-weight: bold;
-  margin-bottom: 20px;
+margin:6px 0 12px;
+;}
+
+#normal_middle input#checkbox_field {
+	margin: 0 4px;
+	border: 0;
 }
 
-#normal_middle input[type="submit"] {
+#normal_middle input.submit {
   font-size: 1.5em;
   font-weight: bold;
   padding: 8px;
-  background-color: #EE7733;
+  background-color: #F15A24;
   color: white;
   border: 0;
 }
@@ -178,7 +201,7 @@ font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;
   margin: 0px;
 }
 #normal_left a, #normal_middle a {
-color:#EE7733;
+color:#F15A24;
 font-family:Verdana;
 font-size:0.9em;
 font-style:normal;
@@ -194,15 +217,15 @@ color: #F20073;
 .explain{
   font-size:85%;
   line-height:0.1;
-  padding:0 0 15px;
+  padding:0 0 8px;
   text-transform:uppercase;
 }
 
 #teamtop5{
 		width:468px;
 		padding:0 0 20px 0;
-		margin:10px 0 35px 0; 
-		background:url("/images/teambox.png") bottom right no-repeat;
+		margin:10px 0 12px 0; 
+		background:url("/images/teambox.png") bottom left no-repeat;
    min-height: 150px;
 }
 
@@ -235,7 +258,7 @@ font-size:130%;
 
 #teamtop5 table{
   margin:10px 29px 0 0;
-  width: 50%;
+  width: 222px;
   float:right;
   font-family: Verdana;
   font-size: 1em;
@@ -262,6 +285,30 @@ line-height: 100%;
 	padding-bottom: 13px;
 }
 
+#latest_drop {
+	margin: 18px 0;
+}
+#latest_drop p {
+	margin: 4px 0;
+}
+#drop_title {
+	color:#F15A24;
+font-weight:bold;
+margin-right:4px;
+text-transform:uppercase;
+}
+#drop_date {
+	color: #666;
+	margin-right: 3px;
+	font-size: 90%;
+}
+#drop_author {
+	font-style: italic;	
+	font-family:Georgia,Garamond,"Times New Roman",serif;
+		color: #666;
+
+}
+
 #admin{
   width:468px;
   padding:0 0 20px 0;
@@ -275,7 +322,7 @@ line-height: 100%;
   padding: 27px 0 0 30px;
   margin: 0;
   background:url("/images/teambox.png") top right no-repeat;
-  font-family: "Arial Black"; 
+  font-family: "Arial Black, Arial, sans-serif"; 
 }
 
 #admin table{
@@ -289,7 +336,6 @@ line-height: 100%;
 
 .searchresults {
   width:640px;
-  
 }
 
 .searchlinks {
@@ -299,15 +345,29 @@ line-height: 100%;
   font-weight: lighter; 
   font-family: Times serif;
 }
-.searchleft {
-  width:300px;
-  height:150px;
+.searchleft, .searchright {
+  width:320px;
   float:left;
 }
-.searchright {
-  width:300px;
-  height:150px;
-  float:right;
+.greyline {
+	clear: both;
+	border-bottom: 1px solid #ddd;
+	padding:5px 0;
+}
+.team_members {
+	font-family:Georgia,Garamond,"Times New Roman",serif;
+	color: #666;
+	font-size: 105%;
+}
+#normal_middle h3.serif a {
+	font-size: 150%;
+	font-family:Georgia,Garamond,"Times New Roman",serif;
+	font-style: italic;
+	text-transform:none;
+	margin-bottom: 6px;
+}
+#normal_middle h3 {
+	margin-bottom:2px;
 }
 #notes form{
   background-color:#9fd7ff;

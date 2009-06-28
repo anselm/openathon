@@ -1,11 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
-  description: MyString
-  depiction: MyString
+  id: 1
+  name: warriors
+  description: the warriors are the team to love
 
 two:
-  title: MyString
-  description: MyString
-  depiction: MyString
+  id: 2
+  name: suga mommas
+  description: the suga mammas are the team to love
+
+tre:
+  id: 3
+  name: kletzo champs 
+  description: the kletzos are the team to love

@@ -12,15 +12,15 @@
  @teams.each do |team|
   %><div class="search<%=left%>"><%
   @member_list = User.find(:all, :conditions => ["team_id = ?", team.id])
-   %><h3><%= link_to team.name, team %></h3>
+   %><h3 class="serif"><%= link_to team.name, team %></h3>
    <p class="explain"><%= team.description.strip %></p>
-   <% @member_list.each do |user| %>
-    <%=  user.firstname %><%
-  end
-  %></div><%
+   <p class="team_members">
+   <%= @member_list.collect { |user| user.firstname + " " + user.lastname }.join(", ") %>
+  </p></div>
+  <%
   if left == "right"
     left = "left"
-    %><div style="clear:both;"></div><%
+    %><div class="greyline"></div><%
   else
     left = "right"
   end

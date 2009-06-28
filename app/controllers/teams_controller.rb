@@ -16,7 +16,6 @@ class TeamsController < ApplicationController
 
   # for these methods there MUST be a member logged in
   before_filter :verify_member, :only => [:new,
-                                          :create,
                                           :raise,
                                           :raise_confirm,
                                           :raise_do,
@@ -51,7 +50,7 @@ private
 
   def verify_member
     if current_user == nil
-      flash[:error] = "Please signup to create or join a team."
+      # flash[:error] = "Please signup to create or join a team."
       redirect_to "/signup"
       return false
     end
@@ -83,7 +82,8 @@ public
   end
 
   def show
-    @member_list = User.find(:all, :conditions => ["team_id = ?", @team.id])
+    @announcement = Note.find(:first, :conditions => { :kind => "announcement" } )
+    @member_list = @team.payment_sorted_users()
     render :layout => "threecolumn"
   end
 
@@ -99,6 +99,13 @@ public
   end
 
   def create
+
+    if !current_user
+      store_location "/create"
+      redirect_to "/signup"
+      return
+    end
+
     if false && !current_user.paid?
       flash[:error] = 'You must pay the entry fee before starting a team.'
       redirect_to payment_path
@@ -109,11 +116,11 @@ public
           if !@team.set_captain(current_user)
             raise "No user logged in"
           end
-          if current_user && current_user.admin?
-            @team.slot_finalize_admin
-          else
-            @team.slot_finalize_not_admin
-          end
+          #if current_user && current_user.admin?
+          #  @team.slot_finalize_admin
+          #else
+          #  @team.slot_finalize_not_admin
+          #end
           flash[:notice] = 'Team was successfully created.'
           format.html { redirect_to(@team) }
           format.xml  { render :xml => @team, :status => :created, :location => @team }
@@ -128,11 +135,11 @@ public
   def update
     respond_to do |format|
       if @team.update_attributes(params[:team])
-        if current_user && current_user.admin?
-          @team.slot_finalize_admin
-        else
-          @team.slot_finalize_not_admin
-        end
+        #if current_user && current_user.admin?
+        #  @team.slot_finalize_admin
+        #else
+        #  @team.slot_finalize_not_admin
+        #end
         flash[:notice] = 'Team was successfully updated.'
         format.html { redirect_to(@team) }
         format.xml  { head :ok }

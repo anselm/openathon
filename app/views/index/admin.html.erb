@@ -29,8 +29,8 @@ function visibility_toggle(id) {
 </div>
 
 <div id="updates">
-<% form_tag '/posts' do -%>
-<%= text_area_tag "post", "Message that shows up everywhere", :rows => 10, :cols => 20 %>
+<% form_tag '/admin_announcement' do -%>
+<%= text_area_tag "announcement", "Message that shows up everywhere", :rows => 10, :cols => 20 %>
 <br/>
 <%= submit_tag 'update' %>
 <% end -%>
@@ -38,7 +38,7 @@ function visibility_toggle(id) {
 <br/>
 <div id="email">
 <% form_tag do %>
-<%= text_area_tag "post", "Send this message to everybody", :rows => 10, :cols => 20 %>
+<%= text_area_tag "message", "Send this message to everybody", :rows => 10, :cols => 20 %>
 <%= submit_tag 'email' %>
 <% end %>
 </div>

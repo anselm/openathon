@@ -3,15 +3,13 @@
 <p>Or <%= link_to "sign up instead", signup_path %>?</p>
 
 <% form_for UserSession.new, :url => user_session_path do |f| %>
-  <%= f.error_messages %>
+  <%= f.error_messages %><br />
   <%= f.label :email %><br />
   <%= f.text_field :email %><br />
-  <br />
   <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
-  <br />
+  <%= f.password_field :password %>
+
+  <%= f.check_box :remember_me, {:id => 'checkbox_field'} %><%= f.label :remember_me %><br />
   <%= f.submit "Login" %>
 
 <p>Forgot your password? <%= link_to "Click here", password_resets_path %>

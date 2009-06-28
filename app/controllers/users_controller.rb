@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   layout 'twocolumn'
-#  active_scaffold :user
 
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
@@ -39,9 +38,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    # TODO PAGINATION
-    # TODO KEEP AS AN ADMINISTRATIVE ROLE
-    @users = User.all
   end
 
 end

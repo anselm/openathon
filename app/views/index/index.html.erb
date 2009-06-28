@@ -33,51 +33,23 @@ Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %>
       <th title="top fundraising teams" scope="col">teams</th>
       <th title="amount of money raised" scope="col">$$$</th>
     </tr>
+    <% Team.payment_top_teams.each do |team| %>
     <tr>
-      <td>Team name</td>
-      <td>$2039</td>
+      <td><%= team.name %></td>
+      <td><%= team.total_donations %></td>
     </tr>
-    <tr>
-      <td>Team name</td>
-      <td>$2039</td>
-    </tr>
-    <tr>
-      <td>Team name</td>
-      <td>$2039</td>
-    </tr>
-    <tr>
-      <td>Team name</td>
-      <td>$2039</td>
-    </tr>
-    <tr>
-      <td>Team name</td>
-      <td>$2039</td>
-    </tr>
+    <% end %>
   </table>
   <table class="top5">
     <tr>
       <th title="top fundraising members" scope="col">members</th>
       <th title="amount of money raised" scope="col">$$$</th>
     </tr>
+    <% Team.payment_top_users.each do |user| %>
     <tr>
-      <td>Ham Chuttlesworth</td>
-      <td>$2039</td>
+      <td><%= user.firstname %> <%= user.lastname %></td>
+      <td><%= user.payments %></td>
     </tr>
-    <tr>
-      <td>Bob Jones</td>
-      <td>$2039</td>
-    </tr>
-    <tr>
-      <td>Adam Curry</td>
-      <td>$2039</td>
-    </tr>
-    <tr>
-      <td>Emma Goldman</td>
-      <td>$2039</td>
-    </tr>
-    <tr>
-      <td>Inigo Montoya</td>
-      <td>$2039</td>
-    </tr>
+    <% end %>
   </table>
 </div>

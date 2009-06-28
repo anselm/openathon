@@ -40,6 +40,8 @@ ActionController::Routing::Routes.draw do |map|
   map.tos    'tos',    :controller => 'index',    :action => 'tos'
   map.about    'about',  :controller => 'index',    :action => 'about'
   map.admin    'admin',  :controller => 'index',    :action => 'admin'
+  map.admin    'admin_announcement',  :controller => 'index',    :action => 'admin_announcement'
+  map.admin    'admin_message',  :controller => 'index',    :action => 'admin_message'
   map.news     'news',   :controller => 'index',    :action => 'news'
   map.root               :controller => 'index',    :action => 'index'
 
