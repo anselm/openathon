@@ -211,7 +211,7 @@ text-transform:uppercase;
 
 #normal_left a:hover, #normal_middle a:hover{
 	text-decoration: underline;
-color: #F20073;
+  color: #F20073;
 }
 #normal_middle a.smallurl { font-size: .9em; }
 .explain{
@@ -387,3 +387,4 @@ text-transform:uppercase;
   background-image: url("/images/line.png") repeat-x top center;
   text-align: right;
 }
+

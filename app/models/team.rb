@@ -8,6 +8,7 @@ class Team < ActiveRecord::Base
   has_many :users
   has_many :bookings
   has_many :notes
+
   # has_many :payments, :through => :owner_id
 
   # TODO fix i cannot get this to work - anselm may 15 2009
