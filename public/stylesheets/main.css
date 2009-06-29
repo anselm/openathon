@@ -290,6 +290,9 @@ line-height: 100%;
 }
 #latest_drop p {
 	margin: 4px 0;
+	font-family:Georgia,Garamond,"Times New Roman",serif;
+	font-size:110%;
+line-height:140%;
 }
 #drop_title {
 	color:#F15A24;
