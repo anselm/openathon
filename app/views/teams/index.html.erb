@@ -14,10 +14,10 @@
   @member_list = User.find(:all, :conditions => ["team_id = ?", team.id])
    %><h3 class="serif"><%= link_to team.name, team %></h3>
    <p class="explain"><%= team.description.strip %></p>
-   <p class="team_members"><% @member_list.each do |user| %>
-    <%=  user.firstname %>,<%
-  end
-  %></p></div><%
+   <p class="team_members">
+   <%= @member_list.collect { |user| user.firstname + " " + user.lastname }.join(", ") %>
+  </p></div>
+  <%
   if left == "right"
     left = "left"
     %><div class="greyline"></div><%
