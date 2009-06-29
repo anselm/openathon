@@ -22,34 +22,35 @@ Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %>
 <%= link_to "Administration", admin_path %>
 <% end %>
 
-</div>
 
 
-<!-- The following tables are for layout only. TODO: table info automation. -->
-<div id="topraisers">
-  <%= image_tag "top5h2.png", :title => 'Top 5 Raisers' %>
+<div id="teamtop5">
+<div class="boxxy">
+  <%= image_tag "top5h2.png", :title => 'Top 5 Raisers' %><br />
   <table class="top5">
     <tr>
-      <th title="top fundraising teams" scope="col">teams</th>
-      <th title="amount of money raised" scope="col">$$$</th>
+      <th title="top fundraising teams" scope="col" width="143">teams</th>
+      <th title="amount of money raised" scope="col" width="50">$$$</th>
     </tr>
     <% Team.payment_top_teams.each do |team| %>
-    <tr>
+    <tr class="listview">
       <td><%= team.name %></td>
       <td><%= team.total_donations %></td>
     </tr>
     <% end %>
   </table>
-  <table class="top5">
+  <table class="top5" style="margin-left: 18px">
     <tr>
-      <th title="top fundraising members" scope="col">members</th>
-      <th title="amount of money raised" scope="col">$$$</th>
+      <th title="top fundraising members" scope="col" width="143">members</th>
+      <th title="amount of money raised" scope="col" width="50">$$$</th>
     </tr>
     <% Team.payment_top_users.each do |user| %>
-    <tr>
+    <tr class="listview">
       <td><%= user.firstname %> <%= user.lastname %></td>
       <td><%= user.payments %></td>
     </tr>
     <% end %>
   </table>
+  </div>
+</div>
 </div>
