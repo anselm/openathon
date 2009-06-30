@@ -45,11 +45,14 @@ from Scott</span>
 </div> 
 <% end %>
 
-<% Note.find(:all).each do |n| %>
-<% nowner = User.find_by_id(n.owner_id) %>
-<%= image_tag("/system/photos/#{n.owner_id}/small/" + nowner.photo_file_name, :size => "50x50") %>
+<% Note.find(:all, :conditions => { :team_id => @team.id }, :order => "created_at DESC" ).each do |n| %>
+<% nowner = User.find_by_id(n.owner_id) %> 
+<% if nowner %>
 <p><span class="namelabel"><%= nowner.firstname %> <%= nowner.lastname %></span> <%= n.description %></p>
 <p class="date"><%= n.created_at %></p>
+<% else %>
+Moo moo moo!
 <% end %>
 
-<%= Note.find(:all) %>
+<% end %>
+
