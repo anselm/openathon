@@ -8,6 +8,14 @@
 <%= form.password_field :password %><br />
 <%= form.label :password_confirmation %><br />
 <%= form.password_field :password_confirmation %><br />
+<%= form.label :tshirt_size %><br />
+<%= form.text_field :tshirt %><br/>
+<%= form.label :opt_out_of_announcements %><br />
+<%= form.check_box :optout %><br/>
+<% if current_user == nil %>
+<%= form.label :agree_to_terms_of_service %><br />
+<%= form.check_box :tos %><br/>
+<% end %>
 <%= form.label :photo %><br />
 <%= form.file_field :photo %>
 

@@ -7,6 +7,7 @@ end
 class User
 
   attr_accessor :payments
+  validates_presence_of :tos
 
   # roles are hardcoded TODO we could be more flexible
   ROLE_PARTICIPANT = "participant"
