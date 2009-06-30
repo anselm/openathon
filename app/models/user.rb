@@ -21,4 +21,22 @@ class User
       :large => "400x400>" 
     }
 
+  def avatar(size)
+    if self.photo_file_name 
+      "<img src=\"/system/photos/#{self.id}/#{size}/" + self.photo_file_name + "\" />" 
+    else
+      case size
+        when size == "thumb"
+          d = "50"
+        when size == "small"
+          d = "88"
+        when size == "medium"
+          d = "150"
+        when size == "large"
+          d = "300"
+      end
+      "<img src=\"/images/default.jpg\" width=\"#{d}\" height=\"#{d}\" />" 
+    end
+  end
+
 end
