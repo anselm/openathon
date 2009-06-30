@@ -48,10 +48,9 @@ from Scott</span>
 <% Note.find(:all, :conditions => { :team_id => @team.id }, :order => "created_at DESC" ).each do |n| %>
 <% nowner = User.find_by_id(n.owner_id) %> 
 <% if nowner %>
+<%= nowner.avatar("thumb") %>
 <p><span class="namelabel"><%= nowner.firstname %> <%= nowner.lastname %></span> <%= n.description %></p>
 <p class="date"><%= n.created_at %></p>
-<% else %>
-Moo moo moo!
 <% end %>
 
 <% end %>
