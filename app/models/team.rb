@@ -7,11 +7,8 @@ class Team < ActiveRecord::Base
 
   has_many :users
   has_many :bookings
-<<<<<<< HEAD:app/models/team.rb
   has_many :notes
 
-=======
->>>>>>> 2c567cc271131d154ac49332b0ad6cf1b9b188c1:app/models/team.rb
   # has_many :payments, :through => :owner_id
 
   # TODO fix i cannot get this to work - anselm may 15 2009

@@ -70,20 +70,27 @@ width: 100%;
 }
 
 #splash_middleside #mainmenu {
-  padding: 22px;
+  padding: 29px;
   margin: 0; 
 } 
 
 #mainmenu a, #mainmenu h1 {
   color: white;
   text-decoration: none;
-  font-size: 200%; 
+  font-size: 260%; 
   font-weight: bold;
   padding: 0;
+}
+#mainmenu a:hover {
+	color: yellow;
 } 
 #mainmenu p{
   text-transform: uppercase;
+<<<<<<< HEAD:public/stylesheets/home.css
   font-size: 80%; 
+=======
+  font-size: 90%; 
+>>>>>>> 38c398283d0741911f8dd1ec53402c1c2a4cc5be:public/stylesheets/home.css
   color: #000;
   padding: 0;
   padding-bottom: 15px;
@@ -103,20 +110,40 @@ width: 100%;
 
 .top5 { 
   display: inline;
+<<<<<<< HEAD:public/stylesheets/home.css
   width: 47%;
   float: l;
+=======
+  width: 193px;
+  float: left;
+>>>>>>> 38c398283d0741911f8dd1ec53402c1c2a4cc5be:public/stylesheets/home.css
   background-color: #2f2d24;
+  text-align: left;
+  color: #D9E021;
+  font-size:130%;
+  margin-top:11px;
+  border-top:3px dashed #8CC63F;
+}
+#teamtop5 tr.listview {
+	color: white;
+	font-size:83%;
 }
 
 #topraisers tr th{
   border-top: 3px dashed #76d842;
   border-bottom: 3px dashed #76d842;
-  color: #c9f41c;
+  color: #D9E021;
 }
 
 #topraisers td {
   padding: 0px;
 }
+<<<<<<< HEAD:public/stylesheets/home.css
+=======
+#home_graphic {
+	margin: 0 0 0 111px;
+}
+>>>>>>> 38c398283d0741911f8dd1ec53402c1c2a4cc5be:public/stylesheets/home.css
 a {
  text-decoration:none;
 }
@@ -141,4 +168,21 @@ a {
 	color: #EE7733;
 	text-decoration: underline;
 }
+<<<<<<< HEAD:public/stylesheets/home.css
+=======
+
+#teamtop5{
+		width:468px;
+		padding:0 0 20px 0;
+		margin:10px 0 12px 0; 
+		background:url("/images/teambox_home.png") bottom left no-repeat;
+   min-height: 150px;
+}
+#teamtop5 .boxxy{
+overflow:hidden;
+padding:30px 30px 10px;
+	margin:0;
+	background:url("/images/teambox_home.png") top left no-repeat;
+}
+>>>>>>> 38c398283d0741911f8dd1ec53402c1c2a4cc5be:public/stylesheets/home.css
 
