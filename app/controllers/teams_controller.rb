@@ -10,8 +10,8 @@ class TeamsController < ApplicationController
                                      :invite,
                                      :raise,
                                      :sponsor,
-				     :join,
-				     :leave
+                                     :join,
+                                     :leave
                                     ]
 
   # for these methods there MUST be a member logged in
@@ -32,6 +32,7 @@ class TeamsController < ApplicationController
                                          ]
 
   before_filter :verify_new_team, :only => [:new]
+  before_filter :verify_paid, :only => [:new, :join]
 
 private
 
@@ -45,6 +46,13 @@ private
     if current_user.team_id != nil
       flash[:error] = "You already have a team, showing your team status page instead."
       redirect_to :controller => :teams, :action => :show, :id => current_user.team_id
+    end
+  end
+
+  def verify_paid
+    unless current_user.paid
+        flash[:error] = "You must pay the entry fee before starting a team."
+        redirect_to "/donate" 
     end
   end
 
@@ -66,6 +74,22 @@ private
     if @team == nil || !@team.is_owner?(current_user)
       flash[:error] = "This is not your team - you cannot change it."
       return false
+    end
+  end
+
+  def create_note
+    @note = Note.new(params[:note])
+
+    respond_to do |format|
+      if @note.save
+        flash[:notice] = 'Note was successfully created.'
+        # redirect_to teams_path
+        format.html { redirect_to teams_path }
+        format.xml  { render :xml => @note, :status => :created, :location => @note }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @note.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
@@ -319,22 +343,6 @@ public
     else
       flash[:error] = "You have not paid the entry fee."
       redirect_to payment_path
-    end
-  end
-
-  def create_note
-    @note = Note.new(params[:note])
-
-    respond_to do |format|
-      if @note.save
-        flash[:notice] = 'Note was successfully created.'
-        # redirect_to teams_path
-        format.html { redirect_to teams_path }
-        format.xml  { render :xml => @note, :status => :created, :location => @note }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @note.errors, :status => :unprocessable_entity }
-      end
     end
   end
 

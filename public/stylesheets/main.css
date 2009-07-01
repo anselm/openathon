@@ -290,12 +290,9 @@ line-height: 100%;
 }
 #latest_drop p {
 	margin: 4px 0;
-<<<<<<< HEAD:public/stylesheets/main.css
-=======
 	font-family:Georgia,Garamond,"Times New Roman",serif;
 	font-size:110%;
-line-height:140%;
->>>>>>> 38c398283d0741911f8dd1ec53402c1c2a4cc5be:public/stylesheets/main.css
+  line-height:140%;
 }
 #drop_title {
 	color:#F15A24;
@@ -374,8 +371,6 @@ text-transform:uppercase;
 }
 #normal_middle h3 {
 	margin-bottom:2px;
-<<<<<<< HEAD:public/stylesheets/main.css
-<<<<<<< HEAD:public/stylesheets/main.css
 }
 #notes form{
   background-color:#9fd7ff;
@@ -395,10 +390,4 @@ text-transform:uppercase;
   background-image: url("/images/line.png") repeat-x top center;
   text-align: right;
 }
-=======
-}
->>>>>>> 2c567cc271131d154ac49332b0ad6cf1b9b188c1:public/stylesheets/main.css
-=======
-}
->>>>>>> 38c398283d0741911f8dd1ec53402c1c2a4cc5be:public/stylesheets/main.css
 
