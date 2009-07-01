@@ -6,7 +6,6 @@ class AddNotesToTeams < ActiveRecord::Migration
       t.remove :provenance, :permissions, :score
     end
   end
-
   def self.down
     change_table :notes do |t|
       t.change :team_id, :string

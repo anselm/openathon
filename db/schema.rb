@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090610204610) do
+ActiveRecord::Schema.define(:version => 20090630170450) do
 
   create_table "bookings", :force => true do |t|
     t.integer  "team_id"
@@ -83,6 +83,11 @@ ActiveRecord::Schema.define(:version => 20090610204610) do
     t.integer  "photo_file_size"
     t.boolean  "active",             :default => true
     t.string   "calendar",           :default => ""
+    t.string   "hours"
+    t.boolean  "approved",           :default => false
+    t.string   "tshirt"
+    t.boolean  "optout"
+    t.boolean  "tos"
   end
 
   create_table "users", :force => true do |t|
@@ -108,6 +113,9 @@ ActiveRecord::Schema.define(:version => 20090610204610) do
     t.boolean  "admin",              :default => false
     t.boolean  "paid",               :default => false
     t.string   "perishable_token",   :default => "",    :null => false
+    t.string   "tshirt"
+    t.boolean  "optout"
+    t.boolean  "tos"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
