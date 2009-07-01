@@ -42,7 +42,7 @@ from Scott</span>
   <%= f.hidden_field(:team_id, :value => @team.id) %>
   <%= f.hidden_field(:owner_id, :value => current_user.id) %>
   <%= f.hidden_field(:kind, :value => 'comment') %>
-  <%= f.text_field :description %>
+  <%= f.text_field :description, :size => 27 %>
   <%= submit_tag 'share' %>
 <% end %>
 </div> 

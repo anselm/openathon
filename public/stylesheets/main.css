@@ -239,7 +239,8 @@ text-transform:uppercase;
 
 #teamtop5 p, #teamtop5 th{
   color: #00A49A;
-font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;}
+  font-family:"Arial Black",Arial,Verdana,Tahoma,Helvetica,sans-serif;
+}
 #teamtop5 p{ 
   margin: 0;
 text-align: center;
@@ -377,6 +378,7 @@ text-transform:uppercase;
   padding: 20px;
   margin-right: 60px;
   margin-bottom: 20px;
+  width:425px;
 }
 .namelabel { 
   font-weight: bold;

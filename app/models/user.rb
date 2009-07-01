@@ -16,10 +16,10 @@ class User
   # Paperclip
   has_attached_file :photo,
     :styles => {
-      :thumb=> "100x100#",
-      :small  => "150x150>",
-      :medium => "300x300>",
-      :large => "400x400>" 
+      :thumb=> "50x50#",
+      :small  => "88x88>",
+      :medium => "150x150>",
+      :large => "300x300>" 
     }
 
   def avatar(size)
