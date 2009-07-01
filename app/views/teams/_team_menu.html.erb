@@ -36,6 +36,6 @@
 </ul>
 <h1>timeslot</h1>
 <ul>
-  <li><%= @team.calendar ? @team.calendar.gsub(',', "</li>\n<li>") : "Pending: Your timeslot is awaiting confirmation" %></li>
+  <li><%= @team.approved ? @team.calendar.gsub(',', "</li>\n<li>") : "Pending: Your timeslot is awaiting confirmation" %></li>
 </ul>
 </div>
