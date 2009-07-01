@@ -15,8 +15,12 @@
  <%= f.radio_button :hours,:"600" %>Five hours for a donation goal of $600<br/>
  </div>
  <br/>
+<% if params[:action] == "edit" && @team.approved == false %>
+Current timeslot: <%= @team.calendar %>
+<% else %>
  <%= f.label :"Please describe in english the ideal times you'd like to sing" %> <br/>
  <%= f.text_area :calendar, :cols => 30, :rows=>5 %>
+<% end %>
  <br/>
  <% if admin? %>
   <%= f.label :"Admin: Is team time slot approved?" %>
