@@ -1,15 +1,9 @@
 class PasswordResetsController < ApplicationController
 
+  layout 'twocolumn'
+
   before_filter :load_user_using_perishable_token, :only => [:edit, :update]  
   #before_filter :require_no_user  
-  
-#  def new  
-#  render  
-#  end  
-    
-#  def edit  
-#  render  
-#  end  
   
   # user requests a password change  
   def create

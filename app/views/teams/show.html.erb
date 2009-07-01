@@ -1,7 +1,7 @@
 <h1 class="grey"><%= @team.name %></h1>
 <p class="explain"><%= @team.description %></p>
 <% if current_user && current_user.paid == false %>
-<h2 style="color:red;">Looks like you haven't paid yet. Would you like to <%= link_to "pay the entry fee", "/donate" %>?</h2>
+<h2 style="color:red;">Please <%= link_to "pay the sponsorship fee", "/donate" %> before continuing.</h2>
 <% end %>
 <div id="teamtop5">
  <div class="boxxy">
