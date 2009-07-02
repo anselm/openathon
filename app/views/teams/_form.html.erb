@@ -9,11 +9,19 @@
  <%= f.label :"Select Photo (optional)" %> <br/>
  <%= f.file_field :photo %> <br/>
  <%= f.label :"What donation goal do you want to aim for?" %> <br/>
+
+
+<%
+# options = 3..24.collect! { |hours| "<option>#{hours} hours for $#{hours*500}" }
+# select_tag "hours", options
+ %>
+
  <div style="border:dashed 1px grey">
  <%= f.radio_button :hours,:"200" %>Three hours for a donation goal of $200<br/>
  <%= f.radio_button :hours,:"400" %>Four hours for a donation goal of $400<br/>
  <%= f.radio_button :hours,:"600" %>Five hours for a donation goal of $600<br/>
  </div>
+
  <br/>
 <% if params[:action] == "edit" && @team.approved == false %>
 Current timeslot: <%= @team.calendar %>

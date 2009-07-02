@@ -50,6 +50,7 @@ private
   end
 
   def verify_paid
+  return true
     unless current_user.paid
         flash[:error] = "You must pay the entry fee before starting a team."
         redirect_to "/donate" 

@@ -8,7 +8,7 @@
 <p>join this team</p>
 <% elsif @team.is_owner?(current_user) %>
 <h1><a href="/raise/<%=@team.id%>">raise</a></h1>
-<p>ask folks to help sponsor</p>
+<p>Ask friends to sponsor you</p>
 <h1><%= link_to "invite", invite_path(current_user.id) %></h1>
 <p>friends to your team</p>
 <div id="team_detail_controls"><%= link_to '>Edit Team', edit_team_path(@team) %> &nbsp;

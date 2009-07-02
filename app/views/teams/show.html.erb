@@ -1,7 +1,7 @@
 <h1 class="grey"><%= @team.name %></h1>
 <p class="explain"><%= @team.description %></p>
 <% if current_user && current_user.paid == false %>
-<h2 style="color:red;">Please <%= link_to "pay the sponsorship fee", "/donate" %> before continuing.</h2>
+<h2 style="color:red;">Please <%= link_to "pay the registration fee", "/donate" %> before continuing.</h2>
 <% end %>
 <div id="teamtop5">
  <div class="boxxy">
@@ -36,6 +36,7 @@ from Scott</span>
 <% end %>
  
 <h1>what's up</h1>
+Share your thoughts with your team here.<br/><br/>
 <% if current_user %>
 <div id="notes">
 <% form_for Note.new do |f| %>

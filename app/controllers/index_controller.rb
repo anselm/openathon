@@ -6,8 +6,8 @@ class IndexController < ApplicationController
 
   def index
     if (current_user && current_user.team_id).is_a? Numeric 
-      redirect_to :controller => :teams, :action => :show, :id => current_user.team_id
-      return
+#      redirect_to :controller => :teams, :action => :show, :id => current_user.team_id
+#      return
     end
     render :layout => 'home'
   end
