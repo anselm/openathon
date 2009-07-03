@@ -12,9 +12,9 @@
 
 
 <%
-# options = 3..24.collect! { |hours| "<option>#{hours} hours for $#{hours*500}" }
-# select_tag "hours", options
- %>
+ options = 3..24.collect! { |hours| "<option>#{hours} hours for $#{hours*500}" }
+ select_tag "hours", options
+%>
 
  <div style="border:dashed 1px grey">
  <%= f.radio_button :hours,:"200" %>Three hours for a donation goal of $200<br/>

@@ -4,14 +4,36 @@
 <%= form.text_field :firstname %><br />
 <%= form.label :lastname %><br />
 <%= form.text_field :lastname %><br />
+<%= form.label :billing_address %><br />
+<%= form.text_field :address %><br />
+<%= form.label :mobile_phone %><br />
+<%= form.text_field :phone %><br />
+<%= form.label :age %><br />
+<%= form.text_field :age %><br />
+
+<%= form.label :sex %><br />
+ <div style="border:dashed 1px grey">
+ <%= form.radio_button :sex,:"male" %>male<br/>
+ <%= form.radio_button :sex,:"female" %>female<br/>
+ <%= form.radio_button :sex,:"other" %>other<br/>
+ </div>
+
+<%= form.label :tshirt_size %><br />
+ <div style="border:dashed 1px grey">
+ <%= form.radio_button :tshirt,:"small" %>Small T-Shirt<br/>
+ <%= form.radio_button :tshirt,:"medium" %>Medium T-Shirt<br/>
+ <%= form.radio_button :tshirt,:"large" %>Large T-Shirt<br/>
+ </div>
+
 <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
 <%= form.password_field :password %><br />
 <%= form.label :password_confirmation %><br />
 <%= form.password_field :password_confirmation %><br />
-<%= form.label :tshirt_size %><br />
-<%= form.text_field :tshirt %><br/>
+
 <%= form.label :opt_out_of_announcements %><br />
 <%= form.check_box :optout %><br/>
+<%= form.label :opt_out_of_sms_messages %><br />
+<%= form.check_box :sms %><br/>
 <% if current_user == nil %>
 <%= form.label :agree_to_terms_of_service %><br />
 <%= form.check_box :tos %><br/>
