@@ -12,6 +12,12 @@ class IndexController < ApplicationController
     render :layout => 'home'
   end
 
+  def contact
+  end
+
+  def start
+  end
+
   def privacy
   end
 

@@ -6,14 +6,17 @@
 %>
 
 <%= link_to "Find teams",  teams_path %>
-<p class="explain">Search for teams here. Join a team, check out the competition, or just see what these teams are all up to and what the fuss is all about!</p>
+<p class="explain">
+Search for teams here. Join a team, check out the competition, or just see what the fuss is all about – and what these teams are up to.</p>
  
 <% if @team %>
 <%= link_to @team.name, "/teams/#{@team.id}" %>
 <p class="explain">Go directly to your team!</p>
 <% else %>
-<%= link_to "Get Started - Register", new_team_path %>
-<p class="explain">Team captains, this is for you. Sign up here to start a brand new team and start raising money for Ethos! If you already have a team captain, find your team in the "Find Teams" section, and join from there.</p>
+<%= link_to "Get Started - Register", "/start" %>
+<p class="explain">
+Want to know how it works and get involved? Sign up here to start a brand new team or join an existing team – and start raising money for Ethos! If you already have a team captain, you can also find your team in the “Find Teams” section, and join from there.
+</p>
 <% end %>
  
 <%= link_to "Make a donation!", donate_path %>

@@ -37,12 +37,14 @@ ActionController::Routing::Routes.draw do |map|
 
   # general activities
   map.privacy    'privacy',:controller => 'index',    :action => 'privacy'
-  map.tos    'tos',    :controller => 'index',    :action => 'tos'
+  map.tos    'tos',    :controller => 'index',    :action => 'privacy'
   map.about    'about',  :controller => 'index',    :action => 'about'
   map.admin    'admin',  :controller => 'index',    :action => 'admin'
   map.admin    'admin_announcement',  :controller => 'index',    :action => 'admin_announcement'
   map.admin    'admin_message',  :controller => 'index',    :action => 'admin_message'
   map.news     'news',   :controller => 'index',    :action => 'news'
+  map.contact  'contact',   :controller => 'index',    :action => 'contact'
+  map.start    'start',  :controller => 'index',    :action => 'start'
   map.root               :controller => 'index',    :action => 'index'
 
   # anything else
