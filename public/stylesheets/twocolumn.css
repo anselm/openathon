@@ -22,3 +22,13 @@ padding-right: 70px;
   margin-right:-200px;
   position:relative;
 }
+
+#normalright a {
+ text-decoration:none;
+}
+
+img {
+ text-decoration:none;
+ border: 0px;
+}
+

@@ -34,7 +34,11 @@ Want to know how it works and get involved? Sign up here to start a brand new te
       <th title="top fundraising teams" scope="col" width="143">teams</th>
       <th title="amount of money raised" scope="col" width="50">$$$</th>
     </tr>
-    <% Team.payment_top_teams.each do |team| %>
+    <% count = 0
+       Team.payment_top_teams.each do |team|
+         count = count + 1
+         break if count > 5
+    %>
     <tr class="listview">
       <td><%= team.name %></td>
       <td><%= team.total_donations %></td>
@@ -46,13 +50,20 @@ Want to know how it works and get involved? Sign up here to start a brand new te
       <th title="top fundraising members" scope="col" width="143">members</th>
       <th title="amount of money raised" scope="col" width="50">$$$</th>
     </tr>
-    <% Team.payment_top_users.each do |user| %>
+    <% count = 0
+       Team.payment_top_users.each do |user|
+       count = count + 1
+       break if count > 5
+    %>
     <tr class="listview">
       <td><%= user.firstname %> <%= user.lastname %></td>
       <td><%= user.payments %></td>
     </tr>
-    <% end %>
+    <%  end %>
+    <tr></tr>
   </table>
   </div>
 </div>
 </div>
+<h2>Follow us on <a href="http://twitter.com/RaiseYourVoxPDX">Twitter/RaiseYourVoxPDX</h2>
+

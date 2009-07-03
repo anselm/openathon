@@ -12,11 +12,13 @@
   <% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
   <% if flash[:error] %><div id="error"><%= flash[:error] %></div><% end %>
   <div id="normal_container">
-<div id="home_graphic"> <%= image_tag("home_graphic.gif") %> </div>
+    <a href="http://www.ethos.org/">
+      <div id="home_graphic"> <%= image_tag("home_graphic.gif") %> </div>
+    </a>
     <div id="horiz_bar">
-    <div id="splash_leftside">
-    <p>&nbsp;</p>
-    </div>
+    <a href="http://www.ethos.org">
+      <div id="splash_leftside"> <p>&nbsp;</p> </div>
+    </a>
     <div id="splash_middleside">
     <%= render :partial => "index/intro" %>
     <%= yield  %>
