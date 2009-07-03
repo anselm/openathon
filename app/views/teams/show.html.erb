@@ -26,7 +26,7 @@
   </table>
  </div>
 </div>
-<h2 class="grey">team raised <%= number_to_currency(@team.total_donations/100, :precision => 0) %> with a goal of <%= number_to_currency(@team.hours, :precision => 0) %></h2>
+<h2 class="grey">raised <%= number_to_currency(@team.total_donations/100, :precision => 0) %> with a goal of <%= @team.hours.split(" ").last %></h2>
 <% if @announcement %>
 <div id="latest_drop">
 <span id="drop_title">Latest Drop </span><span id="drop_date"><%= @announcement.created_at.strftime("%d-%m-%y %H:%M") %></span><span id="drop_author">
