@@ -11,16 +11,19 @@
  <%= f.label :"What donation goal do you want to aim for?" %> <br/>
 
 
-<%
- options = 3..24.collect! { |hours| "<option>#{hours} hours for $#{hours*500}" }
- select_tag "hours", options
+<%=
+ hours = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+ options = hours.collect! { |h| "#{h} h for $#{h*500}" }
+ f.select "hours", options
 %>
 
+<!--
  <div style="border:dashed 1px grey">
  <%= f.radio_button :hours,:"200" %>Three hours for a donation goal of $200<br/>
  <%= f.radio_button :hours,:"400" %>Four hours for a donation goal of $400<br/>
  <%= f.radio_button :hours,:"600" %>Five hours for a donation goal of $600<br/>
  </div>
+-->
 
  <br/>
 <% if params[:action] == "edit" && @team.approved == false %>
