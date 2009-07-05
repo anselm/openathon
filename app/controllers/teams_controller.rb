@@ -50,10 +50,9 @@ private
   end
 
   def verify_paid
-  return true
     unless current_user.paid
         flash[:error] = "You must pay the entry fee before starting a team."
-        redirect_to "/donate" 
+        redirect_to "/registration_fee" 
     end
   end
 
@@ -133,7 +132,7 @@ public
 
     if false && !current_user.paid?
       flash[:error] = 'You must pay the entry fee before starting a team.'
-      redirect_to payment_path
+      redirect_to "/registration_fee" 
     else 
       @team = Team.new(params[:team])
       respond_to do |format|
@@ -351,7 +350,7 @@ public
       redirect_to(@team)
     else
       flash[:error] = "You have not paid the entry fee."
-      redirect_to payment_path
+      redirect_to "/registration_fee"
     end
   end
 
