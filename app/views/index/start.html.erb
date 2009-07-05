@@ -1,3 +1,26 @@
+<%
+  uncheck="<img min-width=40px min-height=40px style='width:40px; height: 40px; min-width:40px;min-height:40px;' src='/images/blank.gif'></img>"
+  check="<img style='width:40px;height:40px;' src='/images/checkmark.jpg'></img>"
+  @created_acct = uncheck 
+  @created_acct = check if current_user
+  @paid = uncheck 
+  @paid = check if current_user && current_user.paid
+  @madeteam = uncheck
+  @madeteam = check if current_user && current_user.is_captain?
+
+  @jointeam = uncheck
+  @jointeam = check if current_user && current_user.team_id && current_user.team_id > 0
+  @askdonations = uncheck
+  @askdonations = check if current_user && current_user.askeddonations
+
+  @invitedfriends = uncheck
+  @invitedfriends = check if current_user && current_user.invitedfriends
+
+  @showedup = uncheck
+  @showedup = check if current_user && current_user.showedup
+
+%>
+
 <h1>HOW IT WORKS:</h1>
  
 <p>
@@ -22,27 +45,27 @@ Let’s break it down – follow these easy steps:
 <td><h2>Team Members</h2></td>
 </tr>
 <tr>
-<td>1. <a href="/signup">Create an account</a></td>
-<td>1. <a href="/signup">Create an account</a></td>
+<td><%=@created_acct%><a href="/signup">1. Create an account</a></td>
+<td><%=@created_acct%><a href="/signup">1. Create an account</a></td>
 <tr/>
 <tr>
-<td>2. Pay your registration fee ($13)</td>
-<td>2. Pay your registration fee ($13)</td>
+<td><%=@paid%>2. <a href="/payment">Pay your registration fee ($13)</a></td>
+<td><%=@paid%>2. <a href="/payment">Pay your registration fee ($13)</a></td>
 </tr>
 <tr>
-<td>3. <a href="/teams/new">Create your team</a> - add your team name, sign up for hours and set your fundraising goal.</td>
-<td> Find your team on the <a href="/teams">"Find Teams"</a> page</tr>
+<td><%=@madeteam%>3. <a href="/teams/new">Create your team</a> - add your team name, sign up for hours and set your fundraising goal.</td>
+<td><%=@jointeam%>Find your team on the <a href="/teams">"Find Teams"</a> page</tr>
 <tr>
-<td>4. Invite your friends to join your team </td>
-<td>4. <a href="/teams">Click "join team"</a></td>
+<td><%=@invitedfriends%>4. Invite your friends to join your team </td>
+<td><%=@jointeam%>4. <a href="/teams">Click "join team"</a></td>
 </tr>
 <tr>
-<td>5. Ask for donations - send emails directly from this site. So easy!</td>
-<td>5. Ask for donations - send emails directly from this site. So easy!</td>
+<td><%=@askdonations%>5. Ask for donations - send emails directly from this site. So easy!</td>
+<td><%=@askdonations%>5. Ask for donations - send emails directly from this site. So easy!</td>
 </tr>
 <tr>
-<td>6. Show up for your scheduled time(s) on September 24th - 25th and RAISE YOUR VOICE!</td>
-<td>6. Show up for your scheduled time(s) on September 24th - 25th and RAISE YOUR VOICE!</td>
+<td><%=@showedup%>6. Show up for your scheduled time(s) on September 24th - 25th and RAISE YOUR VOICE!</td>
+<td><%=@showedup%>6. Show up for your scheduled time(s) on September 24th - 25th and RAISE YOUR VOICE!</td>
 </tr>
 </table>
 

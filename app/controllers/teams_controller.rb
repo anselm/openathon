@@ -251,6 +251,10 @@ public
   end
 
   def raise_do
+    if current_user
+      current_user.invitedfriends = true
+      current_user.save
+    end
     recipients = flash[:recipients]
     body = flash[:body]
     recipients.each do |email|
@@ -312,6 +316,10 @@ public
   end
 
   def invite_do
+    if current_user
+       current_user.invitedfriends = true
+       current_user.save
+    end
     recipients = flash[:recipients]
     body = flash[:body]
     recipients.each do |email|

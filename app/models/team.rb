@@ -171,6 +171,10 @@ class Team < ActiveRecord::Base
     return person !=nil &&  person.team_id == self.id && person.role == "captain"
   end
 
+  def is_captain?(person)
+    return is_owner?(person)
+  end
+
   def is_member?(person)
     return person !=nil && person.team_id == self.id 
   end
