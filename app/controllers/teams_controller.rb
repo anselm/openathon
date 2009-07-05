@@ -211,7 +211,7 @@ public
       @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
               "Help me raise funds our team for ethos music project" +
 	      "Click on this link to help sponsor me" +
-              "Go to http://openathon.makerlab.com/sponsor/#{teamid}?party=#{userid} and support me!\n\n" +
+              "Go to http://raiseyourvoicepdx.com/sponsor/#{teamid}?party=#{userid} and support me!\n\n" +
               "Thanks!"
     end
     if flash[:recipients]
@@ -276,7 +276,7 @@ public
       teamid = 0
       teamid = @team.id if @team
       @body =  "Hey Friend, I'm doing this awesome thing!" +
-               "Join my team! Go to http://openathon.makerlab.com/teams/3?party=3 and lets do this thing." +
+               "Join my team! Go to http://raiseyourvoicepdx.com/teams/3?party=3 and lets do this thing." +
                "Thanks!"
     end
     if flash[:recipients]
