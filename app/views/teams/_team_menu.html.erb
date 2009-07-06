@@ -17,7 +17,7 @@
 </div>
 <% elsif @team.is_member?(current_user) %>
 <h1><a href="/raise">raise</a></h1>
-<p>ask folks to help sponsor</p>
+<p>Ask friends to sponsor you</p>
 <h1><%= link_to "invite", invite_path(current_user.id) %></h1>
 <p>friends to your team</p>
 <div id="team_detail_controls">
@@ -34,8 +34,8 @@
    <li><%= user.firstname %> <%= user.lastname %></li>
 <% end %>
 </ul>
-<h1>timeslot</h1>
+<h1>time slots</h1>
 <ul>
-  <li><%= @team.approved ? @team.calendar.gsub(',', "</li>\n<li>") : "Pending: Your timeslot is awaiting confirmation" %></li>
+  <li><%= @team.approved ? @team.calendar.gsub(',', "</li>\n<li>") : "<b>Pending:</b> Your timeslots will be set two weeks prior to the event" %></li>
 </ul>
 </div>

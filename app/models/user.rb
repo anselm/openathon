@@ -16,11 +16,11 @@ class User
   # Paperclip
   has_attached_file :photo,
     :styles => {
-      :thumb=> "50x50#",
-      :small  => "88x88>",
-      :medium => "150x150>",
-      :large => "300x300>" 
-    }
+    :thumb=> "50x50#",
+    :small  => "88x88>",
+    :medium => "150x150>",
+    :large => "300x300>"
+  }
 
   def is_owner?()
     return self != nil && self.team_id && self.team_id > 0 && self.role == "captain"
@@ -35,14 +35,15 @@ class User
       "<img src=\"/system/photos/#{self.id}/#{size}/" + self.photo_file_name + "\" />" 
     else
       case size
-        when size == "thumb"
-          d = "50"
-        when size == "small"
-          d = "88"
-        when size == "medium"
-          d = "150"
-        when size == "large"
-          d = "300"
+      when "thumb"
+        d = "50"
+      when "small"
+        d = "88"
+      when "medium"
+        d = "150"
+      when "large"
+        d = "300"
+      else raise "Somethings fucked in the avatar code!"
       end
       "<img src=\"/images/default.jpg\" width=\"#{d}\" height=\"#{d}\" />" 
     end
