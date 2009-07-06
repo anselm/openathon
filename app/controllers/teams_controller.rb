@@ -206,7 +206,7 @@ public
       userid = 0
       userid = current_user.id if current_user
       teamid = 0
-      teamid = @team.id if @team
+      teamid = current_user.team_id
       @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
               "Help me raise funds our team for ethos music project" +
 	      "Click on this link to help sponsor me" +

@@ -43,7 +43,7 @@ class User
         d = "150"
       when "large"
         d = "300"
-      else raise "Somethings fucked in the avatar code!"
+      else d = "150"
       end
       "<img src=\"/images/default.jpg\" width=\"#{d}\" height=\"#{d}\" />" 
     end
