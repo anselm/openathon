@@ -49,13 +49,13 @@ html {
   font-size: 70%;
   text-transform: uppercase;
   font-weight: bold;
-  float:right;
+  float:left;
   width:181px;
   position:relative;
   background-color: #a5ceff;
   text-align: right;
   height:97px;
-  padding: 17px 17px 0px 0px;
+  padding:17px 17px 0;
 }
 
 #raise-voice{
@@ -76,7 +76,7 @@ html {
 }
 
 #splash_middleside #mainmenu {
-  padding: 29px;
+padding:29px 58px 29px 29px;
   margin: 0; 
 } 
 
