@@ -1,5 +1,5 @@
 <%
-  uncheck="<img min-width=40px min-height=40px style='width:40px; height: 40px; min-width:40px;min-height:40px;' src='/images/blank.gif'></img>"
+  uncheck=""
   check="<img style='width:40px;height:40px;' src='/images/checkmark.jpg'></img>"
   @created_acct = uncheck 
   @created_acct = check if current_user
@@ -21,7 +21,7 @@
 
 %>
 
-<h1>HOW IT WORKS:</h1>
+<h1>How it works</h1>
  
 <p>
 It’s pretty easy. Team Captains start teams and get their friends to join. Captains tell us when the team wants to sing and each team signs up for at least 3 hours work of singing time. Teams commit to raising at least $500 per hour of singing (3 hours = $1,500 goal).
@@ -39,14 +39,14 @@ Let’s break it down – follow these easy steps:
 </b>
 </p>
 
-<table border=1>
+<table border='0' cellpadding="2" cellspacing="0">
 <tr>
-<td><h2>Team Captains</h2></td>
-<td><h2>Team Members</h2></td>
+<td><b>Team Captains</b></td>
+<td><b>Team Members</b></td>
 </tr>
 <tr>
-<td><%=@created_acct%><a href="/signup">1. Create an account</a></td>
-<td><%=@created_acct%><a href="/signup">1. Create an account</a></td>
+<td><%=@created_acct%>1. <a href="/signup">Create an account</a></td>
+<td><%=@created_acct%>1. <a href="/signup">Create an account</a></td>
 <tr/>
 <tr>
 <td><%=@paid%>2. <a href="/payment">Pay your registration fee ($13)</a></td>
@@ -54,7 +54,7 @@ Let’s break it down – follow these easy steps:
 </tr>
 <tr>
 <td><%=@madeteam%>3. <a href="/teams/new">Create your team</a> - add your team name, sign up for hours and set your fundraising goal.</td>
-<td><%=@jointeam%>Find your team on the <a href="/teams">"Find Teams"</a> page</tr>
+<td valign="top"><%=@jointeam%>3.  Find your team on the <a href="/teams">"Find Teams"</a> page</tr>
 <tr>
 <td><%=@invitedfriends%>4. Invite your friends to join your team </td>
 <td><%=@jointeam%>4. <a href="/teams">Click "join team"</a></td>
