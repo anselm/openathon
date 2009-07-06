@@ -11,7 +11,7 @@ Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %> <br/>
 <% else %>
 <%= link_to "Start a team", new_team_path %> 
 <br />
-<%= link_to "Explore teams", teams_path %>
+<%= link_to "Show all teams", teams_path %>
 <% end %>
 <br />
 <%= link_to 'Edit account info', edit_account_path, :class => "smallurl" %>

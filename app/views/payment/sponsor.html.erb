@@ -44,9 +44,9 @@ Raise Your Voice is a 24-hour karaoke marathon to benefit Ethos Music Center hel
 <br/>
 
 <form id="sponsorform" name="sponsorform" action="/checkout" >
-<h2>1. Select who you would like to donate on behalf of</h2>
+<h2>1. Select the team and user to support:</h2>
 <br/>
-Please select who you would like to donate to. You can donate to a specific team and on behalf of a specific team member. You can also donate to the general Ethos fund as well.
+You can donate to a specific team and on behalf of a specific team member. You can also donate to the general Ethos fund if you're not sponsoring a team.
 <br/>
 <br/>
 Donate to team <select name="team" id="team" onchange="change_team(this.form,this.value);">
@@ -72,28 +72,24 @@ and user
 </select>
 <br/>
 <br/>
-<h2>2. Please select a donation amount</h2>
+<h2>2. Select a donation amount</h2>
 <br/>
-Please select a donation amount. You can choose one of the pre-determined amounts or you can also enter your own amount.
-<br/>
-<br/>
-Please type in a donation amount:
-<br/>
-Donation amount $<input id="donation" name="donation" value="10.00" />
-<br/>
-Or please select a donation amount here :
+Choose one of the pre-determined amounts or enter any other amount.
 <br/>
 <br/>
-<input type="radio" name="donation2" value="10" onchange="clear_donation(10);" >$10</input>
-<input type="radio" name="donation2" value="20" onchange="clear_donation(20);" >$20</input>
-<input type="radio" name="donation2" value="40" onchange="clear_donation(40);" >$40</input>
-<br/>
+<input type="radio" name="donation2" value="10" onchange="clear_donation(10);" >$10</input>&nbsp;&nbsp;&nbsp;
+<input type="radio" name="donation2" value="15" onchange="clear_donation(15);" >$15</input>&nbsp;&nbsp;&nbsp;
+<input type="radio" name="donation2" value="25" onchange="clear_donation(25);" >$25</input>&nbsp;&nbsp;&nbsp;
+<input type="radio" name="donation2" value="50" onchange="clear_donation(50);" >$50</input>&nbsp;&nbsp;&nbsp;
+<input type="radio" name="donation2" value="75" onchange="clear_donation(75);" >$75</input>&nbsp;&nbsp;&nbsp;
+<input type="radio" name="donation2" value="100" onchange="clear_donation(100);" >$100</input>&nbsp;&nbsp;&nbsp;
+Other $<input id="donation" name="donation" value="10.00" />
 <br/>
 <h2>3. Checkout</h2>
 <br/>
-Please select checkout to continue to billing - you may use Paypal OR Visa/MasterCard/American express by clicking below. Paypal will ask for your email address and a receipt will be emailed to you:
+We use PayPal as our payment processor.  Click below to pay with your Visa, MasterCard, American Express or PayPal account.  You'll receive a receipt via email.
 <br/>
 <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" value='submit' alt='submit'></input>
 </form>
-
+<h3>The full amount of your sponsorship is a tax-deductible donation to Ethos Music Center.  Please save your emailed receipt.</h3>
 
