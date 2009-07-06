@@ -1,0 +1,6 @@
+development:
+  adapter: mysql
+  database: openathon
+  username: root
+  password: Carrie0ak
+  sochost: locahost

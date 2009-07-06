@@ -10,7 +10,8 @@ require File.join(File.dirname(__FILE__), 'boot')
 # IMAGE_MAGICK_PATH = "/usr/local/bin/"
 
 # settings we don't want to put into git
-SETTINGS = YAML::load(File.open("../settings.yml"))
+#SETTINGS = YAML::load(File.open("../settings.yml"))
+SETTINGS = []
 SETTINGS.each do |k,v|
   sym = k.respond_to?(:to_sym) ? k.to_sym : k
   SETTINGS[sym] = v

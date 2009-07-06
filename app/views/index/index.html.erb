@@ -5,22 +5,24 @@
   @team = Team.get_team(current_user) if current_user != nil
 %>
 
-<%= link_to "Find teams",  teams_path %>
-<p class="explain">
-Search for teams here. Join a team, check out the competition, or just see what the fuss is all about – and what these teams are up to.</p>
- 
 <% if @team %>
 <%= link_to @team.name, "/teams/#{@team.id}" %>
 <p class="explain">Go directly to your team!</p>
 <% else %>
 <%= link_to "Get Started - Register", "/start" %>
 <p class="explain">
-Want to know how it works and get involved? Sign up here to start a brand new team or join an existing team – and start raising money for Ethos! If you already have a team captain, you can also find your team in the “Find Teams” section, and join from there.
+New to Raise Your Voice?  Go here first!
 </p>
 <% end %>
+
+<%= link_to "Find teams",  teams_path %>
+<p class="explain">
+Join a team or check out the competition!
+</p>
  
 <%= link_to "Make a donation!", donate_path %>
-<p class="explain">Click here to donate to a specific team or to directly to the event.</p>
+<p class="explain">Support your friend's team and Ethos!
+</p>
 
 <% if current_user != nil && current_user.admin? %> 
 <%= link_to "Administration", admin_path %>
