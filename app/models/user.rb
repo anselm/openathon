@@ -22,6 +22,14 @@ class User
       :large => "300x300>" 
     }
 
+  def is_owner?()
+    return self != nil && self.team_id && self.team_id > 0 && self.role == "captain"
+  end
+
+  def is_captain?()
+    return is_owner?()
+  end
+
   def avatar(size)
     if self.photo_file_name 
       "<img src=\"/system/photos/#{self.id}/#{size}/" + self.photo_file_name + "\" />" 

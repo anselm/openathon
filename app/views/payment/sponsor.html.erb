@@ -23,8 +23,8 @@ function change_team(form,value) {
     }
   }
 }
-function clear_donation() {
-  document.getElementById("donation").value = "";
+function clear_donation(amount) {
+  document.getElementById("donation").value = amount;
 }
 // force this form to reset!
 function reset_form() {
@@ -37,10 +37,19 @@ function reset_form() {
 reset_form();
 </script>
 
-<h1>Sponsor!</h1>
+<h1>Sponsor</h1>
+
+Raise Your Voice is a 24-hour karaoke marathon to benefit Ethos Music Center held at Voicebox Karaoke, located on 21st and NW Hoyt. Put your money where your mic is and help be part of the first fundraiser of this kind to be held in the Portland area.  Your sponsorship will help the <a href="http://www.ethos.org">Ethos Music Center</a> promote music and music-based education for youth in underserved communities. Please see our <a href="/about">about page</a> for more details.
+<br/>
+<br/>
+
 <form id="sponsorform" name="sponsorform" action="/checkout" >
-Donate on behalf of team 
-<select name="team" id="team" onchange="change_team(this.form,this.value);">
+<h2>1. Select who you would like to donate on behalf of</h2>
+<br/>
+Please select who you would like to donate to. You can donate to a specific team and on behalf of a specific team member. You can also donate to the general Ethos fund as well.
+<br/>
+<br/>
+Donate to team <select name="team" id="team" onchange="change_team(this.form,this.value);">
 <% selected = "selected" if !@team %>
 <option <%=selected%> value="9">ethos general fund</option>
 <%
@@ -58,13 +67,32 @@ and user
  selected = ""
  selected = "selected" if @party && @party == party
  %>
- <option value="<%=party.id%>" <%=selected%>><%=party.firstname%></option>
+<option value="<%=party.id%>" <%=selected%>><%=party.firstname%> <%=party.lastname%></option>
 <% end %>
 </select>
-<input id="donation" name="donation" value="10.00" /><br/>
-<input type="radio" name="donation2" value="10" onchange="clear_donation();" >10.00</input><br/>
-<input type="radio" name="donation2" value="20" onchange="clear_donation();" >20.00</input><br/>
-<input type="radio" name="donation2" value="40" onchange="clear_donation();" >40.00</input><br/>
+<br/>
+<br/>
+<h2>2. Please select a donation amount</h2>
+<br/>
+Please select a donation amount. You can choose one of the pre-determined amounts or you can also enter your own amount.
+<br/>
+<br/>
+Please type in a donation amount:
+<br/>
+Donation amount $<input id="donation" name="donation" value="10.00" />
+<br/>
+Or please select a donation amount here :
+<br/>
+<br/>
+<input type="radio" name="donation2" value="10" onchange="clear_donation(10);" >$10</input>
+<input type="radio" name="donation2" value="20" onchange="clear_donation(20);" >$20</input>
+<input type="radio" name="donation2" value="40" onchange="clear_donation(40);" >$40</input>
+<br/>
+<br/>
+<h2>3. Checkout</h2>
+<br/>
+Please select checkout to continue to billing - you may use Paypal OR Visa/MasterCard/American express by clicking below. Paypal will ask for your email address and a receipt will be emailed to you:
+<br/>
 <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" value='submit' alt='submit'></input>
 </form>
 

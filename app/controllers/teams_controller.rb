@@ -50,10 +50,9 @@ private
   end
 
   def verify_paid
-  return true
     unless current_user.paid
         flash[:error] = "You must pay the entry fee before starting a team."
-        redirect_to "/donate" 
+        redirect_to "/registration_fee" 
     end
   end
 
@@ -133,7 +132,7 @@ public
 
     if false && !current_user.paid?
       flash[:error] = 'You must pay the entry fee before starting a team.'
-      redirect_to payment_path
+      redirect_to "/registration_fee" 
     else 
       @team = Team.new(params[:team])
       respond_to do |format|
@@ -211,7 +210,7 @@ public
       @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
               "Help me raise funds our team for ethos music project" +
 	      "Click on this link to help sponsor me" +
-              "Go to http://openathon.makerlab.com/sponsor/#{teamid}?party=#{userid} and support me!\n\n" +
+              "Go to http://raiseyourvoicepdx.com/sponsor/#{teamid}?party=#{userid} and support me!\n\n" +
               "Thanks!"
     end
     if flash[:recipients]
@@ -251,6 +250,10 @@ public
   end
 
   def raise_do
+    if current_user
+      current_user.invitedfriends = true
+      current_user.save
+    end
     recipients = flash[:recipients]
     body = flash[:body]
     recipients.each do |email|
@@ -272,7 +275,7 @@ public
       teamid = 0
       teamid = @team.id if @team
       @body =  "Hey Friend, I'm doing this awesome thing!" +
-               "Join my team! Go to http://openathon.makerlab.com/teams/3?party=3 and lets do this thing." +
+               "Join my team! Go to http://raiseyourvoicepdx.com/teams/3?party=3 and lets do this thing." +
                "Thanks!"
     end
     if flash[:recipients]
@@ -312,6 +315,10 @@ public
   end
 
   def invite_do
+    if current_user
+       current_user.invitedfriends = true
+       current_user.save
+    end
     recipients = flash[:recipients]
     body = flash[:body]
     recipients.each do |email|
@@ -343,7 +350,7 @@ public
       redirect_to(@team)
     else
       flash[:error] = "You have not paid the entry fee."
-      redirect_to payment_path
+      redirect_to "/registration_fee"
     end
   end
 

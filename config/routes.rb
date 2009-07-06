@@ -26,11 +26,18 @@ ActionController::Routing::Routes.draw do |map|
   map.search   'search',      :controller => 'teams',    :action => 'teams'
   map.teams    'teams',       :controller => 'teams',    :action => 'teams'
   map.resources :notes
- 
+
+  # pay fee
+  map.fee    'registration_fee', :controller => 'fee',  :action => 'index'
+  map.payment  'payment',     :controller => 'fee',  :action => 'payment'
+  map.checkout 'checkout',    :controller => 'fee',  :action => 'checkout'
+  map.confirm  'confirm',     :controller => 'fee',  :action => 'confirm'
+  map.complete 'complete',    :controller => 'fee',  :action => 'complete'
+
   # money
   map.sponsor  'sponsor/:id', :controller => 'payment',  :action => 'sponsor'
   map.donate   'donate/:id',  :controller => 'payment',  :action => 'sponsor'
-  map.payment  'payment/:id', :controller => 'payment',  :action => 'sponsor'
+  map.payment  'payment/:id', :controller => 'payment',  :action => 'payment'
   map.checkout 'checkout',    :controller => 'payment',  :action => 'checkout'
   map.confirm  'confirm',     :controller => 'payment',  :action => 'confirm'
   map.complete 'complete',    :controller => 'payment',  :action => 'complete'

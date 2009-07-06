@@ -4,28 +4,31 @@ body { padding: 0;
 margin: 0;
 font-family:Verdana,Arial,Tahoma,Helvetica,sans-serif;
   font-size: 12px;
-	height: 100%;
+  height: 100%;
 }
 
 
 html {
-	height: 100%;
+  height: 100%;
 }
 
 
 #normal_container {
-	width: 100%;
-	}
-#horiz_bar {
-	background: url(/images/bground_blue.gif) repeat-x left top;
-overflow: hidden;
-width: 100%;
+  width: 100%;
 }
+
+#horiz_bar {
+  background: url(/images/bground_blue.gif) repeat-x left top;
+  overflow: hidden;
+  width: 100%;
+}
+
 #splash_container{
   float:left;
   width: 421px;
   margin-left: 400px;
 }
+
 #splash_leftside{
   float:left;
   width:201px;
@@ -34,6 +37,7 @@ width: 100%;
   background-color: #A5CEFF;
   height: 64px;
 }
+
 #splash_middleside{
   float:left;
   width:560px;
@@ -62,6 +66,7 @@ width: 100%;
   text-align: justify;
   height: 80px;
 }
+
 #raise-voice .highlight{
   color: orange;
   text-transform: uppercase;
@@ -82,16 +87,15 @@ width: 100%;
   font-weight: bold;
   padding: 0;
 }
+
 #mainmenu a:hover {
-	color: yellow;
+  color: yellow;
 } 
+
 #mainmenu p{
   text-transform: uppercase;
-  font-size: 90%; 
   color: #000;
-  padding: 0;
-  padding-bottom: 15px;
-//  line-height:.1;
+  line-height:1.1;
 }
 
 #topraisers {
@@ -117,8 +121,8 @@ width: 100%;
   border-top:3px dashed #8CC63F;
 }
 #teamtop5 tr.listview {
-	color: white;
-	font-size:83%;
+  color: white;
+  font-size:83%;
 }
 
 #topraisers tr th{
@@ -131,45 +135,48 @@ width: 100%;
   padding: 0px;
 }
 #home_graphic {
-	margin: 0 0 0 111px;
+ margin: 0 0 0 111px;
 }
+
 a {
  text-decoration:none;
 }
+
 #footer {
-	text-align: center;
-	clear: both;
-	padding-right:70px;
-	width:707px;
-    bottom: 0;
-    color: #aaa;
-    padding-top: 1px;
+  text-align: center;
+  clear: both;
+  padding-right:70px;
+  width:707px;
+  bottom: 0;
+  color: #aaa;
+  padding-top: 1px;
 }
 
 #footer a {
-	color: #888;
+  color: #888;
 }
 
 #footer a:visited {
-	color: #aaa;
+  color: #aaa;
 }
 #footer a:hover {
-	color: #EE7733;
-	text-decoration: underline;
+  color: #EE7733;
+  text-decoration: underline;
 }
 
-#teamtop5{
-		width:468px;
-		padding:0 0 20px 0;
-		margin:10px 0 12px 0; 
-		background:url("/images/teambox_home.png") bottom left no-repeat;
-   min-height: 150px;
+#teamtop5 {
+  width:468px;
+  padding:0 0 20px 0;
+  margin:10px 0 12px 0; 
+  background:url("/images/teambox_home.png") bottom left no-repeat;
+  min-height: 150px;
 }
-#teamtop5 .boxxy{
-overflow:hidden;
-padding:30px 30px 10px;
-	margin:0;
-	background:url("/images/teambox_home.png") top left no-repeat;
+
+#teamtop5 .boxxy {
+  overflow:hidden;
+  padding:30px 30px 10px;
+  margin:0;
+  background:url("/images/teambox_home.png") top left no-repeat;
 }
 
 #raise-voice a {
