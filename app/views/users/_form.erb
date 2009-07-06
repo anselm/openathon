@@ -1,43 +1,38 @@
-<%= form.label :email %><br />
+<%= form.label "Email Address" %><br />
 <%= form.text_field :email %><br />
-<%= form.label :firstname %><br />
+<%= form.label "First name" %><br />
 <%= form.text_field :firstname %><br />
-<%= form.label :lastname %><br />
+<%= form.label "Last Name" %><br />
 <%= form.text_field :lastname %><br />
-<%= form.label :billing_address %><br />
+<%= form.label "Complete Address (including City, State and Zip)" %><br />
 <%= form.text_field :address %><br />
-<%= form.label :mobile_phone %><br />
+<%= form.label "Phone Number" %><br />
 <%= form.text_field :phone %><br />
 <%= form.label :age %><br />
 <%= form.text_field :age %><br />
 
-<%= form.label :sex %><br />
- <div style="border:dashed 1px grey">
- <%= form.radio_button :sex,:"male" %>male<br/>
- <%= form.radio_button :sex,:"female" %>female<br/>
- <%= form.radio_button :sex,:"other" %>other<br/>
- </div>
+<%= form.label "T-shirt Size" %><br />
+  <%= form.radio_button :tshirt,:"small" %> Small&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= form.radio_button :tshirt,:"medium" %> Medium&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= form.radio_button :tshirt,:"large" %> Large&nbsp;&nbsp;&nbsp;&nbsp;
+  <%= form.radio_button :tshirt,:"xtralarge" %>  Extra Large<br />
 
-<%= form.label :tshirt_size %><br />
- <div style="border:dashed 1px grey">
- <%= form.radio_button :tshirt,:"small" %>Small T-Shirt<br/>
- <%= form.radio_button :tshirt,:"medium" %>Medium T-Shirt<br/>
- <%= form.radio_button :tshirt,:"large" %>Large T-Shirt<br/>
- </div>
 
 <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
 <%= form.password_field :password %><br />
 <%= form.label :password_confirmation %><br />
 <%= form.password_field :password_confirmation %><br />
 
-<%= form.label :opt_out_of_announcements %><br />
-<%= form.check_box :optout %><br/>
-<%= form.label :opt_out_of_sms_messages %><br />
-<%= form.check_box :sms %><br/>
+<%= form.check_box :optinsms %> Yes! I would like the event staff to contact me on my phone via SMS.<br />
+
+<%= form.check_box :optinethos %> Yes! I would like to receive news and updates from Ethos Music Center. <br />
+
+<%= form.check_box :optinvoicebox %> Yes! I would like to receive news and updates from Voicebox Karaoke Lounge. <br />
+
+
 <% if current_user == nil %>
-<%= form.label :agree_to_terms_of_service %><br />
-<%= form.check_box :tos %><br/>
+  <%= form.check_box :tos %> <%= form.label :I_agree_to_terms_of_service %><br />
 <% end %>
-<%= form.label :photo %><br />
+<br /><br /><%= form.label "Upload a photo for to appear on your team roster:" %><br />
 <%= form.file_field :photo %>
 
