@@ -55,18 +55,19 @@ width: 100%;
 }
 
 #raise-voice{
-  font-size: 90%;
+  font-size: 93%;
   background:#000  url("/images/bg2.png") repeat-y top right;
   color: #fff;
   padding: 17px 58px 17px 22px;
   text-align: justify;
   height: 80px;
 }
-#raise-voice h2{
+#raise-voice .highlight{
   color: orange;
   text-transform: uppercase;
   font-size: 100%;
   display:inline;
+  font-weight: bold;
 }
 
 #splash_middleside #mainmenu {
@@ -106,7 +107,7 @@ width: 100%;
 
 .top5 { 
   display: inline;
-  width: 193px;
+  width: 202px;
   float: left;
   background-color: #2f2d24;
   text-align: left;
@@ -171,3 +172,7 @@ padding:30px 30px 10px;
 	background:url("/images/teambox_home.png") top left no-repeat;
 }
 
+#raise-voice a {
+	text-decoration: underline;
+	color: white;
+}
