@@ -79,6 +79,7 @@ private
 
   def create_note
     @note = Note.new(params[:note])
+    @note.description = Sanitize.clean @note.description
 
     respond_to do |format|
       if @note.save
