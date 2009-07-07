@@ -4,37 +4,37 @@ class TeamsController < ApplicationController
 
   # for these methods there MUST be a team in mind
   before_filter :get_team, :only => [:show,
-                                     :edit,
-                                     :update,
-                                     :destroy,
-                                     :invite,
-                                     :raise,
-                                     :sponsor,
-                                     :join,
-                                     :leave
-                                    ]
+    :edit,
+    :update,
+    :destroy,
+    :invite,
+    :raise,
+    :sponsor,
+    :join,
+    :leave
+  ]
 
   # for these methods there MUST be a member logged in
   before_filter :verify_member, :only => [:new,
-                                          :raise,
-                                          :raise_confirm,
-                                          :raise_do,
-                                          :invite,
-                                          :invite_confirm,
-                                          :invite_do,
-                                          :join
-                                         ]
+    :raise,
+    :raise_confirm,
+    :raise_do,
+    :invite,
+    :invite_confirm,
+    :invite_do,
+    :join
+  ]
 
   # for these methods the logged in member MUST be owner
   before_filter :verify_powers, :only => [:edit,
-                                          :update,
-                                          :destroy
-                                         ]
+    :update,
+    :destroy
+  ]
 
   before_filter :verify_new_team, :only => [:new]
   before_filter :verify_paid, :only => [:new, :join]
 
-private
+  private
 
   def get_team
     @team = nil
@@ -51,8 +51,8 @@ private
 
   def verify_paid
     unless current_user.paid
-        flash[:error] = "You must pay the entry fee before starting a team."
-        redirect_to "/registration_fee" 
+      flash[:error] = "You must pay the entry fee before starting a team."
+      redirect_to "/registration_fee"
     end
   end
 
@@ -94,7 +94,7 @@ private
     end
   end
 
-public
+  public
 
 
   def index
@@ -210,11 +210,12 @@ public
       userid = current_user.id if current_user
       teamid = 0
       teamid = current_user.team_id
+      @raise_link = "http://raiseyourvoicepdx.com/sponsor/#{teamid}?party=#{userid}"
       @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
-              "Help me raise funds our team for ethos music project" +
+        "Help me raise funds our team for ethos music project" +
 	      "Click on this link to help sponsor me" +
-              "Go to http://raiseyourvoicepdx.com/sponsor/#{teamid}?party=#{userid} and support me!\n\n" +
-              "Thanks!"
+        "Go to here:\n\t#{@raise_link}\nand support me!\n\n" +
+        "Thanks!"
     end
     if flash[:recipients]
       @recipients = flash[:recipients]
@@ -275,9 +276,10 @@ public
     else
       teamid = 0
       teamid = @team.id if @team
+      @invite_link = "http://raiseyourvoicepdx.com/teams/#{current_user.team_id}"
       @body =  "Hey Friend, I'm doing this awesome thing!" +
-               "Join my team! Go to http://raiseyourvoicepdx.com/teams/#{current_user.team_id} and lets do this thing." +
-               "Thanks!"
+        "Join my team! Go to\n\t#{@invite_link}\nand lets do this thing." +
+        "Thanks!"
     end
     if flash[:recipients]
       @recipients = flash[:recipients]
@@ -317,8 +319,8 @@ public
 
   def invite_do
     if current_user
-       current_user.invitedfriends = true
-       current_user.save
+      current_user.invitedfriends = true
+      current_user.save
     end
     recipients = flash[:recipients]
     body = flash[:body]
@@ -334,8 +336,8 @@ public
 
   def leave
     if current_user
-    current_user.team_id = nil
-    current_user.save
+      current_user.team_id = nil
+      current_user.save
     end
   end
 

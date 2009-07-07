@@ -3,11 +3,11 @@ Invite others to your team
 %>
 
 <h1>Recruit new members for
-<% if @team %>
- <%= @team.name %>!</h1>
-<% end %>
+  <% if @team %>
+    <%= @team.name %>!</h1>
+  <% end %>
 
-<% if flash[:email_errors] %>
+  <% if flash[:email_errors] %>
   <h3 style="color:red">Invalid email addresses entered. Please correct and resubmit.</h3>
   <% flash[:email_errors].each do |email| %>
     <pre><%= email %></pre><br/>
@@ -19,10 +19,17 @@ Invite others to your team
 <% end %>
 
 <!-- TODO:  gmail and other contact import -->
+
+<h2>There's two ways we can help you invite friends to join your team:</h2>
+<ol><h3><li>Using your favorite email software, send an email to your friends.
+ Copy the link below into the email so they can quickly find your team (recommended)</h3></li>
+<%= text_field :dummy, :dummy, :size => 40,  :readonly => "readonly", :value => @invite_link%>&nbsp;&nbsp;&nbsp;<%= link_to "Go back...", :action => "show" %>
+<h2><div style="text-align: center"><br />OR</div></h2><br />
+
+
+<h3><li>Edit the email below and enter your friend's email addresses and we'll mail the invitations from here.</h3></li></ol>
+  <h3>We'll send out this message to your invitees. Feel free to edit it first.</h3>
 <% form_tag :action => 'invite_confirm', :method => 'post' do -%>
-
-  <h2>We'll send out this message to your invitees. Feel free to edit it first.</h2>
-
   <%=  text_area_tag :user_message, @body, :cols => 80, :rows => 15 %><br />
 
   <h2>Enter email addresses of your friends in the box below.</h2>
