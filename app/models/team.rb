@@ -15,6 +15,11 @@ class Team < ActiveRecord::Base
   #  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/
 
   # TODO this is inelegant
+  def sanitize(str)
+    return "" if !str
+    return Sanitize.clean(str)
+  end
+
   def sanitize_force
     self.name = sanitize self.name
     self.description = sanitize self.description
@@ -96,7 +101,7 @@ class Team < ActiveRecord::Base
       return teams
     end
 
-    words = phrase.to_s.split.collect { |c| Sanitize.clean(c.downcase) }
+    words = phrase.to_s.split.collect { |c| sanitize(c.downcase) }
     teams = []
     all = Team.find(:all, :conditions => ["active = ?", true])
     all.each do |team|

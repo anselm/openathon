@@ -1,4 +1,6 @@
 require 'paperclip'
+require 'sanitize'
+
 class User < ActiveRecord::Base
   acts_as_authentic
   belongs_to :team
@@ -21,6 +23,11 @@ class User
     :medium => "150x150>",
     :large => "300x300>"
   }
+
+  def sanitize(str)
+    return "" if !str
+    return Sanitize.clean(str)
+  end
 
   def sanitize_force
     self.firstname = sanitize self.firstname
