@@ -206,7 +206,7 @@ public
       userid = 0
       userid = current_user.id if current_user
       teamid = 0
-      teamid = @team.id if @team
+      teamid = current_user.team_id
       @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
               "Help me raise funds our team for ethos music project" +
 	      "Click on this link to help sponsor me" +
@@ -270,12 +270,10 @@ public
     if flash[:body]
       @body = flash[:body]
     else
-      userid = 0
-      userid = current_user.id if current_user
       teamid = 0
       teamid = @team.id if @team
       @body =  "Hey Friend, I'm doing this awesome thing!" +
-               "Join my team! Go to http://raiseyourvoicepdx.com/teams/3?party=3 and lets do this thing." +
+               "Join my team! Go to http://raiseyourvoicepdx.com/teams/#{current_user.team_id} and lets do this thing." +
                "Thanks!"
     end
     if flash[:recipients]

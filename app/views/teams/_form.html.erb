@@ -1,49 +1,44 @@
 <div style="float:left;">
 
-<% form_for(@team,:html=>{:multipart=>true}) do |f| %>
- <%= f.error_messages %>
- <%= f.label :Name %> <br/>
- <%= f.text_field :name %> <br/>
- <%= f.label :Description %><br/>
- <%= f.text_field :description %> <br/>
- <%= f.label :"Select Photo (optional)" %> <br/>
- <%= f.file_field :photo %> <br/>
- <%= f.label :"How many hours will your team commit to singing?" %> <br/>
+  <% form_for(@team,:html=>{:multipart=>true}) do |f| %>
+    <%= f.error_messages %>
+    <table>
+      <tr><th>Name</th><td><%= f.text_field :name %></td></tr>
+      <tr><th>Description</th><td><%= f.text_field :description %></td>
+      <tr><th>Add a team photo(optional)</th><td><%= f.file_field :photo %></td></tr>
+      <tr><th>How many hours will your<br />team commit to sing?</th>
+        <td>
+
+          <%=
+          hours = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+          options = hours.collect! { |h| "#{h} hours --  Fundraising goal: $#{h*500}" }
+          f.select "hours", options
+        %>
+      </td></tr>
 
 
-<%=
- hours = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
- options = hours.collect! { |h| "#{h} h for $#{h*500}" }
- f.select "hours", options
-%>
 
-<!--
- <div style="border:dashed 1px grey">
- <%= f.radio_button :hours,:"200" %>Three hours for a donation goal of $200<br/>
- <%= f.radio_button :hours,:"400" %>Four hours for a donation goal of $400<br/>
- <%= f.radio_button :hours,:"600" %>Five hours for a donation goal of $600<br/>
- </div>
--->
+      <% if params[:action] == "edit" && @team.approved == false %>
+        <tr><th>Assigned timeslot:</th><td><%= @team.calendar %></td></tr>
+      <% else %>
+        <tr><th>Singing time preference:<br />(e.g., "not after 2am", "hours spread out", "all in one chunk")</th>
+          <td><%= f.text_area :calendar, :cols => 30, :rows=>5 %><br />
+        Singing time slots will be finalized two weeks prior to the event and<br /> will be listed on your team status page.
+        Please make your comments<br /> as specific as possible so that we can ensure that you're assigned the slots you want.</td></tr>
+      <% end %>
+    </table>
+    <br/>
+    <% if admin? %>
+      <%= f.label :"Admin: Is team time slot approved?" %>
+      <%= f.check_box :approved %>
+      <%= f.label :"Admin: Is team active?" %>
+      <%= f.check_box :active %>
+    <% end %>
+    <p>
+      <%= f.submit( @team.new_record? ? 'Create' : 'Update' ) %>
+    </p>
+  </div>
 
- <br/>
-<% if params[:action] == "edit" && @team.approved == false %>
-Current timeslot: <%= @team.calendar %>
-<% else %>
- <%= f.label :"Please describe in english the ideal times you'd like to sing" %> <br/>
- <%= f.text_area :calendar, :cols => 30, :rows=>5 %>
-<% end %>
- <br/>
- <% if admin? %>
-  <%= f.label :"Admin: Is team time slot approved?" %>
-  <%= f.check_box :approved %>
-  <%= f.label :"Admin: Is team active?" %>
-  <%= f.check_box :active %>
- <% end %>
- <p>
-   <%= f.submit ( @team.new_record? ? 'Create' : 'Update' ) %>
- </p>
-</div>
-
-<div style="clear:both"></div>
+  <div style="clear:both"></div>
 
 <% end %>

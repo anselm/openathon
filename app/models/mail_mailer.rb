@@ -1,7 +1,7 @@
 class MailMailer < ActionMailer::Base
   
   def raise(invitor, invitee, user_text, sent_at = Time.now)
-    subject    'Help me raise funds for Ethos Karaokathon'
+    subject    "Sponsor me and Raise Your Voice -- 24-hour karaoke marathon to benefit the Ethos Music Center"
     recipients invitee
     from       "#{invitor.firstname} #{invitor.lastname} <#{invitor.email}>"
     sent_on    sent_at
@@ -9,7 +9,7 @@ class MailMailer < ActionMailer::Base
   end
 
   def invite(invitor, invitee, user_text, sent_at = Time.now)
-    subject    'Join my team for the Ethos Karaokathon'
+    subject    "Join my team, #{invitor.team.name}, in a 24-hour karaoke marathon!"
     recipients invitee
     from       "#{invitor.firstname} #{invitor.lastname} <#{invitor.email}>"
     sent_on    sent_at

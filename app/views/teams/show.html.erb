@@ -33,7 +33,7 @@
   @hours = "" 
   @hours = @team.hours.split(" ").last if @team && @team.hours
 %>
-<h2 class="grey">raised <%= @total %> with a goal of <%= @hours %></h2>
+<h2 class="grey">raised $<%= @total %> with a goal of <%= @hours %></h2>
 
 
 <% if @announcement %>
@@ -58,13 +58,14 @@ Share your thoughts with your team here.<br/><br/>
 </div> 
 <% end %>
 
+<table>
 <% Note.find(:all, :conditions => { :team_id => @team.id }, :order => "created_at DESC" ).each do |n| %>
 <% nowner = User.find_by_id(n.owner_id) %> 
 <% if nowner %>
-<%= nowner.avatar("thumb") %>
-<p><span class="namelabel"><%= nowner.firstname %> <%= nowner.lastname %></span> <%= n.description %></p>
-<p class="date"><%= n.created_at %></p>
+<tr><td><%= nowner.avatar("thumb") %><br /><br /></td>
+<td><span class="namelabel"><%= nowner.firstname %> <%= nowner.lastname %></span><br /><%= n.description %>
+<p class="date"><%= n.created_at %></td></tr>
 <% end %>
 
 <% end %>
-
+</table>
