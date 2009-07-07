@@ -22,6 +22,15 @@ class User
     :large => "300x300>"
   }
 
+  def sanitize_force
+    self.firstname = sanitize self.firstname
+    self.lastname = sanitize self.lastname
+    self.address = sanitize self.address
+    self.age = sanitize self.age
+    self.phone = sanitize self.phone
+    self.save
+  end
+
   def is_owner?()
     return self != nil && self.team_id && self.team_id > 0 && self.role == "captain"
   end

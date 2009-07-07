@@ -137,6 +137,7 @@ public
       @team = Team.new(params[:team])
       respond_to do |format|
         if @team.save
+          @team.sanitize_force
           if !@team.set_captain(current_user)
             raise "No user logged in"
           end
@@ -159,6 +160,7 @@ public
   def update
     respond_to do |format|
       if @team.update_attributes(params[:team])
+        @team.sanitize_force
         #if current_user && current_user.admin?
         #  @team.slot_finalize_admin
         #else

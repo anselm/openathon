@@ -14,6 +14,17 @@ class Team < ActiveRecord::Base
   # TODO fix i cannot get this to work - anselm may 15 2009
   #  validates_format_of :name, :with => /^[;\[\^\$\.\\|\(\)\\\/]/
 
+  # TODO this is inelegant
+  def sanitize_force
+    self.name = sanitize self.name
+    self.description = sanitize self.description
+    self.calendar = sanitize self.calendar
+    self.roomtime = sanitize self.roomtime
+    self.roomname = sanitize self.roomname
+    self.hours = sanitize self.hours
+    self.save
+  end
+
   ##################################################################################################
   # helpers for payments
   ##################################################################################################
