@@ -1,15 +1,28 @@
-<h1>Pay $<%=@amount/100%> Registration Fee</h1>
+<h1>Pay $<%=@amount%> Registration Fee</h1>
 
 Raise Your Voice is a 24-hour karaoke marathon to benefit Ethos Music Center held at Voicebox Karaoke, located on 21st and NW Hoyt. Put your money where your mic is and help be part of the first fundraiser of this kind to be held in the Portland area.  Your registration fee will help the <a href="http://www.ethos.org">Ethos Music Center</a> promote music and music-based education for youth in underserved communities. Please see our <a href="/about">about page</a> for more details.
 <br/>
 <br/>
 
-<form id="sponsorform" name="sponsorform" action="/fee_checkout" >
-<h2>Click below to pay the $<%=@amount/100%> registration fee</h2>
-<br/>
-<br/>
+<%= paypal_form_tag  %>
+  <%= paypal_setup( "Item #{@payment.id}",
+                    Money.us_dollar(@amount*100),
+                    "anselm@hook.org",
+                    { :notify_url => "http://raiseyourvoicepdx.com/payment_received",
+                      :item_name => "Ethos Registration Fee",
+                      :return => "http://raiseyourvoicepdx.com",
+                      :custom => "#{@payment.id}"
+
+#                      :business_key => @business_key,
+ #                     :business_cert => @business_cert,
+  #                    :business_certid => @business_certid
+
+
+                    }
+                  )
+  %>
 Please select checkout to continue to billing - you may use Paypal OR Visa/MasterCard/American express by clicking below. Paypal will ask for your email address and a receipt will be emailed to you:
-<br/>
-<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" value='submit' alt='submit'></input>
+  <%= submit_tag "Go to paypal >>" %>
+
 </form>
 
