@@ -1,5 +1,5 @@
 class FeeController < ApplicationController
-  include ActiveMerchant::Billing
+#  include ActiveMerchant::Billing
 
   layout 'twocolumn'
 

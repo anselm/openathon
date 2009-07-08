@@ -29,10 +29,10 @@ ActionController::Routing::Routes.draw do |map|
 
   # pay fee
   map.fee    'registration_fee', :controller => 'fee',  :action => 'index'
-  map.payment  'payment',     :controller => 'fee',  :action => 'payment'
-  map.checkout 'checkout',    :controller => 'fee',  :action => 'checkout'
-  map.confirm  'confirm',     :controller => 'fee',  :action => 'confirm'
-  map.complete 'complete',    :controller => 'fee',  :action => 'complete'
+  map.fee_payment  'fee_payment',     :controller => 'fee',  :action => 'payment'
+  map.fee_checkout 'fee_checkout',    :controller => 'fee',  :action => 'checkout'
+  map.fee_confirm  'fee_confirm',     :controller => 'fee',  :action => 'confirm'
+  map.fee_complete 'fee_complete',    :controller => 'fee',  :action => 'complete'
 
   # money
   map.sponsor  'sponsor/:id', :controller => 'payment',  :action => 'sponsor'
@@ -41,6 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   map.checkout 'checkout',    :controller => 'payment',  :action => 'checkout'
   map.confirm  'confirm',     :controller => 'payment',  :action => 'confirm'
   map.complete 'complete',    :controller => 'payment',  :action => 'complete'
+  map.payment_received 'payment_received', :controller => 'payment', :action => 'payment_received'
 
   # general activities
   map.privacy    'privacy',:controller => 'index',    :action => 'privacy'

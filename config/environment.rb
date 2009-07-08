@@ -10,13 +10,17 @@ require File.join(File.dirname(__FILE__), 'boot')
 # IMAGE_MAGICK_PATH = "/usr/local/bin/"
 
 # settings we don't want to put into git
-SETTINGS = YAML::load(File.open("../settings.yml"))
+SETTINGS = YAML::load(File.open("../raiseyourvoice_secrets/settings.yml"))
 SETTINGS.each do |k,v|
   sym = k.respond_to?(:to_sym) ? k.to_sym : k
   SETTINGS[sym] = v
   SETTINGS.delete(k) unless k == sym
   puts "#{sym} #{v}"
 end
+
+PAYPAL_MYPUBCERT = File.read("../raiseyourvoice_secrets/my-pubcert.pem")
+PAYPAL_MYPRIVKEY = File.read("../raiseyourvoice_secrets/my-prvkey.pem")
+PAYPAL_CERT = File.read("../raiseyourvoice_secrets/paypal_cert.pem")
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
@@ -93,11 +97,10 @@ Rails::Initializer.run do |config|
     # actually we'll use the production mode
     # http://www.codyfauser.com/2008/1/17/paypal-express-payments-with-activemerchant
     # http://www.fortytwo.gr/blog/14/Using-Paypal-with-Rails
-    # ActiveMerchant::Billing::Base.mode = :test
-    # ActiveMerchant::Billing::Base.gateway_mode = :test
-    # ActiveMerchant::Billing::Base.integration_mode = :test
-    # ActiveMerchant::Billing::PaypalGateway.pem_file =
-    #         File.read(File.dirname(__FILE__) + '/../paypal/paypal_cert.pem')
+    #ActiveMerchant::Billing::Base.mode = :production
+    #ActiveMerchant::Billing::Base.gateway_mode = :production
+    #ActiveMerchant::Billing::Base.integration_mode = :production
+    #ActiveMerchant::Billing::PaypalGateway.pem_file = PAYPAL_CERT_FILE
   end
 
 end

@@ -1,3 +1,10 @@
+require 'paypal'
+require 'money'
+
+module ApplicationHelper
+  include Paypal::Helpers
+end
+
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def admin?
