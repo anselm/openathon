@@ -33,12 +33,13 @@
   @hours = "" 
   @hours = @team.hours.split(" ").last if @team && @team.hours
 %>
-<h2 class="grey">raised $<%= @total %> with a goal of <%= @hours %></h2>
+<!-- TODO unhardcode 500 in line below -->
+<h2 class="grey">raised <%= number_to_currency(@total) %> with a goal of <%= number_to_currency(@hours.to_i*500) %></h2>
 
 
 <% if @announcement %>
 <div id="latest_drop">
-<span id="drop_title">Latest Drop </span><span id="drop_date"><%= @announcement.created_at.strftime("%d-%m-%y %H:%M") %></span><span id="drop_author">
+<span id="drop_title">Latest Drop from The Organizers</span><span id="drop_date"><%= @announcement.created_at.strftime("%d-%m-%y %H:%M") %></span><span id="drop_author">
 from Scott</span>
 <p> <%= @announcement.description %> </p>
 </div>

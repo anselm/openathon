@@ -12,6 +12,8 @@
       <%= form.radio_button :tshirt,:"large" %> Large&nbsp;&nbsp;&nbsp;&nbsp;
       <%= form.radio_button :tshirt,:"xtralarge" %>  Extra Large
   </td></tr>
+  <tr><th>Does your company match donations?<br />Enter your company name and we'll contact them</th>
+  <td><%= form.text_field :matching_company %></td></tr>
   <tr><th>
     <%= form.label "Choose a password", form.object.new_record? ? nil : "New password" %></th>
   <td><%= form.password_field :password %></td></tr>

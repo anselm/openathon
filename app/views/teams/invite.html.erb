@@ -20,25 +20,24 @@ Invite others to your team
 
 <!-- TODO:  gmail and other contact import -->
 
-<h2>There's two ways we can help you invite friends to join your team:</h2>
+<h2>There's two ways to invite friends to join your team:</h2>
 <ol><h3><li>Using your favorite email software, send an email to your friends.
- Copy the link below into the email so they can quickly find your team (recommended)</h3></li>
-<%= text_field :dummy, :dummy, :size => 40,  :readonly => "readonly", :value => @invite_link%>&nbsp;&nbsp;&nbsp;<%= link_to "Go back...", :action => "show" %>
-<h2><div style="text-align: center"><br />OR</div></h2><br />
+  Copy the link below into the email so they can quickly find your team (recommended)</li></h3>
+  <%= text_field :dummy, :dummy, :size => 45,  :readonly => "readonly", :value => @invite_link%>&nbsp;&nbsp;&nbsp;<%= link_to "Go back...", :action => "show" %>
+  <h2><div style="text-align: center"><br />OR</div></h2><br />
 
 
-<h3><li>Edit the email below and enter your friend's email addresses and we'll mail the invitations from here.</h3></li></ol>
-  <h3>We'll send out this message to your invitees. Feel free to edit it first.</h3>
+<h3><li>Edit the email below and enter your friend's email addresses and we'll mail the invitations from here.</li></h3></ol>
+<h2>We'll send out this message to your invitees. Feel free to edit it first.</h2>
 <% form_tag :action => 'invite_confirm', :method => 'post' do -%>
-  <%=  text_area_tag :user_message, @body, :cols => 80, :rows => 15 %><br />
+  <%=  text_area_tag :user_message, @body, :rows => 15, :cols => 90 %><br />
 
   <h2>Enter email addresses of your friends in the box below.</h2>
   Put each address on its own line.<br/>
 
 
-  <%= text_area_tag :email_blob, @recipients.join("\n"), :cols => 40, :rows => 10 %>
+  <%= text_area_tag :email_blob, @recipients.join("\n"), :cols => 60, :rows => 10 %>
   <%= submit_tag "Invite!" %>
 <%end%>
-
 
 
