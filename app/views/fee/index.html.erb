@@ -7,17 +7,15 @@ Raise Your Voice is a 24-hour karaoke marathon to benefit Ethos Music Center hel
 <%= paypal_form_tag  %>
   <%= paypal_setup( "Item #{@payment.id}",
                     Money.us_dollar(@amount*100),
-                    "anselm@hook.org",
-                    { :notify_url => "http://raiseyourvoicepdx.com/payment_received",
+                    "paypal@ethos-inc.com",
+                    { 
+                      :notify_url => "http://raiseyourvoicepdx.com/payment_received",
                       :item_name => "Ethos Registration Fee",
                       :return => "http://raiseyourvoicepdx.com",
                       :custom => "#{@payment.id}"
-
-#                      :business_key => @business_key,
- #                     :business_cert => @business_cert,
-  #                    :business_certid => @business_certid
-
-
+#                     :business_key => @business_key,
+#                     :business_cert => @business_cert,
+#                     :business_certid => @business_certid
                     }
                   )
   %>

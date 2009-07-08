@@ -3,22 +3,18 @@
 <%= paypal_form_tag  %>
   <%= paypal_setup( "Item #{@payment.id}",
                     Money.us_dollar(@payment.amount*100),
-                    "anselm@hook.org",
-                    { :notify_url => "http://raiseyourvoicepdx.com/payment_received",
+                    "paypal@ethos-inc.com",
+                    {
+                      :notify_url => "http://raiseyourvoicepdx.com/payment_received",
                       :item_name => "Ethos Donation",
                       :return => "http://raiseyourvoicepdx.com",
                       :custom => "#{@payment.id}"
-
 #                      :business_key => @business_key,
- #                     :business_cert => @business_cert,
-  #                    :business_certid => @business_certid
-
-
+#                      :business_cert => @business_cert,
+#                     :business_certid => @business_certid
                     }
                   )
   %>
   <%= submit_tag "Go to paypal >>" %>
-
 </form>
-
 

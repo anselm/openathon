@@ -2,7 +2,6 @@ require 'paypal'
 require 'money'
 
 class FeeController < ApplicationController
-#  include ActiveMerchant::Billing
 
   layout 'twocolumn'
 
@@ -44,13 +43,20 @@ class FeeController < ApplicationController
   end
 
   def confirm_standard
+      # THIS SHOULD NOT BE DONE UNTIL THE PAYPAL SYSTEM CALLS US... IMPROVE TODO
+      ActionController::Base.logger.info "fee confirmation reached"
+      ActionController::Base.logger.info "fee confirmation reached with #{session[:payment]} and #{current_user}"
       @payment = session[:payment]
       @party = current_user
       if @party
+         ActionController::Base.logger.info "user set to paid"
          @party.paid = true
          @party.save
       end
-      @payment.update_attributes( :description=> Payment::DONE_FEE )
+      if @payment
+        ActionController::Base.logger.info "payment set to paid"
+        @payment.update_attributes( :description=> Payment::DONE_FEE )
+      end
       redirect_to "/"
    end
 
@@ -65,13 +71,15 @@ class FeeController < ApplicationController
     #end
 
     # get some kind of identifier from the request
-    ActionController::Base.logger.info "payment_received with param #{params[:id]}"
+    ActionController::Base.logger.info "fee payment_received with param #{params[:id]}"
     ActionController::Base.logger.info notify.to_s
 
     if notify.acknowledge
       begin
         if notify.complete?
-           # yay!try figure out who paid and then record that
+           ActionController::Base.logger.info "successful payment received confirmation for fee from paypal"
+           ActionController::Base.logger.info "#{notify}"
+           # TODO try use this information !!!
         else
         end
       rescue => e
