@@ -1,20 +1,15 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
-
-<h3>Message</h3>
-<%= text_area_tag :dummy, @body, :cols => 80, :rows => 20, :readonly => "readonly" %>
-
 <h3>Email list</h3>
 <%= text_area_tag :dummy2,@recipients.join("\n"), :cols => 40, :rows => 10, :readonly => "readonly" %>
 
 <% if !@confirmed %>
-  <div>Press confirm to send this email to the above recipients.
+  <div>Press confirm to send your invitations to the above recipients.
   Press cancel to go back.</div>
   <%= button_to "Confirm!", :action => "invite_do" %>
   <%= button_to "Cancel", "javascript:history.back()" %>
 <% end %>
+
+<h3>This is the message that we're sending: </h3><hr>
+<%= @body %>
 
 
 

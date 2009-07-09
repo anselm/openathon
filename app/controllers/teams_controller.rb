@@ -202,6 +202,7 @@ class TeamsController < ApplicationController
   def calendar
   end
 
+  # TODO get this big chunk of text outta here!
   def raise
     if flash[:body]
       @body = flash[:body]
@@ -211,11 +212,27 @@ class TeamsController < ApplicationController
       teamid = 0
       teamid = current_user.team_id
       @raise_link = "http://raiseyourvoicepdx.com/sponsor/#{teamid}?party=#{userid}"
-      @body = "Hey Friend, I'm doing this awesome thing!\n\n" +
-        "Help me raise funds our team for ethos music project" +
-	      "Click on this link to help sponsor me" +
-        "Go to here:\n\t#{@raise_link}\nand support me!\n\n" +
-        "Thanks!"
+      @body = <<HERE
+Hi Friend!<br /><br /><img align="right" src="http://scottley.smugmug.com/photos/585883850_4eMdY-S.jpg">
+
+I am writing because I am participating in an innovative and exciting fundraiser called <a href="#{@raise_link}">Raise Your Voice</a> – a 24-hour Karaoke Marathon to benefit Ethos Music Center held at Voicebox Karaoke – and I need your help!<br /><br />
+
+My team, <b>#{current_user.team.name}</b> has committed to sing for <b>#{current_user.team.hours} hours</b> throughout the event, and we need to raise <b>$#{(current_user.team.hours.to_i*500)}</b>, so we need YOUR help to reach our goal!<br /><br />
+
+In addition to raising money for such a great non-profit, Ethos Music Center, we are competing for the top team and individual fundraisers. The individuals and teams who raise the most will be honored with some sweet prizes. It is really easy to <a href="#{@raise_link}">donate</a>, and all donations are tax deductible to the full extent of the law.<br /><br />
+
+Ethos is a non-profit dedicated to providing music education to youth in under served communities throughout Oregon. Created as a response to the elimination of music programs in public schools, Ethos provides music lessons on a sliding scale to students of various ages, and their studies have shown that kids who take music lessons achieve higher grades and have better attendance records at school.<br /><br />
+
+Voicebox Karaoke is a new karaoke lounge in Northwest with private karaoke party suites.  If all 6 spaces are filled with teams constantly for all 24 hours, and each team meets the goal of $500 per hour, we will raise over $60,000 for Ethos!<br /><br />
+
+Every little bit helps – whether you can afford $10, $100, or more, please take a second to support our cause and <a href="#{@raise_link}">Raise Your Voice</a> in support of music education!<br /><br  />
+
+Thank you in advance!<br /><br />
+#{current_user.firstname} #{current_user.lastname}
+
+HERE
+
+      flash[:body] = @body
     end
     if flash[:recipients]
       @recipients = flash[:recipients]
@@ -232,7 +249,7 @@ class TeamsController < ApplicationController
     email_blob = params[:email_blob]
     if email_blob.empty?
       flash[:no_emails] = true
-      flash[:body] = params[:user_message]
+      flash[:body] = flash[:body]
       redirect_to :action => :raise
     end
     @recipients = email_blob.split
@@ -244,13 +261,14 @@ class TeamsController < ApplicationController
         @error_array << email
       end
     end
-    flash[:body] = params[:user_message]
+    flash[:body] = flash[:body]
     flash[:recipients] = @recipients
     if @error_array.length > 0
       flash[:email_errors] = @error_array
       redirect_to :action => :raise
     end
-    @body = params[:user_message]
+    @body = flash[:body]
+    flash[:body] = @body
   end
 
   def raise_do
@@ -274,12 +292,26 @@ class TeamsController < ApplicationController
     if flash[:body]
       @body = flash[:body]
     else
-      teamid = 0
-      teamid = @team.id if @team
       @invite_link = "http://raiseyourvoicepdx.com/teams/#{current_user.team_id}"
-      @body =  "Hey Friend, I'm doing this awesome thing!" +
-        "Join my team! Go to\n\t#{@invite_link}\nand lets do this thing." +
-        "Thanks!"
+      @body =  <<HERE
+Hi Friend!<br /><br /><img align="right" src="http://scottley.smugmug.com/photos/585883850_4eMdY-S.jpg">
+
+I am writing because I am participating in an innovative and exciting fundraiser called <a href="#{@invite_link}">Raise Your Voice</a> – a 24-hour Karaoke Marathon to benefit Ethos Music Center held at Voicebox Karaoke – and I want YOU to join my team.<br /><br />
+
+My team, <b>#{current_user.team.name}</b> has committed to sing for <b>#{current_user.team.hours} hours</b> throughout the event, and we need to raise <b>$#{(current_user.team.hours.to_i*500)}</b>, so we need YOUR help to reach our goal!<br /><br />
+
+Ethos is a non-profit dedicated to providing music education to youth in under served communities throughout Oregon. Created as a response to the elimination of music programs in public schools, Ethos provides music lessons on a sliding scale to students of various ages, and their studies have shown that kids who take music lessons achieve higher grades and have better attendance records at school.<br /><br />
+
+Voicebox Karaoke is a new karaoke lounge in Northwest with private karaoke party suites.  If all 6 spaces are filled with teams constantly for all 24 hours, and each team meets the goal of $500 per hour, we will raise over $60,000 for Ethos!<br /><br />
+
+Let’s help Ethos fund their programs, while having a sweet time singing karaoke at an event that has never been done in Portland before! I would love to have you on my team.<br /><br />
+
+Click <a href="#{@invite_link}">HERE</a> to Join!<br /><br />
+
+Thanks,<br /><br />
+#{current_user.firstname} #{current_user.lastname}
+HERE
+    flash[:body] = @body
     end
     if flash[:recipients]
       @recipients = flash[:recipients]
@@ -296,7 +328,7 @@ class TeamsController < ApplicationController
     email_blob = params[:email_blob]
     if email_blob.empty?
       flash[:no_emails] = true
-      flash[:body] = params[:user_message]
+      flash[:body] = flash[:body]
       redirect_to :action => :invite
     end
     @recipients = email_blob.split
@@ -308,13 +340,14 @@ class TeamsController < ApplicationController
         @error_array << email
       end
     end
-    flash[:body] = params[:user_message]
+    flash[:body] = flash[:body]
     flash[:recipients] = @recipients
     if @error_array.length > 0
       flash[:email_errors] = @error_array
       redirect_to :action => :invite
     end
-    @body = params[:user_message]
+    @body = flash[:body]
+    flash[:body] = @body
   end
 
   def invite_do

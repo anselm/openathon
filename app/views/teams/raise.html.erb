@@ -19,19 +19,25 @@ Raise support for your team
 <% end %>
 
 <!-- TODO:  gmail and other contact import -->
+<h2>There's two ways to invite friends to join your team:</h2><br />
+<ol><h3><li>Using your favorite email software, send an email to your friends.
+  Copy the link below into the email so they can quickly find your team (recommended)</li></h3>
+  <%= text_field :dummy, :dummy, :size => 45,  :readonly => "readonly", :value => @raise_link%>&nbsp;&nbsp;&nbsp;<%= link_to "Go back...", :action => "show" %>
+  <h2><div style="text-align: center"><br />OR</div></h2><br />
+
+
+<h3><li>Enter your friend's email addresses and we'll mail pre-written donation requests on your behalf.</li></h3></ol>
 <% form_tag :action => 'raise_confirm', :method => 'post' do -%>
-
-  <h2>We'll send out this message to your fund raisers. Feel free to edit it first.</h2>
-
-  <%=  text_area_tag :user_message, @body, :cols => 80, :rows => 15 %><br />
-
-  <h2>Enter email addresses of your friends in the box below.</h2>
+   <h3>Enter email addresses of your friends in the box below.</h3>
   Put each address on its own line.<br/>
 
 
   <%= text_area_tag :email_blob, @recipients.join("\n"), :cols => 40, :rows => 10 %>
-  <%= submit_tag "Invite!" %>
+  <%= submit_tag "Raise!" %>
 <%end%>
+
+<h3>This is the message that we'll send: </h3><hr>
+<%= @body %>
 
 
 

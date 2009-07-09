@@ -20,24 +20,22 @@ Invite others to your team
 
 <!-- TODO:  gmail and other contact import -->
 
-<h2>There's two ways to invite friends to join your team:</h2>
+<h2>There's two ways to invite friends to join your team:</h2><br />
 <ol><h3><li>Using your favorite email software, send an email to your friends.
   Copy the link below into the email so they can quickly find your team (recommended)</li></h3>
   <%= text_field :dummy, :dummy, :size => 45,  :readonly => "readonly", :value => @invite_link%>&nbsp;&nbsp;&nbsp;<%= link_to "Go back...", :action => "show" %>
   <h2><div style="text-align: center"><br />OR</div></h2><br />
 
 
-<h3><li>Edit the email below and enter your friend's email addresses and we'll mail the invitations from here.</li></h3></ol>
-<h2>We'll send out this message to your invitees. Feel free to edit it first.</h2>
+<h3><li>Enter your friend's email addresses and we'll mail pre-written invitations from here.</li></h3></ol>
 <% form_tag :action => 'invite_confirm', :method => 'post' do -%>
-  <%=  text_area_tag :user_message, @body, :rows => 15, :cols => 90 %><br />
-
-  <h2>Enter email addresses of your friends in the box below.</h2>
+  <h3>Enter email addresses of your friends in the box below.</h3>
   Put each address on its own line.<br/>
-
-
   <%= text_area_tag :email_blob, @recipients.join("\n"), :cols => 60, :rows => 10 %>
   <%= submit_tag "Invite!" %>
 <%end%>
+
+<h3>This is the message that we'll send: </h3><hr>
+<%= @body %>
 
 
