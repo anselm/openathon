@@ -20,7 +20,7 @@
    <% @member_list.each do |member| %>
     <tr>
      <td><%= member.firstname %> <%= member.lastname %></td>
-     <td><%= number_to_currency(member.payments/100) %></td>
+     <td>$<%= member.payments %></td>
     </tr>
    <% end %>
   </table>
