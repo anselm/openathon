@@ -3,6 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   # activescaffold
   map.resources :scaffold
   map.resources :scaffoldusers
+  map.resources :scaffoldpayments
 
   # people
   map.resource  :account, :controller => "users"
