@@ -22,7 +22,7 @@ Raise support for your team
 <h2>There's two ways to invite friends to join your team:</h2><br />
 <ol><h3><li>Using your favorite email software, send an email to your friends.
   Copy the link below into the email so they can quickly find your team (recommended)</li></h3>
-  <%= text_field :dummy, :dummy, :size => 45,  :readonly => "readonly", :value => @raise_link%>&nbsp;&nbsp;&nbsp;<%= link_to "Go back...", :action => "show" %>
+  <%= text_field :dummy, :dummy, :size => 45,  :readonly => "readonly", :value => @raise_link%>&nbsp;&nbsp;&nbsp;<%= link_to "Go back...", :action => "show", :controller => "teams", :id => current_user.id %>
   <h2><div style="text-align: center"><br />OR</div></h2><br />
 
 

@@ -279,7 +279,7 @@ HERE
     recipients = flash[:recipients]
     body = flash[:body]
     recipients.each do |email|
-      MailMailer.deliver_invite(current_user, email, body)
+      MailMailer.deliver_raise(current_user, email, body)
     end
     flash[:notice] = 'Invitations sent!'
     @team = nil

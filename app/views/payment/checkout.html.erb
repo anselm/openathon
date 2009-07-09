@@ -1,4 +1,9 @@
-<h2>Please click to confirm your donation of $<%=@payment.amount%>:</h2>
+<h1>Sponsor</h1>
+<h2>Handing off to PayPal...</h2>
+
+<h3> Click below to pay $<%=@payment.amount%> with PayPal.</h3><br />
+<em>If you don't want to create a PayPal account, use the link under "Don't have a PayPal account" on the next page</em><br /><br />
+You'll be returned to this site after your payment has been processed.
 
 <%= paypal_form_tag  %>
   <%= paypal_setup( "Item #{@payment.id}",
@@ -6,8 +11,8 @@
                     "paypal@ethos-inc.com",
                     {
                       :notify_url => "http://raiseyourvoicepdx.com/payment_received",
-                      :item_name => "Ethos Donation",
-                      :return => "http://raiseyourvoicepdx.com",
+                      :item_name => "Raise Your Voice Sponsorship Donation",
+                      :return => @return_url,
                       :custom => "#{@payment.id}"
 #                      :business_key => @business_key,
 #                      :business_cert => @business_cert,

@@ -37,11 +37,12 @@ ActionController::Routing::Routes.draw do |map|
   # money
   map.sponsor  'sponsor/:id', :controller => 'payment',  :action => 'sponsor'
   map.donate   'donate/:id',  :controller => 'payment',  :action => 'sponsor'
-  map.payment  'payment/:id', :controller => 'payment',  :action => 'payment'
+  map.payment  'payment/:id', :controller => 'payment',  :action => 'confirm_standard'
   map.checkout 'checkout',    :controller => 'payment',  :action => 'checkout'
   map.confirm  'confirm',     :controller => 'payment',  :action => 'confirm'
   map.complete 'complete',    :controller => 'payment',  :action => 'complete'
   map.payment_received 'payment_received', :controller => 'payment', :action => 'payment_received'
+  map.confirm_standard 'confirm_standard', :controller => 'payment', :action => 'confirm_standard'
 
   # general activities
   map.privacy    'privacy',:controller => 'index',    :action => 'privacy'

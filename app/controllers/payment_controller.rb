@@ -65,9 +65,15 @@ class PaymentController < ApplicationController
       @payment.update_attributes( :amount => donation )
     end
     if @payment.amount < 1
-      @message = "xSorry no donation found - did you pick a value?"
+      @message = " bad donation amount entered.  Please hit back and try again"
       render :action => 'error'
       return
+    end
+
+    # capture the company match if there is one
+    matching_company = params[:matching_company]
+    if matching_company
+      @payment.update_attributes( :matching_company => matching_company)
     end
 
     # try get a party if there is one passed - this overrides anything from before.
@@ -111,8 +117,8 @@ class PaymentController < ApplicationController
   end
 
   def confirm_standard
-    # TODO do something useful here
-    redirect_to "/" 
+    flash[:notice] = "Payment completed!"
+       redirect_to :action => "show", :controller => "teams", :id => current_user.team.id
   end
 
   def payment_received
@@ -130,13 +136,18 @@ class PaymentController < ApplicationController
 
     # Update our records
     payment_id = params[:custom]
+    # capture the payer details returned by PayPal
+    firstname = params[:first_name]
+    lastname = params[:last_name]
+    email = params[:payer_email]
+
     if payment_id && payment_id.to_i > 0
      @payment = Payment.find(:first,:conditions => { :id => payment_id.to_i } )
      if @payment
            ActionController::Base.logger.info "found payment #{@payment.id} of kind #{@payment.description} for amount #{@payment.amount}"
       # update the payment if it is a donation style
       if @payment.description == Payment::CHECKOUT
-         @payment.update_attributes( :description=> Payment::DONE )
+        @payment.update_attributes( :description=> Payment::DONE, :firstname => firstname, :lastname => lastname, :email => email  )
          ActionController::Base.logger.info "updated a donation payment"
       end
       # update the party status if it is a membership fee
@@ -149,7 +160,7 @@ class PaymentController < ApplicationController
            @party.paid = true
            @party.save
            ActionController::Base.logger.info "payment set to paid"
-           @payment.update_attributes( :description=> Payment::DONE_FEE )
+           @payment.update_attributes( :description=> Payment::DONE_FEE, :firstname => firstname, :lastname => lastname, :email => email )
          end
       end
      end
