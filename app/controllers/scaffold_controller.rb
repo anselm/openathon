@@ -7,5 +7,9 @@ class ScaffoldController < ApplicationController
     config.columns = [:active,:bookings,:description,:name,:users ]
   end
 
+  def csv
+    render :text => Team.to_csv
+  end
+
 end
 

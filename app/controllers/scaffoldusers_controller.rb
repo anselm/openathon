@@ -5,5 +5,11 @@ class ScaffoldusersController < ApplicationController
     config.label = "Users"
     config.columns = [:admin, :email, :firstname, :lastname, :paid ]
   end
+
+  def csv
+    render :text => User.to_csv
+  end
+
+
 end
 
