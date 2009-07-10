@@ -216,7 +216,7 @@ text-transform:uppercase;
 #normal_middle a.smallurl { font-size: .9em; }
 .explain{
   font-size:85%;
-  line-height:0.1;
+  line-height:1.1;
   padding:0 0 8px;
   text-transform:uppercase;
 }
