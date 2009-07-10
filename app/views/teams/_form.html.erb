@@ -5,6 +5,7 @@
     <table>
       <tr><th>Name</th><td><%= f.text_field :name %></td></tr>
       <tr><th>Description</th><td><%= f.text_field :description %></td>
+      <tr><th>Upload a<br />team photo</th><td><%= f.file_field :photo %></td></tr>
       <tr><th>How many hours will your<br />team commit to sing?</th>
         <td>
 
@@ -17,14 +18,12 @@
 
 
 
-      <% if params[:action] == "edit" && @team.approved == false %>
-        <tr><th>Assigned timeslot:</th><td><%= @team.calendar %></td></tr>
-      <% else %>
-        <tr><th>Singing time preference:<br />(e.g., "not after 2am", "hours spread out", "all in one chunk")</th>
-          <td><%= f.text_area :calendar, :cols => 30, :rows=>5 %><br />
-        Singing time slots will be finalized two weeks prior to the event and<br /> will be listed on your team status page.
-        Please make your comments<br /> as specific as possible so that we can ensure that you're assigned the slots you want.</td></tr>
-      <% end %>
+
+      <tr><th>Singing time preference:<br />(e.g., "not after 2am", "hours spread out", "all in one chunk")</th>
+        <td><%= f.text_area :calendar, :cols => 30, :rows=>5 %><br />
+          Singing time slots will be finalized two weeks prior to the event and<br /> will be listed on your team status page.
+      Please make your comments<br /> as specific as possible so that we can ensure that you're assigned the slots you want.</td></tr>
+    
     </table>
     <br/>
     <% if admin? %>
