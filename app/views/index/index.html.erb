@@ -43,7 +43,7 @@ Join a team or check out the competition!
     %>
     <tr class="listview">
       <td><%= team.name %></td>
-      <td><%= team.total_donations %></td>
+      <td>$<%= team.total_donations %></td>
     </tr>
     <% end %>
   </table>
@@ -59,7 +59,7 @@ Join a team or check out the competition!
     %>
     <tr class="listview">
       <td><%= user.firstname %> <%= user.lastname %></td>
-      <td><%= user.payments %></td>
+      <td>$<%= user.payments %></td>
     </tr>
     <%  end %>
     <tr></tr>
