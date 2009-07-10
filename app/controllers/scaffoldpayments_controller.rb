@@ -5,5 +5,11 @@ class ScaffoldpaymentsController < ApplicationController
     config.label = "Payments"
     config.columns = [:id, :amount, :description, :firstname, :lastname, :matching_company, :email, :phone ]
   end
+
+  def csv
+    render :text => Payment.to_csv
+  end
+
+
 end
 
