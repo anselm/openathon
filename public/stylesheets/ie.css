@@ -1,3 +1,9 @@
 #error, #warning {
 	height:  30px;
 }
+
+.radiobutton {
+  width:2em;
+  height:2em;
+}
+

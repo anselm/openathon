@@ -28,9 +28,9 @@
     <br/>
     <% if admin? %>
       <%= f.label :"Admin: Is team time slot approved?" %>
-      <%= f.check_box :approved %>
+      <%= f.check_box :approved, :class => "radiobutton" %>
       <%= f.label :"Admin: Is team active?" %>
-      <%= f.check_box :active %>
+      <%= f.check_box :active, :class => "radiobutton" %>
     <% end %>
     <p>
       <%= f.submit( @team.new_record? ? 'Create' : 'Update' ) %>

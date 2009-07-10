@@ -7,10 +7,10 @@
   <tr><th>Phone Number</th><td><%= form.text_field :phone %></td></tr>
   <tr><th>Age</th><td><%= form.text_field :age %></td></tr>
   <tr><th>T-shirt Size</th><td>
-      <%= form.radio_button :tshirt,:"small" %> Small&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= form.radio_button :tshirt,:"medium" %> Medium&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= form.radio_button :tshirt,:"large" %> Large&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= form.radio_button :tshirt,:"xtralarge" %>  Extra Large
+      <%= form.radio_button :tshirt,:"small", :class => "radiobutton"  %> Small&nbsp;&nbsp;
+      <%= form.radio_button :tshirt,:"medium",  :class => "radiobutton"  %> Medium&nbsp;&nbsp;
+      <%= form.radio_button :tshirt,:"large", :class => "radiobutton"  %> Large&nbsp;&nbsp;
+      <%= form.radio_button :tshirt,:"xtralarge",  :class => "radiobutton"  %>  X Large
   </td></tr>
   <tr><th>Does your company match donations?<br />Enter your company name and we'll contact them!</th>
   <td><%= form.text_field :matching_company %></td></tr>
@@ -21,15 +21,14 @@
 </table>
 
 
-<%= form.check_box :optinsms, {:checked => true} %> Yes! I would like the event staff to be able to contact me on my phone via SMS.<br />
+<%= form.check_box :optinsms, :checked => true, :class => "radiobutton" %> Yes! I would like the event staff to be able to contact me on my phone via SMS.<br />
 
-<%= form.check_box :optinethos, {:checked => true} %> Yes! I would like to receive news and updates from Ethos Music Center. <br />
+<%= form.check_box :optinethos, :checked => true, :class => "radiobutton" %> Yes! I would like to receive news and updates from Ethos Music Center. <br />
 
-<%= form.check_box :optinvoicebox, {:checked => true} %> Yes! I would like to receive news and updates from Voicebox Karaoke Lounge. <br />
-
+<%= form.check_box :optinvoicebox, :checked => true, :class => "radiobutton" %> Yes! I would like to receive news and updates from Voicebox Karaoke Lounge. <br />
 
 <% if current_user == nil %>
-  <%= form.check_box :tos %> I agree to the <%=link_to "terms of service", "/privacy", :target => '_blank' %><br />
+  <%= form.check_box :tos, :class => "radiobutton" %> I agree to the <%=link_to "terms of service", "/privacy", :target => '_blank' %><br />
 <% end %>
 <br /><br /><%= form.label "Upload a photo for to appear on your team roster:" %><br />
 <%= form.file_field :photo %>
