@@ -7,7 +7,7 @@ class ScaffoldpaymentsController < ApplicationController
   end
 
   def csv
-    render :text => Payment.to_csv
+    render :text => Payment.to_csv, :content_type => 'text/csv'
   end
 
 

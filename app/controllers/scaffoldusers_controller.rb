@@ -7,7 +7,7 @@ class ScaffoldusersController < ApplicationController
   end
 
   def csv
-    render :text => User.to_csv
+    render :text => User.to_csv, :content_type => 'text/csv'
   end
 
 

@@ -8,7 +8,7 @@ class ScaffoldController < ApplicationController
   end
 
   def csv
-    render :text => Team.to_csv
+    render :text => Team.to_csv, :content_type => 'text/csv' 
   end
 
 end

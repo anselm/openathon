@@ -5,6 +5,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :scaffoldusers
   map.resources :scaffoldpayments
 
+  # csv
+  map.teams_csv      'teams.csv',    :controller => 'scaffold',         :action => 'csv'
+  map.users_csv      'users.csv',    :controller => 'scaffoldusers',    :action => 'csv'
+  map.payments_csv   'payments.csv', :controller => 'scaffoldpayments', :action => 'csv'
+
   # people
   map.resource  :account, :controller => "users"
   map.resource  :user_session
