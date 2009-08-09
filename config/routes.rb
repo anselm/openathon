@@ -1,9 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
   # activescaffold
-  map.resources :scaffold
-  map.resources :scaffoldusers
-  map.resources :scaffoldpayments
+  map.resources :scaffold, :active_scaffold => true
+  map.resources :scaffoldusers, :active_scaffold => true
+  map.resources :scaffoldpayments, :active_scaffold => true
 
   # csv
   map.teams_csv      'teams.csv',    :controller => 'scaffold',         :action => 'csv'
@@ -12,8 +12,8 @@ ActionController::Routing::Routes.draw do |map|
 
   # people
   map.resource  :account, :controller => "users"
-  map.resource  :user_session
   map.resources :users
+  map.resource  :user_session
   map.signup    'signup',      :controller => 'users',           :action => 'new'
   map.signin    'signin',      :controller => 'user_sessions',   :action => 'new'
   map.signout   'signout',     :controller => 'user_sessions',   :action => 'destroy'
