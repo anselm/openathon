@@ -18,6 +18,9 @@ class MailMailer < ActionMailer::Base
     content_type "text/html"    
   end
 
+  def testing(user,reset_url)
+  end
+
   def password_reset_instructions(user, reset_url)  
     subject       "Password Reset Instructions"  
     from          "Voicebox Karaoke"  

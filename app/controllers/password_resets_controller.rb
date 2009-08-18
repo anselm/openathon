@@ -9,10 +9,12 @@ class PasswordResetsController < ApplicationController
   def create
   	if request.post?
 		@user = User.find_by_email(params[:email])  
-		if @user    
+		if @user   
 			@user.reset_perishable_token!
 			magic_url = edit_password_reset_url(@user.perishable_token)  
+
 			MailMailer.deliver_password_reset_instructions(@user,magic_url) 
+
 			flash[:notice] = "Instructions to reset your password have been emailed to you."  
 			redirect_to root_url  
 		else  

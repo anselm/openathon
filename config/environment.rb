@@ -83,12 +83,14 @@ Rails::Initializer.run do |config|
   # configure Active Mailer
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :tls => true,
     :address => "mail.voiceboxpdx.com",
     :port => "26",
     :domain => "makerlab.com",
-    :authentication => :login,
     :user_name => "karaokathon+voiceboxpdx.com",
-    :password => "8675309jenny"
+    :password => "8675309jenny",
+    :authentication => :login
   }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_charset = "utf-8"

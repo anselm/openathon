@@ -51,4 +51,21 @@ class ApplicationController < ActionController::Base
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
+
+
+def send_email(from, from_alias, to, to_alias, subject, message)
+	msg = <<END_OF_MESSAGE
+From: #{from_alias} <#{from}>
+To: #{to_alias} <#{to}>
+Subject: #{subject}
+	
+#{message}
+END_OF_MESSAGE
+	
+	Net::SMTP.start('localhost') do |smtp|
+		smtp.send_message msg, from, to
+	end
+end
+
+
 end
