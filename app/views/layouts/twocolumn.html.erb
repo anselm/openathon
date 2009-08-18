@@ -15,8 +15,12 @@
  <%= render :partial => "layouts/login_header" %>
  <div id="normal_container">
   <div id="normal_middle">
-   <% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
-   <% if flash[:error] %><div id="error"><%= flash[:error] %></div><% end %>
+   <% if flash[:notice] %>
+     <div id="notice"><h1 style="color:green;"><%= flash[:notice] %></h1></div>
+   <% end %>
+   <% if flash[:error] %>
+     <div id="error"><h1 style="color:red;"><%= flash[:error] %></h1></div>
+   <% end %>
    <%= yield  %>
   </div>
   <div id="normal_right">

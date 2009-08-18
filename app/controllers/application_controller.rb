@@ -57,9 +57,12 @@ def send_email(from, from_alias, to, to_alias, subject, message)
 	msg = <<END_OF_MESSAGE
 From: #{from_alias} <#{from}>
 To: #{to_alias} <#{to}>
+MIME-Version: 1.0
+Content-type: text/html
 Subject: #{subject}
-	
-#{message}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><body>#{message}</body></html>
 END_OF_MESSAGE
 	
 	Net::SMTP.start('localhost') do |smtp|
@@ -69,3 +72,4 @@ end
 
 
 end
+
