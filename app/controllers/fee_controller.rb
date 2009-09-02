@@ -57,6 +57,7 @@ class FeeController < ApplicationController
         ActionController::Base.logger.info "payment set to paid"
         @payment.update_attributes( :description=> Payment::DONE_FEE )
       end
+      flash[:notice] = "Registration Fee Received!"
       redirect_to "/"
    end
 

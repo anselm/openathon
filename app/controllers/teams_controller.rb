@@ -203,25 +203,32 @@ class TeamsController < ApplicationController
   end
 
   def get_invite_body
-    if flash[:body] && flash[:body].length > 20
-      @body = flash[:body]
-      return @body
-    end
+#    if flash[:body] && flash[:body].length > 20
+#      @body = flash[:body]
+#      return @body
+#    end
     @invite_link = "http://raiseyourvoicepdx.com/teams/#{current_user.team_id}"
     @body =  <<HERE
 Hi Friend!<br /><br /><img align="right" src="http://scottley.smugmug.com/photos/585883850_4eMdY-S.jpg">
 
-I am writing because I am participating in an innovative and exciting fundraiser called <a href="#{@invite_link}">Raise Your Voice</a> – a 24-hour Karaoke Marathon to benefit Ethos Music Center held at Voicebox Karaoke – and I want YOU to join my team.<br /><br />
+I am writing because I am participating in an innovative and exciting fundraiser called <a href="#{@invite_link}">Raise Your Voice</a> a 24-hour Karaoke Marathon to benefit Ethos Music Center held at Voicebox Karaoke  - <b>and I want YOU to join my team.</b><br/><br/>
 
 My team, <b>#{current_user.team.name}</b> has committed to sing for <b>#{current_user.team.hours} hours</b> throughout the event, and we need to raise <b>$#{(current_user.team.hours.to_i*500)}</b>, so we need YOUR help to reach our goal!<br /><br />
 
+It's easy to join:<br/><br/>
+<a href="#{@invite_link}">Click HERE</a> to go to our team page.<br/><br/>
+Click JOIN on the left hand side.<br/></br/>
+Create an account<br/><br/>
+Pay the registration fee (Ony $13 to participate)<br/><br/>
+Go back to the team page, make sure your name is listed, and then start asking friends to sponsor us!<br/><br/>
+
 Ethos is a non-profit dedicated to providing music education to youth in under served communities throughout Oregon. Created as a response to the elimination of music programs in public schools, Ethos provides music lessons on a sliding scale to students of various ages, and their studies have shown that kids who take music lessons achieve higher grades and have better attendance records at school.<br /><br />
 
-Voicebox Karaoke is a new karaoke lounge in Northwest with private karaoke party suites.  If all 6 spaces are filled with teams constantly for all 24 hours, and each team meets the goal of $500 per hour, we will raise over $60,000 for Ethos!<br /><br />
+Voicebox Karaoke is a new karaoke lounge in Northwest with private karaoke party suites.  <b>If all 6 spaces are filled with teams constantly for all 24 hours, and each team meets the goal of $500 per hour, we will raise over $60,000 for Ethos! Okay, so it’s more of a relay than a marathon, but we can do our part to make it successful by raising $1,500.</b><br /><br />
 
-Let’s help Ethos fund their programs, while having a sweet time singing karaoke at an event that has never been done in Portland before! I would love to have you on my team.<br /><br />
+Lets help Ethos fund their programs, while having a sweet time singing karaoke at an event that has never been done in Portland before! I would love to have you on my team.<br /><br />
 
-Click <a href="#{@invite_link}">HERE</a> to Join!<br /><br />
+Click <a href="#{@invite_link}">HERE</a> to get started!<br /><br />
 
 Thanks,<br /><br />
 #{current_user.firstname} #{current_user.lastname}
@@ -231,10 +238,10 @@ HERE
   end
 
   def get_raise_body
-    if flash[:body] && flash[:body].length > 50
-      @body = flash[:body]
-      return @body
-    end
+#    if flash[:body] && flash[:body].length > 50
+#      @body = flash[:body]
+#      return @body
+#    end
     userid = 0
     userid = current_user.id if current_user
     teamid = 0
@@ -243,7 +250,7 @@ HERE
     @body = <<HERE
 Hi Friend!<br /><br /><img align="right" src="http://scottley.smugmug.com/photos/585883850_4eMdY-S.jpg">
 
-I am writing because I am participating in an innovative and exciting fundraiser called <a href="#{@raise_link}">Raise Your Voice</a> – a 24-hour Karaoke Marathon to benefit Ethos Music Center held at Voicebox Karaoke – and I need your help!<br /><br />
+I am writing because I am participating in an innovative and exciting fundraiser called <a href="#{@raise_link}">Raise Your Voice</a> a 24-hour Karaoke Marathon to benefit Ethos Music Center held at Voicebox Karaoke and I need your help!<br /><br />
 
 My team, <b>#{current_user.team.name}</b> has committed to sing for <b>#{current_user.team.hours} hours</b> throughout the event, and we need to raise <b>$#{(current_user.team.hours.to_i*500)}</b>, so we need YOUR help to reach our goal!<br /><br />
 
@@ -253,7 +260,7 @@ Ethos is a non-profit dedicated to providing music education to youth in under s
 
 Voicebox Karaoke is a new karaoke lounge in Northwest with private karaoke party suites.  If all 6 spaces are filled with teams constantly for all 24 hours, and each team meets the goal of $500 per hour, we will raise over $60,000 for Ethos!<br /><br />
 
-Every little bit helps – whether you can afford $10, $100, or more, please take a second to support our cause and <a href="#{@raise_link}">Raise Your Voice</a> in support of music education!<br /><br  />
+Every little bit helps whether you can afford $10, $100, or more, please take a second to support our cause and <a href="#{@raise_link}">Raise Your Voice</a> in support of music education!<br /><br  />
 
 Thank you in advance!<br /><br />
 #{current_user.firstname} #{current_user.lastname}

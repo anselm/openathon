@@ -117,8 +117,18 @@ class PaymentController < ApplicationController
   end
 
   def confirm_standard
-    flash[:notice] = "Payment completed!"
-       redirect_to :action => "show", :controller => "teams", :id => current_user.team.id
+    begin
+      if current_user && current_user.team && current_user.team.id
+        flash[:notice] = "Payment completed!"
+        redirect_to :action => "show", :controller => "teams", :id => current_user.team.id
+      else
+        flash[:notice] = "Payment completed!"
+        redirect_to "/"
+      end
+    rescue
+      flash[:notice] = "Payment completed!"
+      redirect_to "/"
+    end
   end
 
   def payment_received

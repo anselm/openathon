@@ -9,16 +9,26 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-  <% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
-  <% if flash[:error] %><div id="error"><%= flash[:error] %></div><% end %>
+<% if flash[:notice] %><h1><center><div id="notice"><%= flash[:notice] %></div></center></h1><% end %>
+<% if flash[:error] %><h1><center><div id="error"><%= flash[:error] %></div></center></h1><% end %>
 <center>
   <%= render :partial => "layouts/footer" %>
 </center>
   <div id="normal_container">
+<table cellpadding=0>
+<tr>
+<td valign=top>
     <a href="http://www.ethos.org/">
       <div id="home_graphic"> <%= image_tag("home_graphic.gif") %> </div>
     </a>
-    <div id="horiz_bar">
+</td>
+<td valign=top>
+    <%= render :partial => "index/prizes" %>
+</td>
+</tr>
+<tr>
+<td valign=top>
+    <div id="horiz_bar"> 
     <a href="http://www.ethos.org">
       <div id="splash_leftside"> <p>&nbsp;</p> </div>
     </a>
@@ -26,10 +36,15 @@
     <%= render :partial => "index/intro" %>
     <%= yield  %>
     </div>
+    </div>
+</td>
+<td valign=top>
     <div id="splash_rightside">
     <%= render :partial => "index/login_header" %>
     </div>
-    </div>
+
+</td>
+</tr></table>
   </div>
 <center>
   <%= render :partial => "layouts/footer" %>
