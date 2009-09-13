@@ -20,7 +20,7 @@ html {
 #horiz_bar {
   background: url(/images/bground_blue.gif) repeat-x left top;
   overflow: hidden;
-  width: 100%;
+  min-width:1026px;
 }
 
 #splash_container{
@@ -59,7 +59,7 @@ width:217px;
 }
 
 #raise-voice{
-  font-size: 103%;
+  font-size: 92%;
   background:#000  url("/images/bg2.png") repeat-y top right;
   color: #fff;
   padding: 17px 58px 17px 22px;
