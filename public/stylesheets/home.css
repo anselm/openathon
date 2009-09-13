@@ -30,12 +30,12 @@ html {
 }
 
 #splash_leftside{
-  float:left;
-  width:201px;
-  position:relative;  
-  padding: 25px;
+float:left;
+height:80px;
+padding:17px;
+position:relative;
+width:217px;
   background-color: #A5CEFF;
-  height: 64px;
 }
 
 #splash_middleside{
@@ -91,6 +91,18 @@ h1.biglinks a {
 h1 {
 	padding: 0;
 	margin: 0;
+}
+
+#splash_leftside p {
+	text-align: right;
+	margin:0 0 5px;
+	  font-size: 70%;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#splash_leftside p a, #splash_rightside p a {
+	color: #551A8B;
 }
 
 p.explain {
