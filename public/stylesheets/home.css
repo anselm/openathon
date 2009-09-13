@@ -80,12 +80,21 @@ padding:29px 58px 29px 29px;
   margin: 0; 
 } 
 
-#mainmenu a, #mainmenu h1 {
+h1.biglinks a {
   color: white;
   text-decoration: none;
-  font-size: 260%; 
+  font-size: 140%; 
   font-weight: bold;
   padding: 0;
+}
+
+h1 {
+	padding: 0;
+	margin: 0;
+}
+
+p.explain {
+	margin-top: 5px;
 }
 
 #mainmenu a:hover {
