@@ -13,13 +13,14 @@
       <%= form.radio_button :tshirt,:"xtralarge",  :class => "radiobutton"  %>  X Large
     <br class='clear'>
 
-  <label>Does your company match donations?<br />Enter your company name and we'll contact them!
-  <td><%= form.text_field :matching_company %>
-  <label>
-    <%= form.label "Choose a password", form.object.new_record? ? nil : "New password" %>
-  <td><%= form.password_field :password %>
+  <label>Does your company match donations?<br />Enter your company name and we'll contact them!</label>
+  <%= form.text_field :matching_company %><br class='clear'>
+  
+  <%= form.label "Choose a password", form.object.new_record? ? nil : "New password" %>
+  <%= form.password_field :password %>
+  
   <label>Confirm Password</label><%= form.password_field :password_confirmation %>
-
+<br class='clear'>
 <%= form.check_box :optinsms, :checked => true, :class => "radiobutton" %> Yes! I would like the event staff to be able to contact me on my phone via SMS.<br />
 
 <%= form.check_box :optinethos, :checked => true, :class => "radiobutton" %> Yes! I would like to receive news and updates from Ethos Music Center. <br />
@@ -29,6 +30,6 @@
 <% if current_user == nil %>
   <%= form.check_box :tos, :class => "radiobutton" %> I agree to the <%=link_to "terms of service", "/privacy", :target => '_blank' %><br />
 <% end %>
-<br /><br /><%= form.label "Upload a photo for to appear on your team roster:" %><br />
+<br /><%= form.label "Upload a photo for to appear on your team roster:" %><br />
 <%= form.file_field :photo %>
 
