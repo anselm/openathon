@@ -161,6 +161,7 @@ p.explain {
 
 a {
  text-decoration:none;
+ color: yellow;
 }
 
 #footer {
@@ -203,4 +204,13 @@ a {
 #raise-voice a {
 	text-decoration: underline;
 	color: white;
+}
+
+#prizes_txt, #prizes_txt p {
+	color: white;
+}
+
+#prizes_txt h4 {
+	font-size: 150%;
+	margin-bottom: 0;
 }

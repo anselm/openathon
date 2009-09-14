@@ -394,6 +394,17 @@ text-transform:uppercase;
 }
 
 #sponsor_logos a img {
-	
 	padding: 0 0 20px 33px;
+}
+
+form#new_user label {
+display:block;
+float:left;
+margin-right:10px;
+padding:6px 0 12px;
+width:200px;
+}
+
+br.clear {
+	clear: both;
 }
