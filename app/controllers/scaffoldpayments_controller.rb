@@ -3,7 +3,7 @@ class ScaffoldpaymentsController < ApplicationController
   before_filter :require_admin
   active_scaffold :payments do |config|
     config.label = "Payments"
-    config.columns = [:id, :amount, :description, :firstname, :lastname, :matching_company, :email, :phone ]
+    config.columns = [:owner_id, :amount, :description, :firstname, :lastname, :matching_company, :email, :phone, :title ]
   end
 
   def csv

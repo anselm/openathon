@@ -3,8 +3,11 @@ class UsersController < ApplicationController
   layout 'twocolumn'
 
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_user, :only => [:promo, :show, :edit, :update]
   
+  def index
+  end
+
   def new
     @user = User.new
   end
@@ -39,8 +42,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
+  def promo
+    if @current_user && params[:promo] != nil
+      if params[:promo].to_s == SETTINGS[:promo_code].to_s
+        flash[:notice] = "Promotional code accepted!"
+        @current_user.paid = true
+        @current_user.save
+        redirect_to account_url
+      else
+        flash[:error] = "Promotional code not accepted"
+      end
+    end
   end
-
 
 end

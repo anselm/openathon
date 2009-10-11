@@ -50,8 +50,7 @@ module Paypal
     #   Paypal::Notification.ipn_url = https://www.paypal.com/cgi-bin/webscr
     #
     cattr_accessor :ipn_url
-    @@ipn_url = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
-    
+    @@ipn_url = 'http://www.paypal.com/cgi-bin/webscr'
 
     # Overwrite this certificate. It contains the Paypal sandbox certificate by default.
     #
@@ -248,6 +247,8 @@ jZJTylbJQ1b5PBBjGiP0PpK48cdF
 
       http.verify_mode    = OpenSSL::SSL::VERIFY_NONE unless @ssl_strict
       http.use_ssl        = true
+
+http.use_ssl = false
 
       request = http.request(request, payload)
         

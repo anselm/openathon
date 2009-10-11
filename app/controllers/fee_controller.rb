@@ -33,7 +33,7 @@ class FeeController < ApplicationController
                         :only_path => false
                          )
 
-      @payment_received_url = payment_received_url
+      # @payment_received_url = payment_received_url
       @action_url = "http://www.paypal.com/cgi-bin/webscr"
       @business_key = PAYPAL_MYPRIVKEY
       @business_cert = PAYPAL_MYPUBCERT
@@ -62,6 +62,8 @@ class FeeController < ApplicationController
    end
 
   def payment_received
+
+    # THIS IS NOT USED - paypal calls our hardcoded response gateway on /payment_controlle
 
     notify = Paypal::Notification.new(request.raw_post)
 

@@ -35,7 +35,7 @@ html {
   position:relative;  
   padding: 25px;
   background-color: #A5CEFF;
-  height: 64px;
+  height: 104px;
 }
 
 #splash_middleside{
@@ -54,7 +54,7 @@ html {
   position:relative;
   background-color: #a5ceff;
   text-align: right;
-  height:97px;
+  height:135px;
   padding:17px 17px 0;
 }
 
@@ -64,7 +64,7 @@ html {
   color: #fff;
   padding: 17px 58px 17px 22px;
   text-align: justify;
-  height: 80px;
+  height: 120px;
 }
 
 #raise-voice .highlight{

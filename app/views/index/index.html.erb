@@ -5,6 +5,7 @@
   @team = Team.get_team(current_user) if current_user != nil
 %>
 
+<!--
 <% if @team %>
 <%= link_to @team.name, "/teams/#{@team.id}" %>
 <p class="explain">Go directly to your team!</p>
@@ -27,6 +28,8 @@ Join a team or check out the competition!
 <% if current_user != nil && current_user.admin? %> 
 <%= link_to "Administration", admin_path %>
 <% end %>
+-->
+
 
 <div id="teamtop5">
 <div class="boxxy">

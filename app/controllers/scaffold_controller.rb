@@ -4,7 +4,7 @@ class ScaffoldController < ApplicationController
   before_filter :require_admin
 
   active_scaffold :team do |config|
-    config.columns = [:active,:bookings,:description,:name,:users ]
+    config.columns = [:id, :active,:bookings,:description,:name,:users ]
   end
 
   def csv

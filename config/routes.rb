@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup    'signup',      :controller => 'users',           :action => 'new'
   map.signin    'signin',      :controller => 'user_sessions',   :action => 'new'
   map.signout   'signout',     :controller => 'user_sessions',   :action => 'destroy'
+  map.promo     'promo',      :controller => 'users',           :action => 'promo'
 
   # passwords
   map.password_resets 'password_resets', :controller => 'password_resets', :action => 'create'
@@ -52,6 +53,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # general activities
   map.privacy    'privacy',:controller => 'index',    :action => 'privacy'
+  map.totals    'totals',:controller => 'index',    :action => 'totals'
   map.tos    'tos',    :controller => 'index',    :action => 'privacy'
   map.about    'about',  :controller => 'index',    :action => 'about'
   map.admin    'admin',  :controller => 'index',    :action => 'admin'

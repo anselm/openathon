@@ -1,3 +1,4 @@
+<!--
 <div id="login-header">
 
   <% if current_user %>
@@ -5,7 +6,7 @@
     <p><%= link_to "Signout", signout_path, :method => :delete %></p>
   <% else %>
     <% form_for UserSession.new, :url => user_session_path do |f| %>
-      <%= f.label :login %>: <%= f.text_field :email, :size => 14 %>
+      <%= f.label :email %>: <%= f.text_field :email, :size => 14 %>
       <%= f.label :password %>: <%= f.password_field :password, :size => 14 %><br />
       <%= f.check_box :remember_me %><%= f.label :remember_me %>
       <%= f.submit "Login" %>
@@ -13,4 +14,5 @@
     <p><%= link_to "Signup", signup_path %></p>
   <% end %>
 </div>
+-->
 

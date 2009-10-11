@@ -3,7 +3,7 @@ class ScaffoldusersController < ApplicationController
   before_filter :require_admin
   active_scaffold :users do |config|
     config.label = "Users"
-    config.columns = [:admin, :email, :firstname, :lastname, :paid ]
+    config.columns = [:id, :admin, :email, :firstname, :lastname, :paid, :team_id ]
   end
 
   def csv

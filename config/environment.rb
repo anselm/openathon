@@ -23,6 +23,9 @@ PAYPAL_MYPRIVKEY = File.read("../raiseyourvoice_secrets/my-prvkey.pem")
 PAYPAL_CERT = File.read("../raiseyourvoice_secrets/paypal_cert.pem")
 
 Rails::Initializer.run do |config|
+
+# ActiveMerchant::Billing::Integrations::Paypal::Notification.logger = Logger.new(Rails.logger) 
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

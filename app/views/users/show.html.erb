@@ -15,3 +15,6 @@ Your team is here <%= link_to @team.name, "/teams/#{@team.id}" %> <br/>
 <% end %>
 <br />
 <%= link_to 'Edit account info', edit_account_path, :class => "smallurl" %>
+<br />
+<%= link_to 'Enter promotional code (if you have one)', "/promo", :class => "smallurl" %>
+

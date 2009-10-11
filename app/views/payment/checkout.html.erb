@@ -13,10 +13,10 @@ You'll be returned to this site after your payment has been processed.
                       :notify_url => "http://raiseyourvoicepdx.com/payment_received",
                       :item_name => "Raise Your Voice Sponsorship Donation",
                       :return => @return_url,
-                      :custom => "#{@payment.id}"
+                      :custom => "#{@payment.id}",
 #                      :business_key => @business_key,
 #                      :business_cert => @business_cert,
-#                     :business_certid => @business_certid
+#                      :business_certid => @business_certid
                     }
                   )
   %>

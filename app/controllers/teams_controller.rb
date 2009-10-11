@@ -51,7 +51,7 @@ class TeamsController < ApplicationController
 
   def verify_paid
     unless current_user.paid
-      flash[:error] = "You must pay the entry fee before starting a team."
+      flash[:error] = "You must pay the entry fee before starting or joining a team."
       redirect_to "/registration_fee"
     end
   end
@@ -132,7 +132,7 @@ class TeamsController < ApplicationController
     end
 
     if false && !current_user.paid?
-      flash[:error] = 'You must pay the entry fee before starting a team.'
+      flash[:error] = 'You must pay the entry fee before starting or joining a team.'
       redirect_to "/registration_fee" 
     else 
       @team = Team.new(params[:team])

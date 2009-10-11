@@ -1,0 +1,39 @@
+<table class="top5">
+  <tr>
+    <th title="All teams" scope="col" width="143">teams</th>
+    <th title="amount of money raised" scope="col" width="50">$$$</th>
+  </tr>
+  <% count = 0
+     Team.payment_top_teams.each do |team|
+       count = count + team.total_donations
+  %>
+  <tr class="listview">
+    <td><%= team.name %></td>
+    <td>$<%= team.total_donations %></td>
+  </tr>
+  <% end %>
+  <th> </th>
+  <th><%=count%></th>
+</table>
+<br/>
+<table class="top5" style="">
+  <tr>
+    <th title="All fundraising members" scope="col" width="143">members</th>
+    <th title="amount of money raised" scope="col" width="50">$$$</th>
+  </tr>
+  <% count = 0
+     Team.payment_top_users.each do |user|
+     count = count + user.payments
+  %>
+  <tr class="listview">
+    <td><%= user.firstname %> <%= user.lastname %></td>
+    <td>$<%= user.payments %></td>
+  </tr>
+  <%  end %>
+  <tr>
+    <th> </th>
+    <th><%=count%></th>
+  </tr>
+  <tr></tr>
+</table>
+

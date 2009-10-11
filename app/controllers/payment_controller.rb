@@ -1,3 +1,4 @@
+require 'openssl' 
 require 'paypal'
 require 'money'
 
@@ -106,11 +107,10 @@ class PaymentController < ApplicationController
                        )
 
     @paypal_business_email = SETTINGS[:paypal_business_email]
-    @business_certid = SETTINGS[:paypal_cert]
-    @payment_received_url = payment_received_url
-    @action_url = "http://www.paypal.com/cgi-bin/webscr"
     @business_key = PAYPAL_MYPRIVKEY
     @business_cert = PAYPAL_MYPUBCERT
+    @business_certid = SETTINGS[:paypal_cert]
+    @action_url = "http://www.paypal.com/cgi-bin/webscr"
     Paypal::Notification.ipn_url = @action_url
     Paypal::Notification.paypal_cert = PAYPAL_CERT
 
@@ -133,33 +133,39 @@ class PaymentController < ApplicationController
 
   def payment_received
 
+    # test
+    @action_url = "http://www.paypal.com/cgi-bin/webscr"
+    Paypal::Notification.ipn_url = @action_url
+    Paypal::Notification.paypal_cert = PAYPAL_CERT
+
     notify = Paypal::Notification.new(request.raw_post)
-    
-    # apparently we could check to see if the transaction was already found locally and done
-    # unused
-    #if !Trans.count("*", :conditions => ["id = ?", notify.transaction_id]).zero?
-    #  # do some logging here...
-    #end
 
     ActionController::Base.logger.info "payment_received!!!"
     ActionController::Base.logger.info notify.to_s
 
     # Update our records
     payment_id = params[:custom]
+
     # capture the payer details returned by PayPal
     firstname = params[:first_name]
     lastname = params[:last_name]
     email = params[:payer_email]
 
-    if payment_id && payment_id.to_i > 0
+    completed = false
+    completed = true if notify.params["payment_status"] == "Completed"
+    ActionController::Base.logger.info "paymet status is #{completed}"
+
+    if completed == true && payment_id && payment_id.to_i > 0
+
      @payment = Payment.find(:first,:conditions => { :id => payment_id.to_i } )
      if @payment
-           ActionController::Base.logger.info "found payment #{@payment.id} of kind #{@payment.description} for amount #{@payment.amount}"
+      ActionController::Base.logger.info "found payment #{@payment.id} of kind #{@payment.description} for amount #{@payment.amount}"
       # update the payment if it is a donation style
       if @payment.description == Payment::CHECKOUT
         @payment.update_attributes( :description=> Payment::DONE, :firstname => firstname, :lastname => lastname, :email => email  )
-         ActionController::Base.logger.info "updated a donation payment"
+        ActionController::Base.logger.info "updated a donation payment"
       end
+
       # update the party status if it is a membership fee
       # TODO these should not land here
       @party = nil
@@ -176,23 +182,22 @@ class PaymentController < ApplicationController
      end
     end
 
-begin
-    if notify.acknowledge
-      begin
+#    begin
+      if notify.acknowledge
+        ActionController::Base.logger.info "Paypal transaction acknowledged!"
         if notify.complete?
+          # we already know if this is complete or not ... but anyway do this for good luck
+          ActionController::Base.logger.info "Paypal transaction complete!"
            # yay!try figure out who paid and then record that
         else
         end
-      rescue => e
-        # bad...
-      ensure
-      end
-    else
-      # bad...
-    end  
-rescue
-  ActionController::Base.logger.info "notify acknowledge crashed"
-end
+      else
+        # this case doesn't strictly make sense since we have the transaction already 
+        ActionController::Base.logger.info "Paypal transaction acknowledge failure!!"
+      end  
+#    rescue => e
+#      ActionController::Base.logger.info "notify acknowledge crashed because of #{e}"
+#    end
 
     render :nothing => true
   end
