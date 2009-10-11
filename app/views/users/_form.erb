@@ -1,26 +1,26 @@
-<table>
-  <tr><th>Email Address</th><td><%= form.text_field :email %></td></tr>
+  <label>Email Address</label><%= form.text_field :email %>
 
-  <tr><th>First Name</th><td><%= form.text_field :firstname %></td></tr>
-  <tr><th>Last Name</th><td><%= form.text_field :lastname %></td></tr>
-  <tr><th>Complete Address<br />(inc. City, State and Zip)</th><td><%= form.text_field :address %></td><tr>
-  <tr><th>Phone Number</th><td><%= form.text_field :phone %></td></tr>
-  <tr><th>Age</th><td><%= form.text_field :age %></td></tr>
-  <tr><th>T-shirt Size</th><td>
+  <label>First Name</label><%= form.text_field :firstname %>
+  <label>Last Name</label><%= form.text_field :lastname %>
+  <label>Complete Address<br />(inc. City, State and Zip)</label><%= form.text_field :address %></td><tr>
+  <label>Phone Number</label><%= form.text_field :phone %>
+  <label>Age</label><%= form.text_field :age %>
+  <br class='clear'>
+  <label>T-shirt Size</label>
       <%= form.radio_button :tshirt,:"small", :class => "radiobutton"  %> Small&nbsp;&nbsp;
       <%= form.radio_button :tshirt,:"medium",  :class => "radiobutton"  %> Medium&nbsp;&nbsp;
       <%= form.radio_button :tshirt,:"large", :class => "radiobutton"  %> Large&nbsp;&nbsp;
       <%= form.radio_button :tshirt,:"xtralarge",  :class => "radiobutton"  %>  X Large
-  </td></tr>
-  <tr><th>Does your company match donations?<br />Enter your company name and we'll contact them!</th>
-  <td><%= form.text_field :matching_company %></td></tr>
-  <tr><th>
-    <%= form.label "Choose a password", form.object.new_record? ? nil : "New password" %></th>
-  <td><%= form.password_field :password %></td></tr>
-  <tr><th>Confirm Password</th><td><%= form.password_field :password_confirmation %></td></tr>
-</table>
+    <br class='clear'>
 
-
+  <label>Does your company match donations?<br />Enter your company name and we'll contact them!</label>
+  <%= form.text_field :matching_company %><br class='clear'>
+  
+  <%= form.label "Choose a password", form.object.new_record? ? nil : "New password" %>
+  <%= form.password_field :password %>
+  
+  <label>Confirm Password</label><%= form.password_field :password_confirmation %>
+<br class='clear'>
 <%= form.check_box :optinsms, :checked => true, :class => "radiobutton" %> Yes! I would like the event staff to be able to contact me on my phone via SMS.<br />
 
 <%= form.check_box :optinethos, :checked => true, :class => "radiobutton" %> Yes! I would like to receive news and updates from Ethos Music Center. <br />
@@ -30,6 +30,6 @@
 <% if current_user == nil %>
   <%= form.check_box :tos, :class => "radiobutton" %> I agree to the <%=link_to "terms of service", "/privacy", :target => '_blank' %><br />
 <% end %>
-<br /><br /><%= form.label "Upload a photo for to appear on your team roster:" %><br />
+<br /><%= form.label "Upload a photo for to appear on your team roster:" %><br />
 <%= form.file_field :photo %>
 

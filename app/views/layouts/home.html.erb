@@ -11,38 +11,30 @@
 <body>
 <% if flash[:notice] %><h1><center><div id="notice"><%= flash[:notice] %></div></center></h1><% end %>
 <% if flash[:error] %><h1><center><div id="error"><%= flash[:error] %></div></center></h1><% end %>
-<center>
-  <%= render :partial => "layouts/footer" %>
-</center><div id="normal_container" style="margin:0;padding:0"><table cellpadding=0 margin=0 border=0 style="margin:0;padding:0">
-<tr>
-<td valign=top>
+
+  <div id="normal_container">
+
     <a href="http://www.ethos.org/">
       <div id="home_graphic"> <%= image_tag("home_graphic.gif") %> </div>
     </a>
-</td>
-<td valign=top>
-    <%= render :partial => "index/prizes" %>
-</td>
-</tr>
-<tr>
-<td valign=top>
+
+ 
+
     <div id="horiz_bar"> 
     <a href="http://www.ethos.org">
-      <div id="splash_leftside"> <p>&nbsp;</p> </div>
+      <div id="splash_leftside"> <p> <%= link_to "About the Event", about_url %></p>
+<p>  <%= link_to "Contact Us", "/contact" %></p> </div>
     </a>
     <div id="splash_middleside">
     <%= render :partial => "index/intro" %>
     <%= yield  %>
     </div>
-    </div>
-</td>
-<td valign=top>
+   
+
     <div id="splash_rightside">
     <%= render :partial => "index/login_header" %>
     </div>
-
-</td>
-</tr></table>
+ </div>
   </div>
 <center>
   <%= render :partial => "layouts/footer" %>

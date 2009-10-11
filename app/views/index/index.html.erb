@@ -7,21 +7,21 @@
 
 <!--
 <% if @team %>
-<%= link_to @team.name, "/teams/#{@team.id}" %>
+<h1 class="biglinks"><%= link_to @team.name, "/teams/#{@team.id}" %></h1>
 <p class="explain">Go directly to your team!</p>
 <% else %>
-<%= link_to "Get started! Register", "/start" %>
+<h1 class="biglinks"><%= link_to "Get started! Register", "/start" %></h1>
 <p class="explain">
 New to Raise Your Voice?  Go here first!
 </p>
 <% end %>
 
-<%= link_to "Find teams",  teams_path %>
+<h1 class="biglinks"><%= link_to "Find teams",  teams_path %></h1>
 <p class="explain">
 Join a team or check out the competition!
 </p>
  
-<%= link_to "Make a donation!", donate_path %>
+<h1 class="biglinks"><%= link_to "Make a donation!", donate_path %></h1>
 <p class="explain">Support your friend's team and Ethos!
 </p>
 
@@ -69,6 +69,8 @@ Join a team or check out the competition!
   </table>
   </div>
 </div>
-</div>
+<%= render :partial => "index/prizes" %>
 <h2>Follow us on <a href="http://twitter.com/RaiseYourVoxPDX">Twitter/RaiseYourVoxPDX</a></h2>
+
+</div>
 
